@@ -3,15 +3,13 @@ name: Run tests
 on:
   pull_request:
     branches:
-      - master
-      - Arc2.0_development
-      - release/*
+      - main
   push:
     branches:
-      - master
-      - Arc2.0_development
-      - release/*
-      - SPM
+      - main
+	  - release/*
+    tags:
+      - 'v*'
 
 jobs:
   build:
