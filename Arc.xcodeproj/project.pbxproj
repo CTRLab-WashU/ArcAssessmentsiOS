@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -264,22 +264,6 @@
 		C5EB849923DB8D050070A240 /* ACPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB849823DB8D050070A240 /* ACPDFView.swift */; };
 		C5F77F37222F095200BECAE1 /* SignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F77F36222F095200BECAE1 /* SignatureViewController.swift */; };
 		C5FDC5B4258BE4A100E80E69 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDC5B3258BE4A100E80E69 /* AuthHandler.swift */; };
-		CB32BCEF2717C82D00B05501 /* JsonModel in Frameworks */ = {isa = PBXBuildFile; productRef = CB32BCEE2717C82D00B05501 /* JsonModel */; };
-		CB5C294E2732EEC400CEC823 /* SageAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C294D2732EEC400CEC823 /* SageAuthController.swift */; };
-		CB7F44342733647100C5C6B4 /* SageAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F44332733647100C5C6B4 /* SageAuthViewController.swift */; };
-		CB855AC627178C60004599EC /* BridgeApp in Frameworks */ = {isa = PBXBuildFile; productRef = CB855AC527178C60004599EC /* BridgeApp */; };
-		CB855AC827178C60004599EC /* BridgeAppUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB855AC727178C60004599EC /* BridgeAppUI */; };
-		CB855AD027178D32004599EC /* SageEarningsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ACA27178D31004599EC /* SageEarningsController.swift */; };
-		CB855AD127178D32004599EC /* SageScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ACB27178D31004599EC /* SageScheduleController.swift */; };
-		CB855AD227178D32004599EC /* CompletedTestsDefaultsReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ACC27178D31004599EC /* CompletedTestsDefaultsReport.swift */; };
-		CB855AD327178D32004599EC /* SageSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ACD27178D31004599EC /* SageSessionController.swift */; };
-		CB855AD427178D32004599EC /* TaskListScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ACE27178D32004599EC /* TaskListScheduleManager.swift */; };
-		CB855AD82717A1AD004599EC /* BridgeSDK in Frameworks */ = {isa = PBXBuildFile; productRef = CB855AD72717A1AD004599EC /* BridgeSDK */; };
-		CB855ADB2717A1C0004599EC /* Research in Frameworks */ = {isa = PBXBuildFile; productRef = CB855ADA2717A1C0004599EC /* Research */; };
-		CB855ADD2717A1C0004599EC /* ResearchUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB855ADC2717A1C0004599EC /* ResearchUI */; };
-		CB855ADF2717A93C004599EC /* SageEarningsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB855ADE2717A93C004599EC /* SageEarningsControllerTests.swift */; };
-		CB984EE8271E25C20034C9BB /* HmToSageMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984EE7271E25C20034C9BB /* HmToSageMigrationViewController.swift */; };
-		CB984EF3271F13FF0034C9BB /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984EF2271F13FF0034C9BB /* PasswordGenerator.swift */; };
 		CB984EF7271F22350034C9BB /* HmToSageMigrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */; };
 		CB984EF9271F39A80034C9BB /* PasswordGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */; };
 		CBDC438D272A7049004ACE2D /* Arc4To5MigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */; };
@@ -603,16 +587,6 @@
 		C5F77F38222F15DD00BECAE1 /* SignatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignatureView.xib; sourceTree = "<group>"; };
 		C5F77F3A22306CFA00BECAE1 /* DateRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeView.swift; sourceTree = "<group>"; };
 		C5FDC5B3258BE4A100E80E69 /* AuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandler.swift; sourceTree = "<group>"; };
-		CB5C294D2732EEC400CEC823 /* SageAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SageAuthController.swift; path = Arc/Sage/SageAuthController.swift; sourceTree = SOURCE_ROOT; };
-		CB7F44332733647100C5C6B4 /* SageAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SageAuthViewController.swift; sourceTree = "<group>"; };
-		CB855ACA27178D31004599EC /* SageEarningsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SageEarningsController.swift; sourceTree = "<group>"; };
-		CB855ACB27178D31004599EC /* SageScheduleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SageScheduleController.swift; sourceTree = "<group>"; };
-		CB855ACC27178D31004599EC /* CompletedTestsDefaultsReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTestsDefaultsReport.swift; sourceTree = "<group>"; };
-		CB855ACD27178D31004599EC /* SageSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SageSessionController.swift; sourceTree = "<group>"; };
-		CB855ACE27178D32004599EC /* TaskListScheduleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListScheduleManager.swift; sourceTree = "<group>"; };
-		CB855ADE2717A93C004599EC /* SageEarningsControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SageEarningsControllerTests.swift; sourceTree = "<group>"; };
-		CB984EE7271E25C20034C9BB /* HmToSageMigrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HmToSageMigrationViewController.swift; sourceTree = "<group>"; };
-		CB984EF2271F13FF0034C9BB /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmToSageMigrationViewController.xib; sourceTree = "<group>"; };
 		CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorTests.swift; sourceTree = "<group>"; };
 		CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc4To5MigrationPolicy.swift; sourceTree = "<group>"; };
@@ -675,12 +649,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB855AD82717A1AD004599EC /* BridgeSDK in Frameworks */,
-				CB855ADB2717A1C0004599EC /* Research in Frameworks */,
-				CB855AC627178C60004599EC /* BridgeApp in Frameworks */,
-				CB32BCEF2717C82D00B05501 /* JsonModel in Frameworks */,
-				CB855ADD2717A1C0004599EC /* ResearchUI in Frameworks */,
-				CB855AC827178C60004599EC /* BridgeAppUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +735,6 @@
 				CBDC43BB272A811D004ACE2D /* ArcUIKit */,
 				C54AE90321C81B5C00DEC360 /* App */,
 				C54AE94B21C81B5C00DEC360 /* Components */,
-				CB855AC927178D17004599EC /* Sage */,
 				CBE815272727559C00EA9C80 /* Resources */,
 			);
 			path = Arc;
@@ -777,7 +744,6 @@
 			isa = PBXGroup;
 			children = (
 				CB984EFA271F3A030034C9BB /* migration */,
-				CB855ADE2717A93C004599EC /* SageEarningsControllerTests.swift */,
 				C54AE8F521C81B2F00DEC360 /* ArcTests.swift */,
 				C5B4BD14251949D90094A338 /* StatusCodeTests.swift */,
 				C54AE8F721C81B2F00DEC360 /* Info.plist */,
@@ -1394,38 +1360,6 @@
 			path = Earnings;
 			sourceTree = "<group>";
 		};
-		CB7F44322733645400C5C6B4 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CB7F44332733647100C5C6B4 /* SageAuthViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CB855AC927178D17004599EC /* Sage */ = {
-			isa = PBXGroup;
-			children = (
-				CB7F44322733645400C5C6B4 /* ViewControllers */,
-				CB984EE6271E25A00034C9BB /* Migration */,
-				CB855ACC27178D31004599EC /* CompletedTestsDefaultsReport.swift */,
-				CB5C294D2732EEC400CEC823 /* SageAuthController.swift */,
-				CB855ACA27178D31004599EC /* SageEarningsController.swift */,
-				CB855ACB27178D31004599EC /* SageScheduleController.swift */,
-				CB855ACD27178D31004599EC /* SageSessionController.swift */,
-				CB855ACE27178D32004599EC /* TaskListScheduleManager.swift */,
-			);
-			path = Sage;
-			sourceTree = "<group>";
-		};
-		CB984EE6271E25A00034C9BB /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				CB984EE7271E25C20034C9BB /* HmToSageMigrationViewController.swift */,
-				CB984EF2271F13FF0034C9BB /* PasswordGenerator.swift */,
-			);
-			path = Migration;
-			sourceTree = "<group>";
-		};
 		CB984EFA271F3A030034C9BB /* migration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1445,7 +1379,8 @@
 				CBDC43B0272A8119004ACE2D /* HMMarkupToken.swift */,
 				CBDC43AD272A8119004ACE2D /* HMMarkupTokenizer.swift */,
 			);
-			path = MarkUp;
+			name = MarkUp;
+			path = HMMarkup;
 			sourceTree = "<group>";
 		};
 		CBDC43BB272A811D004ACE2D /* ArcUIKit */ = {
@@ -1455,7 +1390,8 @@
 				CBDC43BE272A8134004ACE2D /* Extensions */,
 				CBDC43BC272A812D004ACE2D /* Automation.swift */,
 			);
-			path = ArcUIKit;
+			name = ArcUIKit;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		CBDC43BE272A8134004ACE2D /* Extensions */ = {
@@ -1594,12 +1530,6 @@
 			);
 			name = Arc;
 			packageProductDependencies = (
-				CB855AC527178C60004599EC /* BridgeApp */,
-				CB855AC727178C60004599EC /* BridgeAppUI */,
-				CB855AD72717A1AD004599EC /* BridgeSDK */,
-				CB855ADA2717A1C0004599EC /* Research */,
-				CB855ADC2717A1C0004599EC /* ResearchUI */,
-				CB32BCEE2717C82D00B05501 /* JsonModel */,
 			);
 			productName = Arc;
 			productReference = C54AE8E721C81B2F00DEC360 /* Arc.framework */;
@@ -1651,10 +1581,6 @@
 			);
 			mainGroup = C54AE8DD21C81B2F00DEC360;
 			packageReferences = (
-				CB855AC427178C60004599EC /* XCRemoteSwiftPackageReference "BridgeApp-Apple-SDK" */,
-				CB855AD62717A1AD004599EC /* XCRemoteSwiftPackageReference "Bridge-iOS-SDK" */,
-				CB855AD92717A1C0004599EC /* XCRemoteSwiftPackageReference "SageResearch" */,
-				CB32BCED2717C82D00B05501 /* XCRemoteSwiftPackageReference "JsonModel-Swift" */,
 			);
 			productRefGroup = C54AE8E821C81B2F00DEC360 /* Products */;
 			projectDirPath = "";
@@ -1755,7 +1681,6 @@
 				C54AEA6321C81B5F00DEC360 /* CoreDataStack.swift in Sources */,
 				C54AEA1B21C81B5F00DEC360 /* TextAlertView.swift in Sources */,
 				C540B5B1221E0FD000B539A4 /* LanguageViewController.swift in Sources */,
-				CB5C294E2732EEC400CEC823 /* SageAuthController.swift in Sources */,
 				C54AEA1221C81B5F00DEC360 /* FinishedNavigationController.swift in Sources */,
 				CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */,
 				C54AE9E621C81B5F00DEC360 /* HMRequest.swift in Sources */,
@@ -1793,7 +1718,6 @@
 				CBDC43C8272A8145004ACE2D /* UIControl+Closure.swift in Sources */,
 				C54AEA3E21C81B5F00DEC360 /* IntroViewController.swift in Sources */,
 				C5477C7A231868C80072425D /* RebukedCommitmentView.swift in Sources */,
-				CB855AD127178D32004599EC /* SageScheduleController.swift in Sources */,
 				CBDC43E5272A814F004ACE2D /* HintView.swift in Sources */,
 				4CB0BAC522E8FA7B00ABB348 /* ContactInfoResponse.swift in Sources */,
 				C5E7212822F10D25004B9E26 /* TestProgressViewController.swift in Sources */,
@@ -1860,7 +1784,6 @@
 				C54AE9CF21C81B5F00DEC360 /* ACEnvironment.swift in Sources */,
 				C55F8CCF230F187E006D43BD /* ACEarningsDetailView.swift in Sources */,
 				C54AE9EE21C81B5F00DEC360 /* ToggleButton.swift in Sources */,
-				CB7F44342733647100C5C6B4 /* SageAuthViewController.swift in Sources */,
 				C5E1530B22C64B630066FD6B /* PrivacyStack.swift in Sources */,
 				C54AEA0321C81B5F00DEC360 /* BorderedTextField.swift in Sources */,
 				C54AE9FF21C81B5F00DEC360 /* MHAlertView.swift in Sources */,
@@ -1872,7 +1795,6 @@
 				C58129F822E20BE000CD1883 /* TutorialCompleteView.swift in Sources */,
 				C54D101322C2745A00B43E42 /* QuestionStyle.swift in Sources */,
 				C54E8E2322E88D590080BFC1 /* StepperProgressview.swift in Sources */,
-				CB855AD427178D32004599EC /* TaskListScheduleManager.swift in Sources */,
 				C51A7D8722D7EC5900854B13 /* ParticipationView.swift in Sources */,
 				C545AB0723283168002672C2 /* ACPostCycleFinishView.swift in Sources */,
 				C54D488823E339CB00EE9511 /* BackgroundStyle.swift in Sources */,
@@ -1882,7 +1804,6 @@
 				C54D104F22C29DA700B43E42 /* SurveyView.swift in Sources */,
 				CBDC43BD272A812D004ACE2D /* Automation.swift in Sources */,
 				C54AE9EF21C81B5F00DEC360 /* ArcViewController.swift in Sources */,
-				CB855AD027178D32004599EC /* SageEarningsController.swift in Sources */,
 				C5CCD7AC22DE6A61002A788A /* OnboardingSurveyViewController.swift in Sources */,
 				C52B75D521C837A200498571 /* Session+Extensions.swift in Sources */,
 				CBDC43B5272A8119004ACE2D /* HMMarkupButton.swift in Sources */,
@@ -1937,14 +1858,12 @@
 				C54AEA0921C81B5F00DEC360 /* GridTest.swift in Sources */,
 				C55F8CC9230D89AC006D43BD /* Study+Expressible.swift in Sources */,
 				CBDC43ED272A8162004ACE2D /* Drawing.swift in Sources */,
-				CB855AD227178D32004599EC /* CompletedTestsDefaultsReport.swift in Sources */,
 				CBDC438D272A7049004ACE2D /* Arc4To5MigrationPolicy.swift in Sources */,
 				C54E8E1122E64CE00080BFC1 /* SymbolsTutorialViewController.swift in Sources */,
 				2D35988D237B6604005EF2CF /* SimplifiedPricesTestTutorialViewController.swift in Sources */,
 				C54AE9D321C81B5F00DEC360 /* State.swift in Sources */,
 				C57A4B7D258ABD6100238700 /* ACResponsiveAuthViewController.swift in Sources */,
 				C54AE9F421C81B5F00DEC360 /* StudyController.swift in Sources */,
-				CB984EE8271E25C20034C9BB /* HmToSageMigrationViewController.swift in Sources */,
 				C54AE9D221C81B5F00DEC360 /* Study.swift in Sources */,
 				C51A7D8C22D8C33F00854B13 /* NotificationPermissionViewController.swift in Sources */,
 				CBDC43A7272A8082004ACE2D /* Schedule+CoreDataProperties.swift in Sources */,
@@ -1977,7 +1896,6 @@
 				C54AE9DC21C81B5F00DEC360 /* Set+Extensions.swift in Sources */,
 				C54AE9D421C81B5F00DEC360 /* JSONData.swift in Sources */,
 				CBDC43BA272A8119004ACE2D /* HMMarkupLabel.swift in Sources */,
-				CB855AD327178D32004599EC /* SageSessionController.swift in Sources */,
 				C5FDC5B4258BE4A100E80E69 /* AuthHandler.swift in Sources */,
 				CBDC43EC272A8162004ACE2D /* ACColor.swift in Sources */,
 				C54D104622C28A1D00B43E42 /* ChoiceView.swift in Sources */,
@@ -1994,7 +1912,6 @@
 				C5D24ED7230B048900146E37 /* TotalSessionGoalView.swift in Sources */,
 				C5E253BA2421589D007FE0BA /* ACStudyTotalsViewController.swift in Sources */,
 				C54AEA3621C81B5F00DEC360 /* ScheduleController.swift in Sources */,
-				CB984EF3271F13FF0034C9BB /* PasswordGenerator.swift in Sources */,
 				C5C2B12722D3D66C002CB4C5 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2004,7 +1921,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB984EF9271F39A80034C9BB /* PasswordGeneratorTests.swift in Sources */,
-				CB855ADF2717A93C004599EC /* SageEarningsControllerTests.swift in Sources */,
 				C5C488B025251C58006500F2 /* StatusCodeTests.swift in Sources */,
 				C584F33522C16682009741A7 /* ArcTests.swift in Sources */,
 			);
@@ -2281,78 +2197,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CB32BCED2717C82D00B05501 /* XCRemoteSwiftPackageReference "JsonModel-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Sage-Bionetworks/JsonModel-Swift";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 2.0.0;
-				minimumVersion = 1.0.0;
-			};
-		};
-		CB855AC427178C60004599EC /* XCRemoteSwiftPackageReference "BridgeApp-Apple-SDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Sage-Bionetworks/BridgeApp-Apple-SDK";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 6.0.0;
-				minimumVersion = 5.0.0;
-			};
-		};
-		CB855AD62717A1AD004599EC /* XCRemoteSwiftPackageReference "Bridge-iOS-SDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Sage-Bionetworks/Bridge-iOS-SDK";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 5.0.0;
-				minimumVersion = 4.0.0;
-			};
-		};
-		CB855AD92717A1C0004599EC /* XCRemoteSwiftPackageReference "SageResearch" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Sage-Bionetworks/SageResearch";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 5.0.0;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CB32BCEE2717C82D00B05501 /* JsonModel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB32BCED2717C82D00B05501 /* XCRemoteSwiftPackageReference "JsonModel-Swift" */;
-			productName = JsonModel;
-		};
-		CB855AC527178C60004599EC /* BridgeApp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB855AC427178C60004599EC /* XCRemoteSwiftPackageReference "BridgeApp-Apple-SDK" */;
-			productName = BridgeApp;
-		};
-		CB855AC727178C60004599EC /* BridgeAppUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB855AC427178C60004599EC /* XCRemoteSwiftPackageReference "BridgeApp-Apple-SDK" */;
-			productName = BridgeAppUI;
-		};
-		CB855AD72717A1AD004599EC /* BridgeSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB855AD62717A1AD004599EC /* XCRemoteSwiftPackageReference "Bridge-iOS-SDK" */;
-			productName = BridgeSDK;
-		};
-		CB855ADA2717A1C0004599EC /* Research */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB855AD92717A1C0004599EC /* XCRemoteSwiftPackageReference "SageResearch" */;
-			productName = Research;
-		};
-		CB855ADC2717A1C0004599EC /* ResearchUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB855AD92717A1C0004599EC /* XCRemoteSwiftPackageReference "SageResearch" */;
-			productName = ResearchUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CBDC438E272A7E98004ACE2D /* arc.xcdatamodeld */ = {
