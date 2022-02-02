@@ -6,11 +6,21 @@
 //
 
 import UIKit
+import Arc
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Load custom Arc fonts
+        FontLoader.configurePackageUI()
+        
+        // Set localization language to default on iOS device
+        let locale = Locale.current
+        Arc.shared.setLocalization(country: locale.regionCode,
+                                   language: locale.languageCode)
+        
         // Override point for customization after application launch.
         return true
     }

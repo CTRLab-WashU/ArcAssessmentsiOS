@@ -13,6 +13,7 @@
 		CB17AFC727A9BADE00645386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB17AFC527A9BADE00645386 /* Main.storyboard */; };
 		CB17AFC927A9BAE000645386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB17AFC827A9BAE000645386 /* Assets.xcassets */; };
 		CB17AFCC27A9BAE000645386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB17AFCA27A9BAE000645386 /* LaunchScreen.storyboard */; };
+		CB96153627AB05F00064F658 /* Arc in Frameworks */ = {isa = PBXBuildFile; productRef = CB96153527AB05F00064F658 /* Arc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB96153627AB05F00064F658 /* Arc in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = SampleApp;
+			packageProductDependencies = (
+				CB96153527AB05F00064F658 /* Arc */,
+			);
 			productName = SampleApp;
 			productReference = CB17AFBC27A9BADE00645386 /* SampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = CB17AFB327A9BADE00645386;
+			packageReferences = (
+				CB96153427AB05F00064F658 /* XCRemoteSwiftPackageReference "ArcAssessmentsiOS" */,
+			);
 			productRefGroup = CB17AFBD27A9BADE00645386 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CB96153427AB05F00064F658 /* XCRemoteSwiftPackageReference "ArcAssessmentsiOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CTRLab-WashU/ArcAssessmentsiOS.git";
+			requirement = {
+				branch = "DIAN-247";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB96153527AB05F00064F658 /* Arc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB96153427AB05F00064F658 /* XCRemoteSwiftPackageReference "ArcAssessmentsiOS" */;
+			productName = Arc;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CB17AFB427A9BADE00645386 /* Project object */;
 }
