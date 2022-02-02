@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreText
 
 public struct FontLoader {
 
