@@ -134,7 +134,7 @@ open class SurveyView : ACTemplateView, SurveyInput, SurveyInputDelegate {
 		
 		//If theres an image set it here.
 		if let nextButtonImage = question.nextButtonImage {
-			nextButton?.setImage(UIImage(named: nextButtonImage), for: .normal)
+			nextButton?.setImage(Arc.shared.image(named: nextButtonImage), for: .normal)
 		} else {
 			nextButton?.setImage(nil, for: .normal)
 		}

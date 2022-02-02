@@ -16,11 +16,11 @@ import UIKit
             get {
                 switch self {
                 case .checkBox:
-                    return UIImage(named: "cut-ups/checkbox/unselected")
+                    return Arc.shared.image(named: "cut-ups/checkbox/unselected")
                 case .button:
                     return nil
                 default:
-                    return UIImage(named: "cut-ups/radio/unselected")
+                    return Arc.shared.image(named: "cut-ups/radio/unselected")
                 }
             }
         }
@@ -29,12 +29,12 @@ import UIKit
             get {
                 switch self {
                 case .checkBox:
-                    return UIImage(named: "cut-ups/checkbox/selected")
+                    return Arc.shared.image(named: "cut-ups/checkbox/selected")
                 case .button:
                     return nil
                 default:
-                    //return UIImage(named: "cut-ups/radio/selected")
-                    return UIImage(named: "cut-ups/radio/selected alt")
+                    //return Arc.shared.image(named: "cut-ups/radio/selected")
+                    return Arc.shared.image(named: "cut-ups/radio/selected alt")
                 }
             }
         }
@@ -52,7 +52,7 @@ import UIKit
 //                case .checkBox:
 //                    return nil
 //                default:
-//                    return UIImage(named: "cut-ups/radio/selected alt")
+//                    return Arc.shared.image(named: "cut-ups/radio/selected alt")
 //                }
 //            }
 //        }

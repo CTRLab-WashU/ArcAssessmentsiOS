@@ -62,7 +62,7 @@ public class NotificationsRejectedViewController : CustomViewController<InfoView
         setNeedsStatusBarAppearanceUpdate()
 		customView.addSpacer()
 
-        customView.backgroundView.image = UIImage(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
+        customView.backgroundView.image = Arc.shared.image(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
 		customView.infoContent.alignment = .center
 		customView.backgroundColor = UIColor(named:"Primary")!
 		customView.setTextColor(UIColor(named: "Secondary Text"))

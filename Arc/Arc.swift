@@ -72,6 +72,17 @@ open class Arc : ArcApi {
 	lazy public var arcVersion = {arcInfo?[ARC_VERSION_INFO_KEY] as? String ?? "";}()
     //A map of all of the possible states in the application
 	
+    // This controls the bundle that loads UIImages
+    // To use your own custom images, override this to your app's bundle
+    // And include the assets in your app's Assets with the same names as this library
+    public var imageBundle = Bundle.module
+    public func image(named: String) -> UIImage? {
+        return UIImage(named: named, in: imageBundle, compatibleWith: nil)
+    }
+    public func image(named: String, in bundle: Bundle, compatibleWith: UITraitCollection?) -> UIImage? {
+        return UIImage(named: named, in: bundle, compatibleWith: compatibleWith)
+    }
+    
     static public let shared = Arc()
 	
 	public var appController:AppController = AppController()
@@ -154,7 +165,7 @@ open class Arc : ArcApi {
 
         
         
-        Arc.shared.WELCOME_LOGO =  UIImage(named: environment.welcomeLogo ?? "")
+        Arc.shared.WELCOME_LOGO =  Arc.shared.image(named: environment.welcomeLogo ?? "")
         Arc.shared.WELCOME_TEXT = environment.welcomeText ?? ""
         Arc.shared.APP_PRIVACY_POLICY_URL = environment.privacyPolicyUrl ?? ""
 		
@@ -866,6 +877,5 @@ open class Arc : ArcApi {
 		let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
 		return paths[0]
 	}
-	
 }
 

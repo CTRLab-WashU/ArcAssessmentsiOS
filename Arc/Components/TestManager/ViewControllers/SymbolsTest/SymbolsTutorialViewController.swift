@@ -10,14 +10,14 @@ import UIKit
 
 class SymbolsTutorialViewController: ACTutorialViewController, SymbolsTestViewControllerDelegate {
 
-    public var symbols:[Int:UIImage] = [0: UIImage(named: "tutorial_symbol 1", in: Bundle.module, compatibleWith: nil)!,
-                                        1: UIImage(named: "tutorial_symbol 2", in: Bundle.module, compatibleWith: nil)!,
-                                        2: UIImage(named: "tutorial_symbol 3", in: Bundle.module, compatibleWith: nil)!,
-                                        3: UIImage(named: "tutorial_symbol 4", in: Bundle.module, compatibleWith: nil)!,
-                                        4: UIImage(named: "tutorial_symbol 5", in: Bundle.module, compatibleWith: nil)!,
-                                        5: UIImage(named: "tutorial_symbol 6", in: Bundle.module, compatibleWith: nil)!,
-                                        6: UIImage(named: "tutorial_symbol 7", in: Bundle.module, compatibleWith: nil)!,
-                                        7: UIImage(named: "tutorial_symbol 8", in: Bundle.module, compatibleWith: nil)!]
+    public var symbols:[Int:UIImage] = [0: Arc.shared.image(named: "tutorial_symbol 1", in: Bundle.module, compatibleWith: nil)!,
+                                        1: Arc.shared.image(named: "tutorial_symbol 2", in: Bundle.module, compatibleWith: nil)!,
+                                        2: Arc.shared.image(named: "tutorial_symbol 3", in: Bundle.module, compatibleWith: nil)!,
+                                        3: Arc.shared.image(named: "tutorial_symbol 4", in: Bundle.module, compatibleWith: nil)!,
+                                        4: Arc.shared.image(named: "tutorial_symbol 5", in: Bundle.module, compatibleWith: nil)!,
+                                        5: Arc.shared.image(named: "tutorial_symbol 6", in: Bundle.module, compatibleWith: nil)!,
+                                        6: Arc.shared.image(named: "tutorial_symbol 7", in: Bundle.module, compatibleWith: nil)!,
+                                        7: Arc.shared.image(named: "tutorial_symbol 8", in: Bundle.module, compatibleWith: nil)!]
     
     var test:SymbolsTestViewController = .get(nib: "SymbolsTestTutorialViewController", bundle: Bundle.module)
 	var selectionMade:Bool = false

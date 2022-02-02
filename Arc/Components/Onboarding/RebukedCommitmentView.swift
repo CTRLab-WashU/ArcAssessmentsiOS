@@ -15,7 +15,7 @@ public class RebukedCommitmentView : ACTemplateView {
 	weak var contactStudyCoordinatorButton:ACButton!
 	public override func content(_ view: UIView) {
 		backgroundColor = ACColor.primary
-        backgroundView.image = UIImage(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
+        backgroundView.image = Arc.shared.image(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
 		view.view {
 			$0.backgroundColor = .clear
 		}

@@ -35,7 +35,7 @@ public class ACTodayProgressView : UIView {
 		animationParams.duration = 0.3
 		animationParams.delay = 0.5
 		backgroundImage = image {
-			$0.image = UIImage(named: "finished_bg", in: Bundle.module, compatibleWith: nil)
+			$0.image = Arc.shared.image(named: "finished_bg", in: Bundle.module, compatibleWith: nil)
 			$0.contentMode = .scaleAspectFill
 			
 			$0.alpha = 0

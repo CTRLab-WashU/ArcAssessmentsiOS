@@ -66,7 +66,7 @@ public class ACEarningsDetailView : ACTemplateView {
 //					$0.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:0.15)
 //					$0.layer.cornerRadius = 16
 //					$0.setTitle("".localized(ACTranslationKey.button_back), for: .normal)
-//					$0.setImage(UIImage(named:"cut-ups/icons/arrow_left_white"), for: .normal)
+//					$0.setImage(Arc.shared.image(named:"cut-ups/icons/arrow_left_white"), for: .normal)
 //				}
 //			}
 			$0.stack {

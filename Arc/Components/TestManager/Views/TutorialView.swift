@@ -40,7 +40,7 @@ public class TutorialView: UIStackView {
 				$0.isLayoutMarginsRelativeArrangement = true
 				$0.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 20)
 				self?.closeButton = $0.button {
-					$0.setImage(UIImage(named:"cut-ups/icons/X-to-close"), for: .normal)
+					$0.setImage(Arc.shared.image(named:"cut-ups/icons/X-to-close"), for: .normal)
 					$0.imageView?.contentMode = .scaleAspectFit
 					$0.tintColor = UIColor(named:"Highlight")
 					$0.layout {

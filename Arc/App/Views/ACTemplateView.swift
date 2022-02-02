@@ -153,7 +153,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 				}
 			}
 			$0.image {
-                $0.image = UIImage(named: "arrow_up_white", in: Bundle.module, compatibleWith: nil)
+                $0.image = Arc.shared.image(named: "arrow_up_white", in: Bundle.module, compatibleWith: nil)
 				$0.contentMode = .scaleAspectFit
 				$0.layout {
 					$0.width == 20 ~ 999
@@ -199,7 +199,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 					}
 				}
 				$0.image {
-					$0.image = UIImage(named: "cut-ups/icons/arrow_down_white")
+					$0.image = Arc.shared.image(named: "cut-ups/icons/arrow_down_white")
 					$0.contentMode = .scaleAspectFit
 					$0.layout {
 						$0.width == 20 ~ 999

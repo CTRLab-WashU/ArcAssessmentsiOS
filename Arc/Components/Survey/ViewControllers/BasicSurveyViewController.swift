@@ -127,7 +127,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
                 if self.viewControllers.count > 1 {
                 let backButton = UIButton(type: .custom)
                 backButton.frame = CGRect(x: 0, y: 0, width: 60, height: 10)
-                backButton.setImage(UIImage(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
+                backButton.setImage(Arc.shared.image(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
                 backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
                 backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
                 backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
@@ -302,7 +302,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		let vc:CustomViewController<InfoView> = getTopViewController()!
         useDarkStatusBar = false
         setNeedsStatusBarAppearanceUpdate()
-        let bg_image = UIImage(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
+        let bg_image = Arc.shared.image(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
         vc.customView.backgroundView.image = bg_image
 		vc.customView.infoContent.alignment = .center
 		vc.customView.backgroundColor = UIColor(named:"Primary")!

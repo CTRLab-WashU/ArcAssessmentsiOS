@@ -121,8 +121,8 @@ open class SliderView: UIView, SurveyInput {
         valueSlider.minimumValue = min
         valueSlider.maximumValue = max
         valueSlider.value = max / 2
-        valueSlider.setThumbImage(UIImage(named: "cut-ups/slider/static"), for: .normal)
-        valueSlider.setThumbImage(UIImage(named: "cut-ups/slider/pressed"), for: .highlighted)
+        valueSlider.setThumbImage(Arc.shared.image(named: "cut-ups/slider/static"), for: .normal)
+        valueSlider.setThumbImage(Arc.shared.image(named: "cut-ups/slider/pressed"), for: .highlighted)
         //sliderContainer.clipsToBounds = false
         //self.bringSubviewToFront(valueSlider)
         valueSlider.layer.zPosition = 10000

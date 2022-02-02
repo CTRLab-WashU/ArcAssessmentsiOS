@@ -20,13 +20,13 @@ let package = Package(
         .target(
             name: "Arc",
 	   path: "Arc",
-	   exclude:["Info.plist"],
+	   exclude:["Info.plist", "../SampleApp"],
 	   resources: [
                 .process("Resources"),
             ]),
 	.testTarget(name:"ArcTests",
                 dependencies: ["Arc"],
                 path: "ArcTests",
-                exclude:["Info.plist"])
+                exclude:["Info.plist", "../SampleApp"])
     ]
 )
