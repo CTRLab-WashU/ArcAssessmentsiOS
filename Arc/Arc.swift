@@ -54,7 +54,7 @@ open class Arc : ArcApi {
 	}()
     lazy public var translation:ArcTranslation? = {
         do {
-            guard let asset = NSDataAsset(name: "translation") else {
+            guard let asset = NSDataAsset(name: "translation", bundle: Bundle.module) else {
                 return nil
             }
             let translation:ArcTranslation = try JSONDecoder().decode(ArcTranslation.self, from: asset.data)
