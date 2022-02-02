@@ -21,7 +21,19 @@ public struct Text {
 }
 public struct Roboto {
 	public static let family = "Roboto"
-	
+    
+    public static let robotoFonts = [
+        "Roboto-Black.ttf",
+        "Roboto-BlackItalic.ttf",
+        "Roboto-Bold.ttf",
+        "Roboto-BoldItalic.ttf",
+        "Roboto-Italic.ttf",
+        "Roboto-Light.ttf",
+        "Roboto-LightItalic.ttf",
+        "Roboto-Medium.ttf",
+        "Roboto-MediumItalic.ttf",
+        "Roboto-Thin.ttf",
+        "Roboto-ThinItalic.ttf"]
 	
 	public struct Face {
 		public static let regular = "Regular"

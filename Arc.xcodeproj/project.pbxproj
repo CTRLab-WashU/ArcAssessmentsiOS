@@ -264,6 +264,7 @@
 		C5EB849923DB8D050070A240 /* ACPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB849823DB8D050070A240 /* ACPDFView.swift */; };
 		C5F77F37222F095200BECAE1 /* SignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F77F36222F095200BECAE1 /* SignatureViewController.swift */; };
 		C5FDC5B4258BE4A100E80E69 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDC5B3258BE4A100E80E69 /* AuthHandler.swift */; };
+		CB96153827AB15520064F658 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96153727AB15520064F658 /* FontLoader.swift */; };
 		CB984EF7271F22350034C9BB /* HmToSageMigrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */; };
 		CB984EF9271F39A80034C9BB /* PasswordGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */; };
 		CBDC438D272A7049004ACE2D /* Arc4To5MigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */; };
@@ -587,6 +588,7 @@
 		C5F77F38222F15DD00BECAE1 /* SignatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignatureView.xib; sourceTree = "<group>"; };
 		C5F77F3A22306CFA00BECAE1 /* DateRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeView.swift; sourceTree = "<group>"; };
 		C5FDC5B3258BE4A100E80E69 /* AuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandler.swift; sourceTree = "<group>"; };
+		CB96153727AB15520064F658 /* FontLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmToSageMigrationViewController.xib; sourceTree = "<group>"; };
 		CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorTests.swift; sourceTree = "<group>"; };
 		CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc4To5MigrationPolicy.swift; sourceTree = "<group>"; };
@@ -1443,6 +1445,7 @@
 		CBDC43E7272A815A004ACE2D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				CB96153727AB15520064F658 /* FontLoader.swift */,
 				CBDC43F1272A8169004ACE2D /* Georgia.swift */,
 				CBDC43F0272A8169004ACE2D /* Roboto.swift */,
 			);
@@ -1693,6 +1696,7 @@
 				C55F8CCD230F0FF0006D43BD /* GoalsGroup.swift in Sources */,
 				C5143959224EA6FD000BF1CB /* ACSignatureNavigationController.swift in Sources */,
 				CBDC43E2272A814F004ACE2D /* GridTestSelectionView.swift in Sources */,
+				CB96153827AB15520064F658 /* FontLoader.swift in Sources */,
 				C593227C22EA397C00528FF5 /* ScheduleEndViewController.swift in Sources */,
 				CBDC43A6272A8082004ACE2D /* ScheduleEntry+Extensions.swift in Sources */,
 				CBDC43B4272A8119004ACE2D /* HMMarkupTokenizer.swift in Sources */,
