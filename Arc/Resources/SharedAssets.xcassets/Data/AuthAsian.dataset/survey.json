@@ -1,0 +1,15 @@
+{
+  "questions" : [
+    {
+      "prompt" : "login_enter_ARCID",
+      "questionId" : "auth_arc",
+      "type" : "segmentedText"
+    },
+    {
+      "prompt" : "login_enter_raterID",
+      "questionId" : "auth_sign_in_token",
+      "type" : "text"
+    }
+  ],
+  "type" : "auth"
+}

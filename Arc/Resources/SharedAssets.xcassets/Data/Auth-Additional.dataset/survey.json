@@ -1,0 +1,10 @@
+{
+  "questions" : [
+    {
+      "prompt" : "login_enter_raterID",
+      "questionId" : "auth_password",
+      "type" : "segmentedText"
+    }
+  ],
+  "type" : "auth"
+}

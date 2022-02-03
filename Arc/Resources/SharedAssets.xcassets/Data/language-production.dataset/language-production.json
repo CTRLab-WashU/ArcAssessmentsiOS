@@ -1,0 +1,48 @@
+{
+  "instructions": [
+    
+  ],
+  "questions": [
+    {
+      "answers": [  
+	      {
+	        "answerId": "1_n",
+	        "value": "NL - Nederlands"
+	      },      
+          {
+            "answerId": "1_b",
+            "value": "Australia - English"
+          },
+          {
+            "answerId": "1_d",
+            "value": "Canada - English"
+          },
+          {
+            "answerId": "1_o",
+            "value": "UK - English"
+          },
+          {
+            "answerId": "1_p",
+            "value": "US - English"
+          },
+          {
+            "answerId": "1_i",
+            "value": "France - Français"
+          },	
+          {
+            "answerId": "1_j",
+            "value": "Italia - Italiano"
+          },
+          {
+            "answerId": "1_c",
+            "value": "Brasil - Português"
+          }
+      ],
+      "nextButtonTitle": "button_confirm",
+      "prompt": "language_prefer",
+      "questionId": "ac_language_1",
+      "type": "choice"
+    }
+  ],
+  "type": "language"
+}

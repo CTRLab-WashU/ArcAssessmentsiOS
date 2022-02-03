@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "prompt": "login_2FA_phone_text",
+      "detail": "",
+      "questionId": "2FAPhone",
+      "type": "text",
+      "routes": [
+        {
+          "answerId": null,
+          "nextQuestionId": "resendCode",
+          "operand": null,
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "subQuestions": [
+    {
+      "prompt": "",
+      "style": "viewController",
+      "state": "ResendCode",
+      "questionId": "resendCode",
+      "type": "none"
+    }
+  ],
+  "type": "auth"
+}

@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "priceSets-pt-BR.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
