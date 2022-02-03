@@ -58,7 +58,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		questions = survey.questions
 		
 		subQuestions = survey.subQuestions
-        self.surveyId = Arc.shared.surveyController.createSurveyResponse().id!
+        self.surveyId = Arc.shared.surveyController.create()
         
 		super.init(nibName: nil, bundle: nil)
 	}
