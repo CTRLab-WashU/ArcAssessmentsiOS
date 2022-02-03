@@ -15,14 +15,15 @@ public protocol SymbolsTestViewControllerDelegate : class {
 public class SymbolsTestViewController: UIViewController, TestProgressViewControllerDelegate {
 	
 	
-    public var symbols:[Int:UIImage] = [0: #imageLiteral(resourceName: "symbol_0"),
-                                         1: #imageLiteral(resourceName: "symbol_1"),
-                                         2: #imageLiteral(resourceName: "symbol_2"),
-                                         3: #imageLiteral(resourceName: "symbol_3"),
-                                         4: #imageLiteral(resourceName: "symbol_4"),
-                                         5: #imageLiteral(resourceName: "symbol_5"),
-                                         6: #imageLiteral(resourceName: "symbol_6"),
-                                         7: #imageLiteral(resourceName: "symbol_7")]
+    public var symbols:[Int:UIImage] = [
+        0: Arc.shared.image(named: "symbol_0")!,
+        1: Arc.shared.image(named: "symbol_1")!,
+        2: Arc.shared.image(named: "symbol_2")!,
+        3: Arc.shared.image(named: "symbol_3")!,
+        4: Arc.shared.image(named: "symbol_4")!,
+        5: Arc.shared.image(named: "symbol_5")!,
+        6: Arc.shared.image(named: "symbol_6")!,
+        7: Arc.shared.image(named: "symbol_7")!]
     
     var controller = Arc.shared.symbolsTestController
     var responseID = ""
