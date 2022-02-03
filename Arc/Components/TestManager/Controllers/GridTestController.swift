@@ -56,7 +56,7 @@ open class GridTestController : TestController<GridTestResponse> {
     public func createTutorialTest() -> [GridTest] {
         var tests = [GridTest]()
 
-        guard let asset = NSDataAsset(name: "grid_test_tutorial", bundle: Bundle.module) else {
+        guard let asset = Arc.shared.dataAsset(named: "grid_test_tutorial") else {
             fatalError("Couldn't find grid tutorial json asset")
         }
         do {

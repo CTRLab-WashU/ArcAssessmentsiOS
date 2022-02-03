@@ -18,6 +18,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let customCell = self.tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.cellName, for: indexPath) as? CustomTableViewCell else {
@@ -42,6 +46,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = controller
         case .wakeSurvey:
             let controller:ACWakeSurveyViewController = .init(file:"wake")
+            vc = controller
+        case .symbolsTest:
+            let symbolsVc:SymbolsTestViewController = .get()
+            let controller:InstructionNavigationController = .get()
+            controller.nextVc = symbolsVc
+            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
+                .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+                .replacingOccurrences(of: "{Value2}", with: "3")
+            controller.load(instructions: "TestingIntro-Symbols")
+            vc = controller
+        case .pricingTest:
+            let priceVc:PricesTestViewController = .get()
+            let controller:InstructionNavigationController = .get()
+            controller.nextVc = priceVc
+            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
+                .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+                .replacingOccurrences(of: "{Value2}", with: "3")
+            
+            controller.load(instructions: "TestingIntro-Prices")
+            vc = controller
+        case .gridsTest:
+            let gridsVc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
+            let controller:InstructionNavigationController = .get()
+            controller.nextVc = gridsVc
+            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
+            .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+            controller.load(instructions: "TestingIntro-Grids")
             vc = controller
         default:
             // no-op

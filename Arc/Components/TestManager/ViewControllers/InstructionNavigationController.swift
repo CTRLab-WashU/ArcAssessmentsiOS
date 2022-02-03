@@ -29,7 +29,7 @@ open class InstructionNavigationController: UINavigationController, SurveyInputD
     }
 	@discardableResult
 	open func load(instructions template:String) -> Survey {
-		guard let asset = NSDataAsset(name: template) else {
+        guard let asset = Arc.shared.dataAsset(named: template) else {
 			fatalError("Missing data asset: \(template)")
 		}
 		do {

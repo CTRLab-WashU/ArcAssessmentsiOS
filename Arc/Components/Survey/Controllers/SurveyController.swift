@@ -14,7 +14,7 @@ open class SurveyController : MHController {
     private var loadedSurvey:Survey?
 	open func load(survey template:String, bundle:Bundle = .main) -> Survey {
 		
-		guard let asset = NSDataAsset(name: template, bundle:bundle) else {
+		guard let asset = Arc.shared.dataAsset(named: template) else {
 			fatalError("Missing data asset: \(template)")
 		}
 		do {

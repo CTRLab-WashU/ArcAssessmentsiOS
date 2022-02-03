@@ -22,7 +22,7 @@ open class PricesTestController : TestController<PriceTestResponse> {
         do {
             if self.loadedTestFile == nil || self.loadedTestFileName != file
             {
-				guard let asset = NSDataAsset(name: file) else {
+				guard let asset = Arc.shared.dataAsset(named: file) else {
 					fatalError("Missing asset named \(file)")
 				}
                 let tests = try JSONDecoder().decode([[PriceTest.Item]].self, from: asset.data)

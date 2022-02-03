@@ -54,7 +54,7 @@ open class Arc : ArcApi {
 	}()
     lazy public var translation:ArcTranslation? = {
         do {
-            guard let asset = NSDataAsset(name: "translation", bundle: Bundle.module) else {
+            guard let asset = Arc.shared.dataAsset(named: "translation") else {
                 return nil
             }
             let translation:ArcTranslation = try JSONDecoder().decode(ArcTranslation.self, from: asset.data)
@@ -81,6 +81,14 @@ open class Arc : ArcApi {
     }
     public func image(named: String, in bundle: Bundle, compatibleWith: UITraitCollection?) -> UIImage? {
         return UIImage(named: named, in: bundle, compatibleWith: compatibleWith)
+    }
+    
+    public var dataAssetBundle = Bundle.module
+    public func dataAsset(named: String) -> NSDataAsset? {
+        if let data = NSDataAsset(name: named, bundle: dataAssetBundle) {
+            return data
+        }
+        return NSDataAsset(name: named)
     }
     
     static public let shared = Arc()
