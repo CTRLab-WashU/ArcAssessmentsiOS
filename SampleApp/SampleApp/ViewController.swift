@@ -2,7 +2,33 @@
 //  ViewController.swift
 //  SampleApp
 //
-//  Created by Michael L DePhillips on 2/1/22.
+//  Copyright © 2021 Sage Bionetworks. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without modification,
+// are permitted provided that the following conditions are met:
+//
+// 1.  Redistributions of source code must retain the above copyright notice, this
+// list of conditions and the following disclaimer.
+//
+// 2.  Redistributions in binary form must reproduce the above copyright notice,
+// this list of conditions and the following disclaimer in the documentation and/or
+// other materials provided with the distribution.
+//
+// 3.  Neither the name of the copyright holder(s) nor the names of any contributors
+// may be used to endorse or promote products derived from this software without
+// specific prior written permission. No license is granted to the trademarks of
+// the copyright holders even if such marks are included in this software.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
 import UIKit
@@ -35,53 +61,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let row = CellRows(rawValue: indexPath.row)
-        
-        var vc: UIViewController? = nil
-        switch(row) {
-        case .contextSurvey:
-            let controller:BasicSurveyViewController = .init(file: "context", surveyId: nil, showHelp: false)
-            vc = controller
-        case .chronotypeSurvey:
-            let controller:ACWakeSurveyViewController = .init(file:"chronotype")
-            vc = controller
-        case .wakeSurvey:
-            let controller:ACWakeSurveyViewController = .init(file:"wake")
-            vc = controller
-        case .symbolsTest:
-            let symbolsVc:SymbolsTestViewController = .get()
-            let controller:InstructionNavigationController = .get()
-            controller.nextVc = symbolsVc
-            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
-                .replacingOccurrences(of: "{Value2}", with: "3")
-            controller.load(instructions: "TestingIntro-Symbols")
-            vc = controller
-        case .pricingTest:
-            let priceVc:PricesTestViewController = .get()
-            let controller:InstructionNavigationController = .get()
-            controller.nextVc = priceVc
-            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
-                .replacingOccurrences(of: "{Value2}", with: "3")
-            
-            controller.load(instructions: "TestingIntro-Prices")
-            vc = controller
-        case .gridsTest:
-            let gridsVc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
-            let controller:InstructionNavigationController = .get()
-            controller.nextVc = gridsVc
-            controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-            .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
-            controller.load(instructions: "TestingIntro-Grids")
-            vc = controller
-        default:
-            // no-op
-            let i = 0
-        }
+        let stateList = row?.stateList ?? [.context]
                 
-        if let vcUnwrapped = vc {
-            vcUnwrapped.modalPresentationStyle = .fullScreen
-            self.show(vcUnwrapped, sender: self)
+        if let sampleAppNavController = Arc.shared.appNavigation as? SampleAppNavigationController,
+           let vc = sampleAppNavController.startTest(stateList: stateList) {
+            
+            vc.modalPresentationStyle = .fullScreen
+            self.show(vc, sender: self)
         }
     }
 }
@@ -111,6 +97,25 @@ enum CellRows: Int, CaseIterable {
             return "Pricing Test"
         case .all:
             return "All Tests"
+        }
+    }
+    
+    var stateList: [SampleAppState] {
+        switch(self) {
+        case .contextSurvey:
+            return [.context]
+        case .wakeSurvey:
+            return [.wake]
+        case .chronotypeSurvey:
+            return [.chronotype]
+        case .symbolsTest:
+            return [.symbolsTest]
+        case .gridsTest:
+            return [.gridTest]
+        case .pricingTest:
+            return [.priceTest]
+        case .all:
+            return SampleAppState.fullTest
         }
     }
 }

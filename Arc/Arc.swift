@@ -132,6 +132,9 @@ open class Arc : ArcApi {
 		controllerRegistry.registerControllers()
 	}
     static public func configureWithEnvironment(environment:ArcEnvironment) {
+        
+        FontLoader.configurePackageUI()
+        
         self.environment = environment
         
         _ = MHController.dataContext

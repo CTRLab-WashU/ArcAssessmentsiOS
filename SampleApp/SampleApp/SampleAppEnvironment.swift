@@ -1,82 +1,46 @@
 //
-//  EXEnvironment.swift
-//  INV
+//  SampleAppEnvironment.swift
+//  SampleApp
 //
-//  Created by Philip Hayes on 1/9/19.
-//  Copyright © 2019 HealthyMedium. All rights reserved.
+//  Copyright © 2021 Sage Bionetworks. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without modification,
+// are permitted provided that the following conditions are met:
+//
+// 1.  Redistributions of source code must retain the above copyright notice, this
+// list of conditions and the following disclaimer.
+//
+// 2.  Redistributions in binary form must reproduce the above copyright notice,
+// this list of conditions and the following disclaimer in the documentation and/or
+// other materials provided with the distribution.
+//
+// 3.  Neither the name of the copyright holder(s) nor the names of any contributors
+// may be used to endorse or promote products derived from this software without
+// specific prior written permission. No license is granted to the trademarks of
+// the copyright holders even if such marks are included in this software.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
 import Foundation
 import Arc
 
-enum SampleAppEnvironment : ArcEnvironment {
+// This class can be used to customize the Arc library
+open class SampleAppEnvironment : ArcEnvironment {
     
-    case prod
+    public var appNavigation: AppNavigationController = SampleAppNavigationController()
     
-    
-    var privacyPolicyUrl: String? {
-        switch self {
-        default:
-            return "https://wustl.edu/about/compliance-policies/computers-internet-policies/internet-privacy-policy/"
-            
-        }
-    }
-    var shouldDisplayDateReminderNotifications: Bool {
-        return true
-    }
-
-    /*
-     adopt variables to override which controllers are supplied in the environment
-     */
-    var appNavigation: AppNavigationController {
-        switch self {
-        default:
-            //
-            return INVAppNavigationController()
-            
-        }
-    }
-    var appController: AppController {
-        return INVAppController()
-    }
-    
-    var studyController: StudyController {
-        return INVStudyController()
-    }
-    
-    var authController: AuthController {
-        if (self == .sage) {
-            return INVSageAuthController()
-        }
-        return AuthController()
-    }
-    
-    var sessionController: SessionController {
-        if (self == .sage) {
-            return SageSessionController()
-        }
-        return SessionController()
-    }
-    
-    var scheduleController: ScheduleController {
-        if (self == .sage) {
-            return SageScheduleController()
-        }
-        return ScheduleController()
-    }
-    
-    var earningsController: EarningsController {
-        if (self == .sage) {
-            return SageEarningsController()
-        }
-        return EarningsController()
-    }
-    
-    func configure() {
+    public func configure() {
         //Use this to set class variables or perform setup before the app runs
-        SliderView.hideSelection = true
+        
     }
-    var gridTestType:GridTestType {
-           return .extended
-       }
 }
