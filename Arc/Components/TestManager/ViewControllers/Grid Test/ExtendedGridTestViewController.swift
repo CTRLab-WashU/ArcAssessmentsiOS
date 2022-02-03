@@ -49,9 +49,9 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
     @IBOutlet public weak var collectionViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var continueButton: ACButton!
 	public weak var delegate:ExtendedGridTestViewControllerDelegate?
-    private var symbols:[UIImage] = [#imageLiteral(resourceName: "key"),
-                                     #imageLiteral(resourceName: "phone"),
-                                     #imageLiteral(resourceName: "pen")]
+    private var symbols:[UIImage] = [Arc.shared.image(named: "key")!,
+                                     Arc.shared.image(named: "phone")!,
+                                     Arc.shared.image(named: "pen")!]
     public var selected = 0
     public var maxSelected = 3
 	public var revealedIndexPaths:[IndexPath] = []
