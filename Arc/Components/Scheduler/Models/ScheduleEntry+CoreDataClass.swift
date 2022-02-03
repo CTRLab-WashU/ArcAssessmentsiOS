@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 //@objc(ScheduleEntry)
+@available(*, deprecated)
 open class ScheduleEntry: NSManagedObject {
 	public var day:WeekDay {
 		get {

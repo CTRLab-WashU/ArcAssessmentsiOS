@@ -60,22 +60,11 @@ public class PricesTestViewController: ArcViewController {
 		if !autoStart && !isPracticeTest {
         	ACState.testCount += 1
 		}
-		
-		let app = Arc.shared
-		let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
-		let sessionId = app.currentTestSession ?? -1
-		if sessionId != -1 && autoStart{
-			let session = app.studyController.get(session: sessionId, inStudy: studyId)
-			if let data = session.surveyFor(surveyType: .priceTest){
-				
-				responseID = data.id! //A crash here means that the session is malformed
-				
-			} else {
-			
-				test = controller.loadTest(index: 0, file: PricesTestViewController.testVersion )
-                self.isTutorial = false
-				responseID = controller.createResponse(withTest: test!)
-			}
+
+		if autoStart {
+            test = controller.loadTest(index: 0, file: PricesTestViewController.testVersion )
+            self.isTutorial = false
+            responseID = controller.createResponse(withTest: test!)
 			
 			//Selecte a group of question indicies such that then they are displayed,
 			//they will be flipped.

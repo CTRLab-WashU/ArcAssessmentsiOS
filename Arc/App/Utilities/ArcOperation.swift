@@ -1,6 +1,6 @@
 import Foundation
 
-public class HMOperation {
+public class ArcOperation {
     public enum ConcurrencyMode {
         case serial
         case multi(Int)

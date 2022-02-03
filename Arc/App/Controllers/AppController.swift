@@ -297,3 +297,45 @@ open class AppController : MHController {
         return t < date.timeIntervalSince1970
     }
 }
+
+public extension Encodable {
+    func encode(outputFormatting: JSONEncoder.OutputFormatting? = [.prettyPrinted, .sortedKeys]) -> Data? {
+        do {
+            let encoder = JSONEncoder()
+            if let outputFormatting = outputFormatting {
+                encoder.outputFormatting = outputFormatting
+            }
+            return try encoder.encode(self)
+        } catch {
+            print(error)
+            return nil
+        }
+        
+    }
+    func toString(outputFormatting:JSONEncoder.OutputFormatting? =  [.prettyPrinted, .sortedKeys]) -> String {
+        
+        guard let data = self.encode(outputFormatting: outputFormatting), let string = String(data: data, encoding: .utf8) else {
+            return ""
+        }
+        return  string
+    }
+}
+
+public extension Data {
+    func decode<T:Decodable>() -> T? {
+        do {
+            return try JSONDecoder().decode(T.self, from: self)
+        } catch {
+            print(error)
+            return nil
+        }
+        
+    }
+    mutating func appendString(value:String?) {
+        guard let data = value?.data(using: String.Encoding.utf8) else {
+            return
+        }
+        self.append(contentsOf: data)
+    }
+}
+

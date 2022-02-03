@@ -19,7 +19,9 @@ open class FinishedNavigationController: BasicSurveyViewController {
         // Do any additional setup after loading the view.
 		guard let session = Arc.shared.currentTestSession else {return}
 		guard let study = Arc.shared.currentStudy else {return}
-		Arc.shared.studyController.mark(finished: session, studyId: study)
+
+        // TODO: mdephillips 2/3/22 Deprecated code for context, remove when new library is complete
+//        Arc.shared.studyController.mark(finished: session, studyId: study)
 
     }
 	
@@ -33,12 +35,13 @@ open class FinishedNavigationController: BasicSurveyViewController {
             return
         }
 		
-		if v == 0 {
-			Arc.shared.studyController.mark(interrupted:true, sessionId: session, studyId: study)
-		} else if v == 1 {
-			Arc.shared.studyController.mark(interrupted:false, sessionId: session, studyId: study)
-
-		}
+        // TODO: mdephillips 2/3/22 Deprecated code for context, remove when new library is complete
+//		if v == 0 {
+//			Arc.shared.studyController.mark(interrupted:true, sessionId: session, studyId: study)
+//		} else if v == 1 {
+//			Arc.shared.studyController.mark(interrupted:false, sessionId: session, studyId: study)
+//
+//		}
 		//Arc.shared.currentTestSession = nil
 		
 	}

@@ -79,23 +79,28 @@ open class GridTestViewController: ArcViewController, UICollectionViewDelegate, 
         if shouldAutoProceed && !isPracticeTest {
             ACState.testCount += 1
         }
-        let app = Arc.shared
-        let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
-        if let sessionId = app.currentTestSession, shouldAutoProceed {
-            let session = app.studyController.get(session: sessionId, inStudy: studyId)
-            let data = session.surveyFor(surveyType: .gridTest)
-            responseId = data!.id! //A crash here means that the session is malformed
-            
-            tests = controller.createTest(numberOfTests: 2)
-            _ = controller.createResponse(id: responseId, numSections: 2)
-
-        } else if !isPracticeTest {
+        
+        
+        // TODO: mdephillips 2/3/22 Deprecated code for context, remove when new library is complete
+//        let app = Arc.shared
+//        let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
+//        if let sessionId = app.currentTestSession, shouldAutoProceed {
+//            let session = app.studyController.get(session: sessionId, inStudy: studyId)
+//            let data = session.surveyFor(surveyType: .gridTest)
+//            responseId = data!.id! //A crash here means that the session is malformed
+//
+//            tests = controller.createTest(numberOfTests: 2)
+//            _ = controller.createResponse(id: responseId, numSections: 2)
+//      } else
+        
+        if !isPracticeTest {
             tests = controller.createTest(numberOfTests: 2)
             responseId = controller.createResponse(numSections: 2)
         } else {
             tests = controller.createTutorialTest()
             responseId = controller.createResponse(numSections: 1)
         }
+        
         collectionView.register(UINib(nibName: "GridFCell", bundle: Bundle.module), forCellWithReuseIdentifier: "fCell")
         collectionView.register(UINib(nibName: "GridImageCell", bundle: Bundle.module), forCellWithReuseIdentifier: "imageCell")
 

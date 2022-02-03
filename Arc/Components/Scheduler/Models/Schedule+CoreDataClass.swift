@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-
+@available(*, deprecated)
 open class Schedule: NSManagedObject {
 	var entries:Set<ScheduleEntry> {
 		get {

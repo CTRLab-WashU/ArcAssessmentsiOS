@@ -15,10 +15,6 @@ public protocol AppNavigationController {
     
     func defaultAbout() -> State
     
-    func defaultContact() -> State
-    
-    func defaultRescheduleAvailability() -> State
-    
     func defaultPrivacy()
 
 	///This function should ideally send you back home.
@@ -77,14 +73,6 @@ open class BaseAppNavigationController : AppNavigationController {
 
     public func defaultAbout() -> State {
         return ACState.about
-    }
-    
-    public func defaultContact() -> State {
-        return ACState.contact
-    }
-    
-    public func defaultRescheduleAvailability() -> State {
-        return ACState.rescheduleAvailability
     }
     
     public func defaultPrivacy() {

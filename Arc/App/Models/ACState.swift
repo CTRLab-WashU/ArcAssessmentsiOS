@@ -9,10 +9,7 @@
 import UIKit
 public enum ACState : String, State, CaseIterable {
 	
-	
-	case about, schedule, home, context, gridTest, priceTest, symbolsTest, contact, rescheduleAvailability, testIntro, thankYou
-	
-	static var startup:[ACState] { return [.schedule, .home] }
+	case about, home, context, gridTest, priceTest, symbolsTest, testIntro, thankYou
 	
 	static var configuration: [ACState] {return [] }
 	
@@ -21,48 +18,7 @@ public enum ACState : String, State, CaseIterable {
 	static var tests:[ACState] {return [.gridTest, .priceTest, .symbolsTest] }
 	static public var testCount = 0
 	static public var testTaken:Int {
-		let c = Arc.shared.studyController
-		guard let study = c.getCurrentStudyPeriod() else {
-			return 0
-		}
-		let studyId = Int(study.studyID)
-
-		guard let currentSessionId = Arc.shared.currentTestSession else {
-			return 0
-		}
-		guard let sessionData = c.get(session: currentSessionId) else {
-			return 0
-		}
-		
-		let day = Int(sessionData.day)
-		
-		
-		let week = Int(sessionData.week)
-		let session = Int(sessionData.session)
-		var progress = 0
-		
-		if c.get(numberOfTestTakenOfType: .priceTest,
-				 inStudy: studyId,
-				 week:week,
-				 day:day,
-				 session: session) != 0 {
-			progress += 1
-		}
-		if c.get(numberOfTestTakenOfType: .gridTest,
-				 inStudy: studyId,
-				 week:week,
-				 day:day,
-				 session: session) != 0 {
-			progress += 1
-		}
-		if c.get(numberOfTestTakenOfType: .symbolsTest,
-				 inStudy: studyId,
-				 week:week,
-				 day:day,
-				 session: session) != 0 {
-			progress += 1
-		}
-		return progress
+        return Arc.shared.currentTestIdx
 	}
 	
 	public func surveyTypeForState() -> SurveyType {
@@ -86,29 +42,7 @@ public enum ACState : String, State, CaseIterable {
                 controller.loadSurvey(template: "context")
                 
                 newController = controller
-                                        
-            case .schedule:
-                let controller:ACScheduleViewController = .init(file: "schedule")
-                controller.participantId = Arc.shared.participantId
-    //            if (self == .changeSchedule) {
-    //                controller.isChangingSchedule = true
-    //            }
-                
-                return controller
 
-            case .contact:
-                let controller:ACContactNavigationController = .get()
-                let window = UIApplication.shared.keyWindow
-                
-                
-                let _ = window!.rootViewController
-                //			controller.returnVC = vc!
-                newController = controller
-                
-            case .rescheduleAvailability:
-                let controller:ACAvailbilityNavigationController = .get()
-                newController = controller
-                
             case .testIntro:
                 let controller:InstructionNavigationController = .get()
                 controller.nextState = Arc.shared.appNavigation.nextAvailableSurveyState()

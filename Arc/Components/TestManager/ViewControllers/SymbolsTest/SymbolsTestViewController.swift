@@ -73,18 +73,11 @@ public class SymbolsTestViewController: UIViewController, TestProgressViewContro
         	ACState.testCount += 1
 		}
 
-		let app = Arc.shared
-		let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
-		
-		if let sessionId = app.currentTestSession, !isPracticeTest{
-			let session = app.studyController.get(session: sessionId, inStudy: studyId)
-			let data = session.surveyFor(surveyType: .symbolsTest)
-			
-			responseID = data!.id! //A crash here means that the session is malformed
+		if !isPracticeTest {
 			test = controller.generateTest(numSections: 12, numSymbols: 8)
-			responseID = controller.createResponse(withTest: test!, id: responseID)
+			responseID = controller.createResponse(withTest: test!)
 		} else {
-			//Will be stored in core data, but not retrieved for server upload.
+			// Will be stored in core data, but not retrieved for server upload.
             test = controller.generateTutorialTest()
         	responseID = controller.createResponse(withTest: test!)
 		}

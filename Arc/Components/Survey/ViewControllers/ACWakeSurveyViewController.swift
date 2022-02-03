@@ -40,11 +40,15 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
         guard question != .other else {return}
         
         let date = Date()
+        let startHourDate = Calendar.current.date(bySettingHour: Arc.shared.availabilityStartHour, minute: 0, second: 0, of: date)!
+        let endHourDate = Calendar.current.date(bySettingHour: Arc.shared.availabilityEndHour, minute: 0, second: 0, of: date)!
         
-        let day = WeekDay.getDayOfWeek(date)
-        
-        guard let today = Arc.shared.scheduleController.get(entriesForDay: day, forParticipant: Arc.shared.participantId ?? 0)?.first else {return}
-        guard let yesterday = Arc.shared.scheduleController.get(entriesForDay: day.advanced(by: -1), forParticipant: Arc.shared.participantId ?? 0)?.first else {return}
+        let formatter = DateFormatter()
+        formatter.defaultDate = Date()
+        formatter.dateFormat = "h:mm a"
+
+        let availabilityStartStr = formatter.string(from: startHourDate)
+        let availabilityEndStr = formatter.string(from: endHourDate)
 
         switch question {
         
@@ -52,7 +56,7 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
             
             guard getAnswerFor(question: question) == nil else {return}
 
-            input.setValue(AnyResponse(type: .time, value: yesterday.availabilityEnd))
+            input.setValue(AnyResponse(type: .time, value: availabilityEndStr))
             
             enableNextButton()
         
@@ -62,7 +66,7 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
             
             guard getAnswerFor(question: question) == nil else {return}
             
-            input.setValue(AnyResponse(type: .time, value: today.availabilityStart))
+            input.setValue(AnyResponse(type: .time, value: availabilityStartStr))
             
             enableNextButton()
         
@@ -72,7 +76,7 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
             
             guard getAnswerFor(question: question) == nil else {return}
             
-            input.setValue(AnyResponse(type: .time, value: today.availabilityEnd))
+            input.setValue(AnyResponse(type: .time, value: availabilityEndStr))
             
             enableNextButton()
         
@@ -82,9 +86,7 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
             
             guard getAnswerFor(question: question) == nil else {return}
             
-            guard let saturday = Arc.shared.scheduleController.get(entriesForDay: .saturday, forParticipant: Arc.shared.participantId ?? 0)?.first else {return}
-            
-            input.setValue(AnyResponse(type: .time, value: saturday.availabilityStart))
+            input.setValue(AnyResponse(type: .time, value: availabilityStartStr))
             
             enableNextButton()
         
@@ -93,10 +95,8 @@ open class ACWakeSurveyViewController: BasicSurveyViewController {
         case .nonworkSleep, .nonworkSleep2:
             
             guard getAnswerFor(question: question) == nil else {return}
-            
-            guard let saturday = Arc.shared.scheduleController.get(entriesForDay: .saturday, forParticipant: Arc.shared.participantId ?? 0)?.first else {return}
-            
-            input.setValue(AnyResponse(type: .time, value: saturday.availabilityEnd))
+                    
+            input.setValue(AnyResponse(type: .time, value: availabilityEndStr))
             
             enableNextButton()
         

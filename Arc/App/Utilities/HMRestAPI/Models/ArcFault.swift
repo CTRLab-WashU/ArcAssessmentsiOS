@@ -19,11 +19,11 @@
 */
 import Foundation
 
-public struct HMFault : Codable, Error {
+public struct ArcFault : Codable, Error {
 	var message:String
 }
 
-public struct HMResponse : Codable {
+public struct ArcResponse : Codable {
 	
 	public struct Body : Codable {
 		public var success : Bool?

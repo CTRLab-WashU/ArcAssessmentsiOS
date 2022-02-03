@@ -37,25 +37,13 @@ public protocol ArcEnvironment {
 	
     var appController:AppController {get}
     
-    var authController:AuthController {get}
-    
-    var sessionController:SessionController {get}
-    
     var surveyController:SurveyController {get}
-    
-    var scheduleController:ScheduleController {get}
-    
-    var earningsController:EarningsController {get}
     
     var gridTestController:GridTestController {get}
     
     var pricesTestController:PricesTestController {get}
     
     var symbolsTestController:SymbolsTestController {get}
-    
-    var studyController:StudyController {get}
-    
-    var notificationController:NotificationController {get}
     
     var appNavigation:AppNavigationController {get}
     
@@ -99,26 +87,13 @@ public extension ArcEnvironment {
 	var gridTestType:GridTestType {return .normal}
     var appController:AppController {return AppController()}
     
-    var authController:AuthController {return AuthController()}
-    
-    var sessionController:SessionController {return SessionController()}
-    
     var surveyController:SurveyController {return SurveyController()}
-    
-    var earningsController:EarningsController {return EarningsController()}
-    
-    var scheduleController:ScheduleController {return ScheduleController()}
-    
+
     var gridTestController:GridTestController {return GridTestController()}
     
     var pricesTestController:PricesTestController {return PricesTestController()}
     
     var symbolsTestController:SymbolsTestController {return SymbolsTestController()}
-    
-    var studyController:StudyController {return StudyController()}
-    
-    var notificationController:NotificationController {return NotificationController()}
-    
     
     var controllerRegistry:ArcControllerRegistry {return ArcControllerRegistry()}
 
@@ -140,6 +115,4 @@ public struct ACEnvironment : ArcEnvironment {
 	public var privacyPolicyUrl: String?
 	
 	public var appNavigation: AppNavigationController = BaseAppNavigationController()
-	
-	
 }

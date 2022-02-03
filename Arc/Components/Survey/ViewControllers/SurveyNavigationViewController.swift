@@ -223,28 +223,7 @@ open class SurveyNavigationViewController: UINavigationController, UINavigationC
 		surveyType = survey.type
         questions = survey.questions
 		currentQuestion = survey.questions.first?.questionId
-        guard let i = app.studyController.getCurrentStudyPeriod()?.studyID else {
-            self.surveyId = createSurvey(surveyId: surveyId)
-
-            return
-        }
-        
-		let studyId = Int(i)
-		guard let sessionId = app.currentTestSession else {
-            
-           self.surveyId = createSurvey(surveyId: surveyId)
-			return
-		}
-        
-		let session = app.studyController.get(session: sessionId, inStudy: studyId)
-
-		if	let surveyType = surveyType,
-			let data = session.surveyFor(surveyType: surveyType){
-			Arc.shared.surveyController.mark(startDate: data.id!)
-
-			self.surveyId = data.id
-			
-		}
+        self.surveyId = createSurvey(surveyId: surveyId)
     }
     private func createSurvey(surveyId:String?) -> String{
         var response:String = ""
