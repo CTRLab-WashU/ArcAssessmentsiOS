@@ -53,11 +53,11 @@ open class ACChangeAvailabilityViewController: UIViewController {
         }
     }
     @IBAction public func changeSchedulePressed(_ sender: UIButton) {
-        Arc.shared.appNavigation.navigate(state: ACState.changeSchedule, direction: .toRight)
+        //Arc.shared.appNavigation.navigate(state: ACState.changeSchedule, direction: .toRight)
 
     }
     @IBAction public func changeStudyDatesPressed(_ sender: UIButton) {
-        Arc.shared.appNavigation.navigate(state: ACState.changeStudyStart, direction: .toRight)
+        //Arc.shared.appNavigation.navigate(state: ACState.changeStudyStart, direction: .toRight)
 
     }
     

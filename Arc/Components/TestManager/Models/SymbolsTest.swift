@@ -52,7 +52,7 @@ public struct SymbolsTest : Codable {
 
 
 //For server communication
-public struct SymbolsTestResponse : HMTestCodable {
+public struct SymbolsTestResponse : ArcTestCodable {
 	public static var dataType: SurveyType = .symbolsTest
 
     public struct Section : Codable {

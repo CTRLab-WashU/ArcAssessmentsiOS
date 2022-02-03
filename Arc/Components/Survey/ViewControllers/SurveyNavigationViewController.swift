@@ -523,7 +523,7 @@ open class SurveyNavigationViewController: UINavigationController, UINavigationC
 		
 	}
 	open func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        HMLog("Changed stuff \(viewController)")
+        ArcLog("Changed stuff \(viewController)")
 		
 		//Pop off questions that got popped off the viewcontroller stack
 		let surveyControllerCount = navigationController.viewControllers.filter { (vc) -> Bool in

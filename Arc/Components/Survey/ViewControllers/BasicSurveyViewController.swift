@@ -11,9 +11,7 @@ import UIKit
 
 
 open class BasicSurveyViewController: UINavigationController, SurveyInputDelegate {
-	public var app:Arc {
-		return Arc.shared
-	}
+
 	public var helpButton: UIBarButtonItem?
 	public var isShowingHelpButton = false{
 		didSet {
@@ -51,8 +49,8 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 	public var surveyId:String
 	public var shouldNavigateToNextState:Bool = true
     public var currentViewControllerAlwaysHidesBarButtons = false
+    
     public init(file:String, surveyId:String? = nil, showHelp:Bool? = true) {
-		
         shouldShowHelpButton = showHelp ?? true
         
 		let newSurvey = Arc.shared.surveyController.load(survey: file)
@@ -60,38 +58,18 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		questions = survey.questions
 		
 		subQuestions = survey.subQuestions
-//		print(file)
-//		dump(survey)
-		var newId:String?
-		//If we have a current study running
-		if let i = Arc.shared.studyController.getCurrentStudyPeriod()?.studyID  {
-			
-			let studyId = Int(i)
-			//And there is a session running
-			if let sessionId = Arc.shared.currentTestSession  {
-				let session = Arc.shared.studyController.get(session: sessionId, inStudy: studyId)
-				
-				//find a matching surveyResponse for the type of the new survey
-				if	let surveyType = newSurvey.type,
-					let data = session.surveyFor(surveyType: surveyType){
-					Arc.shared.surveyController.mark(startDate: data.id!)
-					//We're going to use this id now.
-					newId = data.id!
-					
-				}
-				
-			}
-			
-			
-		}
-		if newId == nil {
-			newId = surveyId ?? Arc.shared.surveyController.create(type:newSurvey.type);
-
-		}
 		
-		self.surveyId = newId!
+        if let surveyIdUnwrapped = surveyId {
+            self.surveyId = surveyIdUnwrapped
+        } else {
+            if let surveyIdUnwrapped = Arc.shared.currentSurveyId {
+                self.surveyId = surveyIdUnwrapped
+            } else {
+                self.surveyId = "" // needed for compilation
+                assertionFailure("Error: need survey ID to launch a survey, set one in Arc.shared.currentSurveyId")
+            }
+        }
 		
-
 		super.init(nibName: nil, bundle: nil)
 	}
 	

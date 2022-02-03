@@ -77,8 +77,8 @@ open class HMRestAPI : NSObject, URLSessionDelegate, URLSessionTaskDelegate {
         baseUrl = URL(string: url)
     }
     public func execute(backendRequest: BackendRequest) -> URLSessionDataTask? {
-        HMLog("Executing------------------------------")
-        HMLog(backendRequest.endPoint)
+        ArcLog("Executing------------------------------")
+        ArcLog(backendRequest.endPoint)
 
         if blackHole {
             backendRequest.didSucceed(with: Data(), response: HTTPURLResponse(url: URL(string: backendRequest.endPoint)!, statusCode: 200, httpVersion: nil, headerFields: nil))
@@ -153,7 +153,7 @@ open class HMRestAPI : NSObject, URLSessionDelegate, URLSessionTaskDelegate {
 					guard let completionHandlers = self.tasks[token] else {return}
 						
 						if let error = error {
-							HMLog("Failing \(completionHandlers.count) responses")
+							ArcLog("Failing \(completionHandlers.count) responses")
 							completionHandlers.forEach {$0.1(error, response)}
 
 							return
@@ -163,12 +163,12 @@ open class HMRestAPI : NSObject, URLSessionDelegate, URLSessionTaskDelegate {
 							
 							return
 						}
-						HMLog("\(url)\n\n")
-						HMLog("Decoded Response---------------------------------")
+						ArcLog("\(url)\n\n")
+						ArcLog("Decoded Response---------------------------------")
 						do {
 							let obj = try JSONDecoder().decode(HMResponse.self, from: data).toString()
 
-								HMLog(String(bytes: data, encoding: .utf8) ?? "");
+								ArcLog(String(bytes: data, encoding: .utf8) ?? "");
 								
 						} catch {
                             print(completionHandlers.count)
@@ -181,7 +181,7 @@ open class HMRestAPI : NSObject, URLSessionDelegate, URLSessionTaskDelegate {
 						}
 						
 						
-						HMLog("Responding to \(completionHandlers.count) \(token.url) handlers")
+						ArcLog("Responding to \(completionHandlers.count) \(token.url) handlers")
 						completionHandlers.forEach {
 							$0.0(data, response)
 						}

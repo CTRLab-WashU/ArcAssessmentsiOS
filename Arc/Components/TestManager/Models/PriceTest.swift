@@ -17,7 +17,7 @@ public struct PriceTest : Codable{
     var items:Array<Item>
 }
 //For server communication only
-public struct PriceTestResponse : HMTestCodable {
+public struct PriceTestResponse : ArcTestCodable {
     	public static var dataType: SurveyType = .priceTest
 
     public struct Choice : Codable {

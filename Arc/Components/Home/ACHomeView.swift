@@ -215,7 +215,7 @@ public class ACHomeView: ACTemplateView {
             $0.setTitleColor(UIColor(named: "Primary"), for: .normal)
             
             $0.addAction {
-                Arc.shared.appNavigation.navigate(state: ACState.changeStudyStart, direction: .toRight)
+
             }
         }
     }

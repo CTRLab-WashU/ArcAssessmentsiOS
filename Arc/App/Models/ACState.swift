@@ -10,9 +10,9 @@ import UIKit
 public enum ACState : String, State, CaseIterable {
 	
 	
-	case about, auth, schedule, home, context, gridTest, priceTest, symbolsTest, changeSchedule, contact, rescheduleAvailability, testIntro, thankYou, changeStudyStart
+	case about, schedule, home, context, gridTest, priceTest, symbolsTest, contact, rescheduleAvailability, testIntro, thankYou
 	
-	static var startup:[ACState] { return [.auth, .schedule, .home] }
+	static var startup:[ACState] { return [.schedule, .home] }
 	
 	static var configuration: [ACState] {return [] }
 	
@@ -76,101 +76,88 @@ public enum ACState : String, State, CaseIterable {
 		var newController:UIViewController = home
 		
 		switch self {
-			
-		case .about:
-			newController = UIViewController()
-		case .auth :
-            
-           break
-			
-			
-		case .context:
-			let controller:SurveyNavigationViewController = .get()
-			controller.participantId = Arc.shared.participantId
-			controller.surveyType = .context
-			controller.loadSurvey(template: "context")
-			
-			newController = controller
-			
-			
-			
-        case .schedule, .changeSchedule:
-            let controller:ACScheduleViewController = .init(file: "schedule")
-            controller.participantId = Arc.shared.participantId
-            if (self == .changeSchedule) {
-                controller.isChangingSchedule = true
-            }
-            
-            return controller
-			
+            case .about:
+                newController = UIViewController()
+                
+            case .context:
+                let controller:SurveyNavigationViewController = .get()
+                controller.participantId = Arc.shared.participantId
+                controller.surveyType = .context
+                controller.loadSurvey(template: "context")
+                
+                newController = controller
+                                        
+            case .schedule:
+                let controller:ACScheduleViewController = .init(file: "schedule")
+                controller.participantId = Arc.shared.participantId
+    //            if (self == .changeSchedule) {
+    //                controller.isChangingSchedule = true
+    //            }
+                
+                return controller
 
-        case .changeStudyStart:
-            let controller:StartDateShiftViewController = .init(file: "changeStartDate")
-            return controller
-
-		case .contact:
-			let controller:ACContactNavigationController = .get()
-			let window = UIApplication.shared.keyWindow
-			
-			
-			let _ = window!.rootViewController
-			//			controller.returnVC = vc!
-			newController = controller
-			
-		case .rescheduleAvailability:
-			let controller:ACAvailbilityNavigationController = .get()
-			newController = controller
-			
-		case .testIntro:
-			let controller:InstructionNavigationController = .get()
-			controller.nextState = Arc.shared.appNavigation.nextAvailableSurveyState()
-			
-			controller.load(instructions: "TestingIntro")
-			newController = controller
-		case .gridTest:
-            let controller:InstructionNavigationController = .get()
-            if Arc.environment?.gridTestType == .extended {
-                let vc:ExtendedGridTestViewController = .get()
+            case .contact:
+                let controller:ACContactNavigationController = .get()
+                let window = UIApplication.shared.keyWindow
+                
+                
+                let _ = window!.rootViewController
+                //			controller.returnVC = vc!
+                newController = controller
+                
+            case .rescheduleAvailability:
+                let controller:ACAvailbilityNavigationController = .get()
+                newController = controller
+                
+            case .testIntro:
+                let controller:InstructionNavigationController = .get()
+                controller.nextState = Arc.shared.appNavigation.nextAvailableSurveyState()
+                
+                controller.load(instructions: "TestingIntro")
+                newController = controller
+            case .gridTest:
+                let controller:InstructionNavigationController = .get()
+                if Arc.environment?.gridTestType == .extended {
+                    let vc:ExtendedGridTestViewController = .get()
+                    controller.nextVc = vc
+                } else {
+                    let vc:GridTestViewController = .get()
+                    controller.nextVc = vc
+                }
+                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
+                
+                controller.load(instructions: "TestingIntro-Grids")
+                newController = controller
+                
+            case .priceTest:
+                
+                let vc:PricesTestViewController = .get()
+                let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-            } else {
-                let vc:GridTestViewController = .get()
+                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
+                
+                controller.load(instructions: "TestingIntro-Prices")
+                
+                newController = controller
+            case .symbolsTest:
+                
+                let vc:SymbolsTestViewController = .get()
+                let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-            }
-			controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
-			
-			controller.load(instructions: "TestingIntro-Grids")
-			newController = controller
-			
-		case .priceTest:
-			
-			let vc:PricesTestViewController = .get()
-			let controller:InstructionNavigationController = .get()
-			controller.nextVc = vc
-			controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
-			
-			controller.load(instructions: "TestingIntro-Prices")
-			
-			newController = controller
-		case .symbolsTest:
-			
-			let vc:SymbolsTestViewController = .get()
-			let controller:InstructionNavigationController = .get()
-			controller.nextVc = vc
-			controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
-			
-			controller.load(instructions: "TestingIntro-Symbols")
-			
-			newController = controller
-		case .home:
-			break
-		case .thankYou:
-			let vc:FinishedNavigationController = FinishedNavigationController(file: "finished")
-			ACState.testCount = 0
-			newController = vc
+                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3"
+                
+                controller.load(instructions: "TestingIntro-Symbols")
+                
+                newController = controller
+            case .home:
+                break
+            case .thankYou:
+                let vc:FinishedNavigationController = FinishedNavigationController(file: "finished")
+                ACState.testCount = 0
+                newController = vc
+        }
 		
-		}
 		return newController
 
-	}
-	
+	}	
 }

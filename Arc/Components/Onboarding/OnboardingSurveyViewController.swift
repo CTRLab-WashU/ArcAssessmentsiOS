@@ -52,9 +52,9 @@ open class OnboardingSurveyViewController: BasicSurveyViewController {
 		if index == "commitment" {
 			if let value:Int = value.getValue() {
 				if value == 0 {
-					app.appController.commitment = .committed
+                    Arc.shared.appController.commitment = .committed
 				} else if value == 1 {
-					app.appController.commitment = .rebuked
+                    Arc.shared.appController.commitment = .rebuked
 				}
 			
 			}

@@ -39,7 +39,7 @@ open class WelcomeViewController: UIViewController {
     }
     
     @IBAction open func signInPressed(_ sender: UIButton) {
-        Arc.shared.appNavigation.navigate(state: Arc.shared.appNavigation.defaultAuth(), direction: .fade)
+        //Arc.shared.appNavigation.navigate(state: Arc.shared.appNavigation.defaultAuth(), direction: .fade)
     }
     
     @IBAction open func aboutPressed(_ sender: UIButton) {

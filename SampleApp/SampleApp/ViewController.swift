@@ -46,9 +46,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         default:
             // no-op
             let i = 0
-        }        
+        }
                 
         if let vcUnwrapped = vc {
+            vcUnwrapped.modalPresentationStyle = .fullScreen
             self.show(vcUnwrapped, sender: self)
         }
     }

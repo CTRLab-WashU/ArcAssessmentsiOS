@@ -56,7 +56,7 @@ public struct GridTest : Codable {
 }
 
 //For server communication only
-public struct GridTestResponse : HMTestCodable {
+public struct GridTestResponse : ArcTestCodable {
 	public static var dataType: SurveyType = .gridTest
 
     public struct Section : Codable {

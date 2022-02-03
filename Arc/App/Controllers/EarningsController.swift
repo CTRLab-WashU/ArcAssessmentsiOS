@@ -82,7 +82,7 @@ fileprivate func fetchEarnings(request:Void,  didFinish:@escaping (EarningOvervi
 	
 	HMAPI.getEarningOverview.execute(data: nil) { (urlResponse, data, err) in
 		if let err = err {
-			HMLog(err.localizedDescription)
+			ArcLog(err.localizedDescription)
 			didFinish(nil)
 			return
 		}
@@ -95,7 +95,7 @@ fileprivate func fetchStudySummary(request:Void,  didFinish:@escaping (StudySumm
 	
 	HMAPI.getStudySummary.execute(data: nil) { (urlResponse, data, err) in
 		if let err = err {
-			HMLog(err.localizedDescription)
+			ArcLog(err.localizedDescription)
 			didFinish(nil)
 			return
 		}
@@ -107,7 +107,7 @@ fileprivate func fetchEarningDetails(request:Void,  didFinish:@escaping (Earning
 	
 	HMAPI.getEarningDetail.execute(data: nil) { (urlResponse, data, err) in
 		if let err = err {
-			HMLog(err.localizedDescription)
+			ArcLog(err.localizedDescription)
 			didFinish(nil)
 			return
 		}

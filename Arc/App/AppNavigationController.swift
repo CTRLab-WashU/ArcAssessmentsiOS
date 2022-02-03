@@ -12,9 +12,6 @@ import UIKit
 
 public protocol AppNavigationController {
 	func defaultHelpState() -> UIViewController
-	
-    ///Navigate from welcome to auth
-    func defaultAuth() -> State
     
     func defaultAbout() -> State
     
@@ -77,10 +74,6 @@ open class BaseAppNavigationController : AppNavigationController {
 	public func defaultState() -> State {
 		return ACState.home
 	}
-    
-    public func defaultAuth() -> State {
-        return ACState.auth
-    }
 
     public func defaultAbout() -> State {
         return ACState.about

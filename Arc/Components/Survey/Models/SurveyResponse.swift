@@ -81,7 +81,7 @@ public struct AnyResponse : QuestionResponse {
 	}
 }
 
-public struct SurveyResponse : HMCodable {
+public struct SurveyResponse : ArcCodable {
 	
 	
 	public static var dataType: SurveyType = .unknown

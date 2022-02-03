@@ -122,6 +122,7 @@ open class Arc : ArcApi {
 		}
 	}
     
+    public var currentSurveyId: String? = nil
 	public var currentStudy:Int?
 	public var availableTestSession:Int?
 	public var currentTestSession:Int?
@@ -185,7 +186,7 @@ open class Arc : ArcApi {
             return
         }
         
-		HMLog("Navigating to:  \(state)")        
+		ArcLog("Navigating to:  \(state)")        
 		Arc.currentState = state
         appNavigation.navigate(state: state, direction: direction)
 	}
@@ -335,7 +336,7 @@ open class Arc : ArcApi {
 			return
 		}
 		HMAPI.deviceHeartbeat.execute(data: HeartbeatRequestData()) { (response, data, _) in
-			HMLog("received response \(data?.toString() ?? "") on \(Date())")
+			ArcLog("received response \(data?.toString() ?? "") on \(Date())")
 
 		}
 	}
@@ -480,7 +481,7 @@ open class Arc : ArcApi {
 				{
 					MHController.dataContext.performAndWait {
 						
-						HMLog("Deleting Visit \(study.studyID)");
+						ArcLog("Deleting Visit \(study.studyID)");
 						for session in sessions
 						{
                             session.clearData()

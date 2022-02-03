@@ -105,7 +105,7 @@ open class StudyController : MHController {
 	open func createStudyPeriod(forDate: Date, studyId:Int) -> StudyPeriod
 	{
 		
-		HMLog("Creating StudyPeriod \(studyId) at date: \(DateFormatter.localizedString(from: forDate, dateStyle: .short, timeStyle: .none))");
+		ArcLog("Creating StudyPeriod \(studyId) at date: \(DateFormatter.localizedString(from: forDate, dateStyle: .short, timeStyle: .none))");
 		let newStudyPeriod:StudyPeriod = new()
 		newStudyPeriod.studyID = Int64(studyId);
 		newStudyPeriod.startDate = forDate.startOfDay();
@@ -585,16 +585,16 @@ open class StudyController : MHController {
 			days = self.DAYS_PER_STUDY
 		}
 		guard let participantID = Arc.shared.participantId else {
-			HMLog("No participant registered")
+			ArcLog("No participant registered")
 			return
 		}
 		guard let currentStudy = get(study: studyId) else {
-			HMLog("No available study.")
+			ArcLog("No available study.")
 			return
 		}
 		
 		guard let startDate = currentStudy.userStartDate else {
-			HMLog("HEY DUDE YOU NEED TO SET A START DATE");
+			ArcLog("HEY DUDE YOU NEED TO SET A START DATE");
 			return;
 		}
 		
@@ -769,7 +769,7 @@ open class StudyController : MHController {
 			}
 		}
 		save();
-		HMLog("Completed Schedule")
+		ArcLog("Completed Schedule")
 		
 	}
 	
@@ -1367,9 +1367,9 @@ open class StudyController : MHController {
 				}
 			}
 			if destroySessionsEntirely {
-				HMLog("Deleting sessions upto \(sessionId)")
+				ArcLog("Deleting sessions upto \(sessionId)")
 			} else {
-				HMLog("Clearing sessions upto \(sessionId)")
+				ArcLog("Clearing sessions upto \(sessionId)")
 			}
 			for session in deleted {
 				

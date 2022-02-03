@@ -43,25 +43,25 @@ open class MHController {
 	public func new<T:NSManagedObject>() -> T {
 		return T(context: MHController.dataContext)
 	}
-    public func save<T:HMCodable>(id:String, obj:T) -> T {
+    public func save<T:ArcCodable>(id:String, obj:T) -> T {
         //Enforce id's on objects
         do {
-        var saved = obj
-        saved.id = id
-        let savedData = try JSONEncoder().encode(saved)
-        
-        let json:JSONData = fetch(id:id) ?? JSONData(context: MHController.dataContext)
-        json.id = id
-        json.type = "\(obj.type!.rawValue)"
-        json.data = savedData
-        save()
-        return saved
+            var saved = obj
+            saved.id = id
+            let savedData = try JSONEncoder().encode(saved)
+            
+            let json:JSONData = fetch(id:id) ?? JSONData(context: MHController.dataContext)
+            json.id = id
+            json.type = "\(obj.type!.rawValue)"
+            json.data = savedData
+            save()
+            return saved
         } catch {
             fatalError("Invalid value : \(error)")
         }
     }
     
-    public func createNewJSONData<T:HMCodable>(id:String, obj:T) -> JSONData
+    public func createNewJSONData<T:ArcCodable>(id:String, obj:T) -> JSONData
     {
         do {
             var saved = obj
@@ -129,14 +129,14 @@ open class MHController {
 		
     }
     
-    public func get<T:HMCodable>(id:String) throws -> T {
+    public func get<T:ArcCodable>(id:String) throws -> T {
         guard let result = fetch(id: id), let value:T = result.get() else {
             throw MHController.ControllerError.NotFound
         }
         return value
     }
     
-    @discardableResult public func delete<T:HMCodable>(data:T) -> Bool {
+    @discardableResult public func delete<T:ArcCodable>(data:T) -> Bool {
         var success = false
         
         guard let id = data.id else {

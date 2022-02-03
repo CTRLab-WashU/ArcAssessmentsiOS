@@ -7,7 +7,7 @@
 //
 
 import Foundation
-open class TestController<T:HMTestCodable> : MHController {
+open class TestController<T:ArcTestCodable> : MHController {
     public enum ResponseError : Error {
         case invalidInput
         case invalidQuestionIndex

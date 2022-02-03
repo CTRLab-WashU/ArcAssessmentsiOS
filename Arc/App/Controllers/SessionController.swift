@@ -179,7 +179,7 @@ open class SessionController:MHController {
 					NotificationCenter.default.post(name: .ACSessionUploadFailure, object: weakSelf.sessionUploads)
 					return
 				}
-				HMLog("Session: \(full.session_id ?? ""), received response \(data?.toString() ?? "") on \(Date())", silent: false)
+				ArcLog("Session: \(full.session_id ?? ""), received response \(data?.toString() ?? "") on \(Date())", silent: false)
 				if data?.errors.count == 0 {
 					session.uploaded = true
 					Arc.shared.studyController.clearData(sessionId: Int(session.sessionID), force: true)
@@ -190,7 +190,7 @@ open class SessionController:MHController {
 							NotificationCenter.default.post(name: .ACSessionUploadComplete, object: weakSelf.sessionUploads)
 						}
 					} else {
-						HMLog("\(md5 ?? "") does not match \(data?.response?.md5 ?? "")")
+						ArcLog("\(md5 ?? "") does not match \(data?.response?.md5 ?? "")")
 					}
 				} else {
                     print(data?.errors.toString() as Any)
@@ -215,7 +215,7 @@ open class SessionController:MHController {
 		let md5 = data.encode()?.MD5()
 		let submitTestSchedule:HMAPIRequest<TestScheduleRequestData, HMResponse> = .post("submit-test-schedule")
 		submitTestSchedule.execute(data: data) { (response, obj, _) in
-			HMLog("received response \(obj?.toString() ?? "") on \(Date())", silent: false)
+			ArcLog("received response \(obj?.toString() ?? "") on \(Date())", silent: false)
 			
 			MHController.dataContext.performAndWait {
 				
@@ -224,10 +224,10 @@ open class SessionController:MHController {
 					if md5 == obj?.response?.md5 {
 						self.save()
 
-						HMLog("\(md5 ?? "") does match \(obj?.response?.md5 ?? "")", silent: false)
+						ArcLog("\(md5 ?? "") does match \(obj?.response?.md5 ?? "")", silent: false)
 						
 					} else {
-						HMLog("\(md5 ?? "") does not match \(obj?.response?.md5 ?? "")", silent: false)
+						ArcLog("\(md5 ?? "") does not match \(obj?.response?.md5 ?? "")", silent: false)
 					}
 				} else {
 					studyPeriod.scheduleUploaded = false
@@ -255,19 +255,19 @@ open class SessionController:MHController {
 		
 		let submitTestSchedule:HMAPIRequest<TestScheduleRequestData, HMResponse> = .post("submit-test-schedule")
 		submitTestSchedule.execute(data: data) { (response, obj, _) in
-			HMLog("received response \(obj?.toString() ?? "") on \(Date())")
+			ArcLog("received response \(obj?.toString() ?? "") on \(Date())")
 			MHController.dataContext.performAndWait {
 				
 				if obj?.errors.count == 0 {
 					studyPeriods.forEach({$0.scheduleUploaded = true})
 					if md5 == obj?.response?.md5 {
 						self.save()
-						HMLog("\(md5 ?? "") does match \(obj?.response?.md5 ?? "")", silent: false)
+						ArcLog("\(md5 ?? "") does match \(obj?.response?.md5 ?? "")", silent: false)
 						Arc.shared.appController.testScheduleUploaded = true
 
 						
 					} else {
-						HMLog("\(md5 ?? "") does not match \(obj?.response?.md5 ?? "")", silent: false)
+						ArcLog("\(md5 ?? "") does not match \(obj?.response?.md5 ?? "")", silent: false)
 					}
 				} else {
 					studyPeriods.forEach({$0.scheduleUploaded = true})

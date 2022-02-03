@@ -12,7 +12,7 @@ import Foundation
 
 
 
-public struct Survey : HMCodable {
+public struct Survey : ArcCodable {
     
 	public static var dataType: SurveyType = SurveyType.unknown
 

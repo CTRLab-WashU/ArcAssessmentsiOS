@@ -8,9 +8,9 @@
 
 import Foundation
 public struct AnyTest : Codable {
-	public var data:HMCodable
+	public var data:ArcCodable
 	
-	public init (_ data:HMCodable) {
+	public init (_ data:ArcCodable) {
 		self.data = data
 	}
 	private enum CodingKeys : CodingKey {
@@ -29,7 +29,7 @@ public struct AnyTest : Codable {
 		
 	}
 }
-public struct CognitiveTest : HMCodable {
+public struct CognitiveTest : ArcCodable {
 	
 	
 	public static var dataType: SurveyType = .cognitive

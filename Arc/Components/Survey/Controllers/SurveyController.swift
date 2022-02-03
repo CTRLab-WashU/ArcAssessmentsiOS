@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 open class SurveyController : MHController {
+    
     private var loadedSurvey:Survey?
 	open func load(survey template:String, bundle:Bundle = .main) -> Survey {
 		

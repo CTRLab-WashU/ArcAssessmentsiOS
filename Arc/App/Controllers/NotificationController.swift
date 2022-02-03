@@ -86,7 +86,7 @@ open class NotificationController : MHController
         if let trigger = notification.request.trigger as? UNCalendarNotificationTrigger,
             let triggerDate = Calendar.current.date(from: trigger.dateComponents)?.timeIntervalSince1970 {
             let deviation = deliveryDate - triggerDate
-            HMLog("received notification \(notification.request.identifier): \(response?.actionIdentifier), Delivery deviation: \(deviation)");
+            ArcLog("received notification \(notification.request.identifier): \(response?.actionIdentifier), Delivery deviation: \(deviation)");
             if fabs(deviation) > 60 * 10 {
                 let error = ControllerError.fireDateDeviation(deviation)
                 Arc.handleError(error, named: "Notification Deviation")
@@ -137,7 +137,7 @@ open class NotificationController : MHController
 		request) {
 			error in
 			if let error = error {
-				HMLog("Scheduling notification produced an error \(error.localizedDescription)")
+				ArcLog("Scheduling notification produced an error \(error.localizedDescription)")
 				dump(error)
                 Arc.handleError(error, named: "Scheduling notification produced an error")
 			}
@@ -322,7 +322,7 @@ open class NotificationController : MHController
                         return nil
                     }
                 }
-                HMLog("Removing \($0.request.identifier)")
+                ArcLog("Removing \($0.request.identifier)")
 
                 return $0.request.identifier
             }
@@ -560,13 +560,13 @@ open class NotificationController : MHController
 	
 	open func printPendingSystemNotifications()
     {
-        HMLog("printing pending system notifications");
+        ArcLog("printing pending system notifications");
 		
 		UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-			HMLog("\(requests.count) requests.")
+			ArcLog("\(requests.count) requests.")
 			for r in requests
 			{
-				HMLog("\(r.trigger!) | \(r.identifier) | \(r.content.title) | \(r.content.body)");
+				ArcLog("\(r.trigger!) | \(r.identifier) | \(r.content.title) | \(r.content.body)");
 			}
 		});
 	}
