@@ -45,9 +45,9 @@ open class GridTestViewController: ArcViewController, UICollectionViewDelegate, 
     @IBOutlet public weak var tapOnTheFsLabel: ACLabel!
     @IBOutlet public weak var collectionViewWidth: NSLayoutConstraint!
     public weak var delegate:GridTestViewControllerDelegate?
-    private var symbols:[UIImage] = [#imageLiteral(resourceName: "key"),
-                                     #imageLiteral(resourceName: "phone"),
-                                     #imageLiteral(resourceName: "pen")]
+    private var symbols:[UIImage] = [Arc.shared.image(named: "key")!,
+                                     Arc.shared.image(named: "phone")!,
+                                     Arc.shared.image(named: "pen")!]
     public var revealedIndexPaths:[IndexPath] = []
     
     private var IMAGE_HEIGHT:Int {
