@@ -384,16 +384,15 @@ class GridTestTutorialViewController: ACTutorialViewController, GridTestViewCont
             $0.distribution = .fillEqually
             $0.axis = .horizontal
             $0.spacing = 20
-            
-            
+
             $0.image {
-                $0.image = #imageLiteral(resourceName: "phone")
+                $0.image = Arc.shared.image(named: "phone")!
             }
             image = $0.image {
-                $0.image = #imageLiteral(resourceName: "key")
+                $0.image = Arc.shared.image(named: "key")!
             }
             $0.image {
-                $0.image = #imageLiteral(resourceName: "pen")
+                $0.image = Arc.shared.image(named: "pen")!
             }
             $0.layout {
                 
