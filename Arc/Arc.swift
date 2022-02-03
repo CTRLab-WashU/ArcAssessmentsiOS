@@ -30,9 +30,7 @@ open class Arc : ArcApi {
 	
 	var ARC_VERSION_INFO_KEY = "CFBundleShortVersionString"
 	var APP_VERSION_INFO_KEY = "CFBundleShortVersionString"
-    public var APP_PRIVACY_POLICY_URL = ""
-    public var WELCOME_LOGO:UIImage? = nil
-    public var WELCOME_TEXT = ""
+    
 	public var TEST_TIMEOUT:TimeInterval = 300; // 5 minute timeout if the application is closed
 	public var TEST_START_ALLOWANCE:TimeInterval = -300; // 5 minute window before actual start time
     public var activeTab:Int = 0
@@ -135,10 +133,7 @@ open class Arc : ArcApi {
 	}
     static public func configureWithEnvironment(environment:ArcEnvironment) {
         self.environment = environment
-
-		Arc.debuggableStates = environment.debuggableStates
-		CoreDataStack.useMockContainer = environment.mockData
-
+        
         _ = MHController.dataContext
         
         Arc.shared.appNavigation = environment.appNavigation
@@ -154,12 +149,6 @@ open class Arc : ArcApi {
         
         Arc.shared.setLocalization(country: Arc.shared.appController.country ?? locale.regionCode,
                                    language: Arc.shared.appController.language ?? locale.languageCode)
-
-        
-        
-        Arc.shared.WELCOME_LOGO =  Arc.shared.image(named: environment.welcomeLogo ?? "")
-        Arc.shared.WELCOME_TEXT = environment.welcomeText ?? ""
-        Arc.shared.APP_PRIVACY_POLICY_URL = environment.privacyPolicyUrl ?? ""
 
         environment.configure()
     }

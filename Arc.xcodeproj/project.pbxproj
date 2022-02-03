@@ -21,7 +21,6 @@
 		C51A7D9022D8CDAE00854B13 /* BasicSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A7D8F22D8CDAE00854B13 /* BasicSurveyViewController.swift */; };
 		C523B38622CA76450074337D /* UIViewController + CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523B38522CA76450074337D /* UIViewController + CustomView.swift */; };
 		C52B75D521C837A200498571 /* Session+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE90E21C81B5C00DEC360 /* Session+Extensions.swift */; };
-		C540B5B1221E0FD000B539A4 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540B5B0221E0FD000B539A4 /* LanguageViewController.swift */; };
 		C54AE8F821C81B2F00DEC360 /* Arc.h in Headers */ = {isa = PBXBuildFile; fileRef = C54AE8EA21C81B2F00DEC360 /* Arc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C54AE9CE21C81B5F00DEC360 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54AE90121C81B5B00DEC360 /* SharedAssets.xcassets */; };
 		C54AE9CF21C81B5F00DEC360 /* ACEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE90221C81B5B00DEC360 /* ACEnvironment.swift */; };
@@ -278,7 +277,6 @@
 		C51A7D8622D7EC5900854B13 /* ParticipationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipationView.swift; sourceTree = "<group>"; };
 		C51A7D8F22D8CDAE00854B13 /* BasicSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSurveyViewController.swift; sourceTree = "<group>"; };
 		C523B38522CA76450074337D /* UIViewController + CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + CustomView.swift"; sourceTree = "<group>"; };
-		C540B5B0221E0FD000B539A4 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		C54AE8E721C81B2F00DEC360 /* Arc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Arc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54AE8EA21C81B2F00DEC360 /* Arc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Arc.h; sourceTree = "<group>"; };
 		C54AE8EB21C81B2F00DEC360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -879,7 +877,6 @@
 				C54AE99621C81B5C00DEC360 /* IntroViewController.swift */,
 				C54AE99721C81B5C00DEC360 /* SurveyNavigationViewController.swift */,
 				C54AE99A21C81B5C00DEC360 /* SurveyViewController.swift */,
-				C540B5B0221E0FD000B539A4 /* LanguageViewController.swift */,
 				C5E1E34E2253E84900255812 /* ACWakeSurveyViewController.swift */,
 			);
 			path = ViewControllers;
@@ -1407,7 +1404,6 @@
 				C594B3DC23E245F100B9743C /* HideGoodPrice.swift in Sources */,
 				C54AEA6321C81B5F00DEC360 /* CoreDataStack.swift in Sources */,
 				C54AEA1B21C81B5F00DEC360 /* TextAlertView.swift in Sources */,
-				C540B5B1221E0FD000B539A4 /* LanguageViewController.swift in Sources */,
 				C54AEA1221C81B5F00DEC360 /* FinishedNavigationController.swift in Sources */,
 				CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */,
 				C54D104B22C28A1D00B43E42 /* ACCalendarView.swift in Sources */,

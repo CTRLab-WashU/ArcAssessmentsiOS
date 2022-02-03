@@ -81,7 +81,7 @@ open class LogManager: NSObject {
     
 }
 //silence all log messages for production
-public func ArcLog(_ s: String, quiet:Bool = false, silent:Bool = !(Arc.environment?.isDebug ?? false))
+public func ArcLog(_ s: String, quiet:Bool = false, silent: Bool = false)
 {
 	if !silent {
 		if !quiet
