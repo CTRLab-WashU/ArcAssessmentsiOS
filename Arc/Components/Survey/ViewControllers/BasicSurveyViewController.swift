@@ -58,17 +58,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		questions = survey.questions
 		
 		subQuestions = survey.subQuestions
-		
-        if let surveyIdUnwrapped = surveyId {
-            self.surveyId = surveyIdUnwrapped
-        } else {
-            if let surveyIdUnwrapped = Arc.shared.currentSurveyId {
-                self.surveyId = surveyIdUnwrapped
-            } else {
-                self.surveyId = "" // needed for compilation
-                assertionFailure("Error: need survey ID to launch a survey, set one in Arc.shared.currentSurveyId")
-            }
-        }
+        self.surveyId = newSurvey.id!
 		
 		super.init(nibName: nil, bundle: nil)
 	}

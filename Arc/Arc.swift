@@ -111,9 +111,7 @@ open class Arc : ArcApi {
 		}
 	}
     
-    public var currentSurveyId: String? = nil
     public var currentTestIdx: Int = 0
-    public var shouldRunTutorials: Bool = false
     public var availabilityStartHour: Int = 8 // 8 am
     public var availabilityEndHour: Int = 17 // 5 pm
     
