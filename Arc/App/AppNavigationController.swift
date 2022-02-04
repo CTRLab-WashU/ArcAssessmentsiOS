@@ -32,11 +32,6 @@ public protocol AppNavigationController {
 	///If a test session has begun what shall we do next?
 	func nextAvailableSurveyState() -> State?
 	
-	////This will check to see what location the app should take you next
-	///Generally this takes you home if the app is fully configured.
-	///(Signed in, You've signed up for notifications, other config)
-	func nextAvailableState(runPeriodicBackgroundTask:Bool) -> State
-	
 	///Just replace the current root view controller
 	func navigate(vc:UIViewController, direction: UIWindow.TransitionOptions.Direction)
 	
@@ -78,11 +73,6 @@ open class BaseAppNavigationController : AppNavigationController {
     public func defaultPrivacy() {
         print("Must override this")
     }
-
-	public func nextAvailableState(runPeriodicBackgroundTask: Bool) -> State {
-		return ACState.home
-
-	}
 	
 	public func nextAvailableSurveyState() -> State? {
 		return ACState.home

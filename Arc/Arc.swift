@@ -22,6 +22,15 @@ public enum ArcBundle {
     public static let module = Bundle.module
 }
 
+public struct ArcAssessmentResult {
+    public var signatures: [UIImage]? = nil
+    public var jsonResult: String? = nil
+}
+
+public protocol ArcAssessmentDelegate: AnyObject {
+    func assessmentComplete(result: ArcAssessmentResult)
+    func assessmentCancelled()
+}
 
 public enum SurveyAvailabilityStatus: Equatable {
     case available, laterToday, tomorrow, startingTomorrow(String, String), laterThisCycle(String), later(String, String), finished, postBaseline
@@ -31,11 +40,14 @@ open class Arc : ArcApi {
 	var ARC_VERSION_INFO_KEY = "CFBundleShortVersionString"
 	var APP_VERSION_INFO_KEY = "CFBundleShortVersionString"
     
+    public weak var delegate: ArcAssessmentDelegate? = nil
+    
 	public var TEST_TIMEOUT:TimeInterval = 300; // 5 minute timeout if the application is closed
 	public var TEST_START_ALLOWANCE:TimeInterval = -300; // 5 minute window before actual start time
     public var activeTab:Int = 0
 	var STORE_DATA = false
 	var FORGET_ON_RESTART = false
+    
     lazy var arcInfo: NSDictionary? = {
         if let path = Bundle.module.path(forResource: "Info", ofType: "plist") {
             return NSDictionary(contentsOfFile: path)
@@ -43,6 +55,7 @@ open class Arc : ArcApi {
         }
         return nil
     }()
+    
 	lazy var info: NSDictionary? = {
 		if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
 			return NSDictionary(contentsOfFile: path)
@@ -50,6 +63,7 @@ open class Arc : ArcApi {
 		}
 		return nil
 	}()
+    
     lazy public var translation:ArcTranslation? = {
         do {
             guard let asset = Arc.shared.dataAsset(named: "translation") else {
@@ -63,6 +77,7 @@ open class Arc : ArcApi {
         }
         return nil
     }()
+    
     public var translationIndex = 1
 	lazy public var deviceString = {deviceInfo();}()
 	lazy public var deviceId = AppController().deviceId
@@ -156,8 +171,13 @@ open class Arc : ArcApi {
         environment.configure()
     }
     
-    public func nextAvailableState(runPeriodicBackgroundTask:Bool = false, direction:UIWindow.TransitionOptions.Direction = .toRight) {
-		let state = appNavigation.nextAvailableState(runPeriodicBackgroundTask: runPeriodicBackgroundTask)
+    public func nextAvailableState(direction:UIWindow.TransitionOptions.Direction = .toRight) {
+		let statePossiblyNil = appNavigation.nextAvailableSurveyState()
+        
+        guard let state = statePossiblyNil else {
+            self.delegate?.assessmentComplete(result: ArcAssessmentResult())
+            return
+        }
         
         if !appNavigation.shouldNavigate(to: state) {
             print("App navigation blocked for state \(state)")
