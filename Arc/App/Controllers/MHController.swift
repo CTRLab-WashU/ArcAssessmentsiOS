@@ -97,12 +97,17 @@ open class MHController {
         return results?.first
 			
     }
+    
 	public func mark(filled id:String) -> JSONData? {
 		guard let item = fetch(id: id) else {
 			return nil
 		}
 		item.isFilledOut = true
 		save()
+        
+        // Add the completed data to the session result
+        Arc.shared.appController.dataCompleted(dataId: id, data: item)
+    
 		return item
 	}
     public func fetch<T:NSManagedObject>(predicate:NSPredicate? = nil, sort:[NSSortDescriptor]? = nil, limit:Int? = nil) -> [T]? {

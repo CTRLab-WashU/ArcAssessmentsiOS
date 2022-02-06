@@ -40,7 +40,13 @@ open class SampleAppNavigationController : AppNavigationController {
     public var states: [SampleAppState] = []
     public var stateIdx = 0
     
-    public func startTest(stateList: [SampleAppState]) -> UIViewController? {
+    public func getCognitiveAssessmentIndex(state: SampleAppState) -> Int {
+        return self.states.filter({ $0.isCognitiveAssessment() }).firstIndex(of: state) ?? 0
+    }
+    
+    public func startTest(stateList: [SampleAppState], info: ArcAssessmentSupplementalInfo? = nil) -> UIViewController? {
+        Arc.shared.appController.startNewTest(info: info)
+        ACState.testTaken = 0
         self.states = stateList
         self.stateIdx = 0
         
@@ -107,19 +113,22 @@ open class SampleAppNavigationController : AppNavigationController {
             debugPrint("Could not find forground key window to show screen")
             return
         }
-        
-        guard let _ = window.rootViewController else {
-            window.rootViewController = vc
+    
+        guard let currentVc = window.rootViewController?.presentedViewController else {
             window.makeKeyAndVisible()
             return
         }
-        var options = UIWindow.TransitionOptions(direction: direction, style: .linear)
-        options.duration = duration
-        let view = UIView()
-        view.backgroundColor = .white
-        options.background = UIWindow.TransitionOptions.Background.customView(view)
         
-        window.setRootViewController(vc, options:options)
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromRight
+        window.layer.add(transition, forKey: nil)
+        window.rootViewController?.dismiss(animated: false, completion: {
+            vc.modalPresentationStyle = .fullScreen
+            window.rootViewController?.present(vc, animated: false, completion: nil)
+        })
     }
     
     public func navigate(vc: UIViewController, direction: UIWindow.TransitionOptions.Direction) {
@@ -128,5 +137,53 @@ open class SampleAppNavigationController : AppNavigationController {
     
     public func shouldNavigate(to state: State) -> Bool {
         return true
+    }
+}
+
+extension CATransition {
+
+    //New viewController will appear from bottom of screen.
+    func segueFromBottom() -> CATransition {
+        self.duration = 0.375 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromTop
+        return self
+    }
+    
+    //New viewController will appear from top of screen.
+    func segueFromTop() -> CATransition {
+        self.duration = 0.375 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromBottom
+        return self
+    }
+    
+    //New viewController will appear from left side of screen.
+    func segueFromLeft() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
+    }
+    
+    //New viewController will pop from right side of screen.
+    func popFromRight() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromRight
+        return self
+    }
+    
+    //New viewController will appear from left side of screen.
+    func popFromLeft() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
     }
 }

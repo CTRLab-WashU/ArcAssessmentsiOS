@@ -11,6 +11,8 @@ import UIKit
 import CoreData
 open class SurveyController : MHController {
     
+    public var currentSurveyResponses = [String : SurveyResponse]()
+    
     private var loadedSurvey:Survey?
 	open func load(survey template:String, bundle:Bundle = .main) -> Survey {
 		

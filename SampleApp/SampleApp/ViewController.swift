@@ -34,12 +34,14 @@
 import UIKit
 import Arc
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArcAssessmentDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellRows.allCases.count
     }
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var signatureImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,12 +65,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let row = CellRows(rawValue: indexPath.row)
         let stateList = row?.stateList ?? [.context]
                 
+        // This is supplemental information about this specific session
+        // within the context of the study schedule
+        // This is optional, and will be simply copied into the ArcAssessmentResult
+        let arcSupplementalInfo = ArcAssessmentSupplementalInfo(
+            sessionID: 0, sessionAvailableDate: Date(), weekInStudy: 0, dayInWeek: 0, sessionInDay: 0)
+        
         if let sampleAppNavController = Arc.shared.appNavigation as? SampleAppNavigationController,
-           let vc = sampleAppNavController.startTest(stateList: stateList) {
-            
+           let vc = sampleAppNavController.startTest(stateList: stateList, info: arcSupplementalInfo) {
+            Arc.shared.delegate = self
             vc.modalPresentationStyle = .fullScreen
-            self.show(vc, sender: self)
+            self.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    func assessmentComplete(result: ArcAssessmentResult?) {
+        self.dismiss(animated: true, completion: {
+            let signatureResults = result?.signatures
+            if let firstSignatureData = signatureResults?.first?.data {
+                self.signatureImageView?.image = UIImage(data: firstSignatureData)
+            } else {
+                self.signatureImageView?.image = nil
+            }
+            if let jsonResult = result?.fullTestSession?.tests.first?.data as? CognitiveTest,
+               let jsonData = jsonResult.encode(outputFormatting: .prettyPrinted),
+               let jsonString = String(data: jsonData, encoding: .utf8) {
+                print(jsonString)
+            }
+        })
     }
 }
 
@@ -103,7 +127,7 @@ enum CellRows: Int, CaseIterable {
     var stateList: [SampleAppState] {
         switch(self) {
         case .contextSurvey:
-            return [.context]
+            return [.signatureStart, .context, .signatureEnd]
         case .wakeSurvey:
             return [.wake]
         case .chronotypeSurvey:

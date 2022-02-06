@@ -50,7 +50,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 	public var shouldNavigateToNextState:Bool = true
     public var currentViewControllerAlwaysHidesBarButtons = false
     
-    public init(file:String, surveyId:String? = nil, showHelp:Bool? = true) {
+    public init(file:String, surveyId:String? = nil, showHelp:Bool? = true, surveyType: SurveyType = .unknown) {
         shouldShowHelpButton = showHelp ?? true
         
 		let newSurvey = Arc.shared.surveyController.load(survey: file)
@@ -58,7 +58,14 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		questions = survey.questions
 		
 		subQuestions = survey.subQuestions
-        self.surveyId = Arc.shared.surveyController.create()
+        
+        if let surveyIdUnwrapped = surveyId {
+            self.surveyId = surveyIdUnwrapped
+        } else {
+            self.surveyId = file
+        }
+        let surveyId = Arc.shared.surveyController.create(surveyResponse: self.surveyId, type: surveyType)
+        
         
 		super.init(nibName: nil, bundle: nil)
 	}

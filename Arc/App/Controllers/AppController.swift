@@ -10,11 +10,19 @@ import Foundation
 import UIKit
 
 open class AppController : MHController {
+    
+    public var currentSessionID: Int64 = 0
+    
 	public enum Commitment : String, Codable {
 		case committed, rebuked
 	}
 	
 	public var testCount:Int = 0
+    
+    public func startNewTest(info: ArcAssessmentSupplementalInfo? = nil) {
+        self.currentSessionID = info?.sessionID ?? 0
+        self.createNewSession(info: info)
+    }
 	
 	public func store<T:Codable>(value:T?, forKey key:String) {
 		defaults.setValue(value?.encode(), forKey:key);
@@ -272,23 +280,26 @@ open class AppController : MHController {
 			defaults.synchronize();
 		}
 	}
-    public func fetch(signature sessionId:Int64, tag:Int32) -> Signature?{
-        var signature:Signature?
-        MHController.dataContext.performAndWait {
-            let predicate = NSPredicate(format: "tag == \(tag) AND sessionId == \(sessionId)")
-            signature = fetch(predicate: predicate, sort: nil, limit: 1)?.first
-        }
-        
-        return signature
-    }
+    
     public func save(signature image:UIImage, sessionId:Int64, tag:Int32) -> Bool {
-        let signature:Signature = new()
         guard let data = image.pngData() else {
             return false
         }
-        signature.data = data
-        signature.sessionId = sessionId
-        signature.tag = tag
+        
+        if (tag == 0) {
+            MHController.dataContext.perform {
+                let session = self.getSessionResult(sessionId: sessionId)
+                session?.startSignature = data
+                self.save()
+            }
+        } else if (tag == 1) {
+            MHController.dataContext.perform {
+                let session = self.getSessionResult(sessionId: sessionId)
+                session?.endSignature = data
+                self.save()
+            }
+        }
+        
         return true
     }
 
@@ -297,6 +308,58 @@ open class AppController : MHController {
             return true
         }
         return t < date.timeIntervalSince1970
+    }
+    
+    public func dataCompleted(dataId: String, data: JSONData) {
+        MHController.dataContext.performAndWait {
+            guard let currentSession = self.getSessionResult(sessionId: self.currentSessionID) else {
+                print("Could not find current session, make sure session id is set in AppController")
+                return
+            }
+            currentSession.removeFromSessionData(data)
+            currentSession.addToSessionData(data)
+            self.save()
+        }
+    }
+    
+    public func getCurrentSessionResult() -> Session? {
+        return getSessionResult(sessionId: self.currentSessionID)
+    }
+    
+    private func deletePrevSessionResults(sessionId: Int64) {
+        MHController.dataContext.performAndWait {
+            self.getSessionResults(sessionId: sessionId).forEach { session in
+                MHController.dataContext.delete(session)
+            }
+            self.save()
+        }
+    }
+    
+    private func getSessionResults(sessionId: Int64) -> [Session] {
+        let predicate = NSPredicate(format: "sessionID == \(sessionId)")
+        let sortDescriptors = [NSSortDescriptor(key:"sessionDate", ascending:true)]
+        let results:[Session] = fetch(predicate: predicate, sort: sortDescriptors) ?? []
+        return results
+    }
+    
+    public func getSessionResult(sessionId: Int64) -> Session? {
+        return self.getSessionResults(sessionId: sessionId).first
+    }
+    
+    open func createNewSession(info: ArcAssessmentSupplementalInfo? = nil) {
+        let sessionId = info?.sessionID ?? 0
+        self.deletePrevSessionResults(sessionId: sessionId)
+        MHController.dataContext.performAndWait {
+            let newSession: Session = self.new()
+            newSession.sessionID = sessionId
+            newSession.startTime = Date()
+            newSession.sessionDate = info?.sessionDate
+            newSession.expirationDate = info?.sessionDate.addingHours(hours: 2)
+            newSession.week = info?.week ?? 0
+            newSession.day = info?.day ?? 0
+            newSession.session = info?.session ?? 0
+            self.save()
+        }
     }
 }
 
@@ -424,5 +487,33 @@ public enum ACLocale : String{
     var availablePriceTest:String {
     let value = "prices/\(self.rawValue)/price_sets"
        return value
+    }
+}
+
+public struct ArcAssessmentSignature {
+    // The PNG data of a UIImage
+    public var data: Data
+    // The tag can be used to differentiate between multiple signatures in a session
+    public var tag: Int32
+}
+
+public struct ArcAssessmentSupplementalInfo {
+    public var sessionID: Int64
+    public var sessionDate: Date
+    public var week: Int64
+    public var day: Int64
+    public var session: Int64
+    
+    public init(sessionID: Int64,
+                sessionAvailableDate: Date,
+                weekInStudy: Int64,
+                dayInWeek: Int64,
+                sessionInDay: Int64) {
+        
+        self.sessionID = sessionID
+        self.sessionDate = sessionAvailableDate
+        self.week = weekInStudy
+        self.day = dayInWeek
+        self.session = sessionInDay
     }
 }

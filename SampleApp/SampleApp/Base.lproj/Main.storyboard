@@ -57,17 +57,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="aIn-8w-jxi"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJw-ul-abh">
+                                <rect key="frame" x="0.0" y="640" width="414" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="Lb4-3D-Ror"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ha1-0f-RFe" secondAttribute="bottom" id="3Y5-De-CI1"/>
+                            <constraint firstItem="dJw-ul-abh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="72T-Ss-8DV"/>
+                            <constraint firstAttribute="bottom" secondItem="dJw-ul-abh" secondAttribute="bottom" id="IlU-65-zJp"/>
                             <constraint firstItem="Ha1-0f-RFe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QuR-1e-oFY"/>
                             <constraint firstItem="Ha1-0f-RFe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m5K-Zg-wuG"/>
+                            <constraint firstItem="dJw-ul-abh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sA4-gw-fgj"/>
                             <constraint firstItem="Ha1-0f-RFe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="toS-PP-00L"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="signatureImageView" destination="dJw-ul-abh" id="Wvo-u6-JrZ"/>
                         <outlet property="tableView" destination="Ha1-0f-RFe" id="gjD-fA-9cf"/>
                     </connections>
                 </viewController>

@@ -17,9 +17,7 @@ public enum ACState : String, State, CaseIterable {
 	
 	static var tests:[ACState] {return [.gridTest, .priceTest, .symbolsTest] }
 	static public var testCount = 0
-	static public var testTaken:Int {
-        return Arc.shared.currentTestIdx
-	}
+	static public var testTaken: Int = 0
 	
 	public func surveyTypeForState() -> SurveyType {
 		return SurveyType(rawValue: self.rawValue) ?? .unknown

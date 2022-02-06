@@ -23,24 +23,24 @@ public enum ArcBundle {
 }
 
 public struct ArcAssessmentResult {
-    public var signatures: [UIImage]? = nil
-    public var jsonResult: String? = nil
+    public var signatures: [ArcAssessmentSignature]? = nil
+    public var fullTestSession: FullTestSession? = nil
 }
 
 public protocol ArcAssessmentDelegate: AnyObject {
-    func assessmentComplete(result: ArcAssessmentResult)
-    func assessmentCancelled()
+    func assessmentComplete(result: ArcAssessmentResult?)
 }
 
 public enum SurveyAvailabilityStatus: Equatable {
     case available, laterToday, tomorrow, startingTomorrow(String, String), laterThisCycle(String), later(String, String), finished, postBaseline
 }
 open class Arc : ArcApi {
+    
 	
 	var ARC_VERSION_INFO_KEY = "CFBundleShortVersionString"
 	var APP_VERSION_INFO_KEY = "CFBundleShortVersionString"
     
-    public weak var delegate: ArcAssessmentDelegate? = nil
+    public weak var delegate: ArcAssessmentDelegate? = nil    
     
 	public var TEST_TIMEOUT:TimeInterval = 300; // 5 minute timeout if the application is closed
 	public var TEST_START_ALLOWANCE:TimeInterval = -300; // 5 minute window before actual start time
@@ -131,8 +131,7 @@ open class Arc : ArcApi {
 			appController.participantId = newValue
 		}
 	}
-    
-    public var currentTestIdx: Int = 0
+        
     public var availabilityStartHour: Int = 8 // 8 am
     public var availabilityEndHour: Int = 17 // 5 pm
     
@@ -171,11 +170,36 @@ open class Arc : ArcApi {
         environment.configure()
     }
     
+    private func onTestComplete() {
+        MHController.dataContext.perform {
+            guard let session = self.appController.getCurrentSessionResult() else {
+                self.delegate?.assessmentComplete(result: nil)
+                return
+            }
+            
+            var signatures = [ArcAssessmentSignature]()
+            if let firstSignature = session.startSignature {
+                signatures.append(ArcAssessmentSignature(data: firstSignature, tag: 0))
+            }
+            if let lastSignature = session.endSignature {
+                signatures.append(ArcAssessmentSignature(data: lastSignature, tag: 0))
+            }
+            session.finishedSession = true
+            let fullTestSession: FullTestSession = .init(withSession: session)
+            let result = ArcAssessmentResult(signatures: signatures,
+                                             fullTestSession: fullTestSession)
+
+            DispatchQueue.main.async {
+                self.delegate?.assessmentComplete(result: result)
+            }
+        }
+    }
+    
     public func nextAvailableState(direction:UIWindow.TransitionOptions.Direction = .toRight) {
 		let statePossiblyNil = appNavigation.nextAvailableSurveyState()
         
         guard let state = statePossiblyNil else {
-            self.delegate?.assessmentComplete(result: ArcAssessmentResult())
+            self.onTestComplete()
             return
         }
         
@@ -188,6 +212,7 @@ open class Arc : ArcApi {
 		Arc.currentState = state
         appNavigation.navigate(state: state, direction: direction)
 	}
+    
 	public func nextAvailableSurveyState() {
 		
 		let state = appNavigation.nextAvailableSurveyState() ?? appNavigation.defaultState()

@@ -35,7 +35,7 @@ import Foundation
 import Arc
 import UIKit
 
-public enum SampleAppState: Int, State, CaseIterable {
+public enum SampleAppState: String, State, CaseIterable {
     
     case context, chronotype, wake, gridTest, priceTest, symbolsTest, signatureStart, signatureEnd, all
     
@@ -45,7 +45,10 @@ public enum SampleAppState: Int, State, CaseIterable {
     
     //Return a view controller w
     public func viewForState() -> UIViewController {
+        
+        let testIdx = (Arc.shared.appNavigation as? SampleAppNavigationController)?.getCognitiveAssessmentIndex(state: self) ?? 0
 
+        let surveyType = self.surveyTypeForState()
         switch self {
             case .signatureStart:
                 let vc:ACSignatureNavigationController = .get()
@@ -61,8 +64,8 @@ public enum SampleAppState: Int, State, CaseIterable {
                 let vc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
+                .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
                 
                 controller.load(instructions: "TestingIntro-Grids")
                 return controller
@@ -70,8 +73,8 @@ public enum SampleAppState: Int, State, CaseIterable {
                 let vc:PricesTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
+                    .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
                     .replacingOccurrences(of: "{Value2}", with: "3")
                 
                 controller.load(instructions: "TestingIntro-Prices")
@@ -81,20 +84,20 @@ public enum SampleAppState: Int, State, CaseIterable {
                 let vc:SymbolsTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(ACState.testTaken + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(ACState.testTaken + 1)")
+                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
+                    .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
                     .replacingOccurrences(of: "{Value2}", with: "3")
                 
                 controller.load(instructions: "TestingIntro-Symbols")
                 return controller
             case .context:
-                let controller:BasicSurveyViewController = .init(file: "context", surveyId: nil, showHelp: false)
+                let controller:BasicSurveyViewController = .init(file: "context", surveyType: surveyType)
                 return controller
             case .chronotype:
-                let controller:ACWakeSurveyViewController = .init(file:"chronotype")
+                let controller:ACWakeSurveyViewController = .init(file:"chronotype", surveyType: surveyType)
                 return controller
             case .wake:
-                let controller:ACWakeSurveyViewController = .init(file:"wake")
+                let controller:ACWakeSurveyViewController = .init(file:"wake", surveyType: surveyType)
                 return controller
             default:
                 return UIViewController()
@@ -117,6 +120,19 @@ public enum SampleAppState: Int, State, CaseIterable {
             return .priceTest
         default:
             return .unknown
+        }
+    }
+    
+    public func isCognitiveAssessment() -> Bool {
+        switch self {
+        case .symbolsTest:
+            return true
+        case .gridTest:
+            return true
+        case .priceTest:
+            return true
+        default:
+            return false
         }
     }
 }
