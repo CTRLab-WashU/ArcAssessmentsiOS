@@ -9,6 +9,20 @@
 import UIKit
 
 public struct Georgia {
+    
+    public static let robotoFonts = [
+        "Roboto-Black.ttf",
+        "Roboto-BlackItalic.ttf",
+        "Roboto-Bold.ttf",
+        "Roboto-BoldItalic.ttf",
+        "Roboto-Italic.ttf",
+        "Roboto-Light.ttf",
+        "Roboto-LightItalic.ttf",
+        "Roboto-Medium.ttf",
+        "Roboto-MediumItalic.ttf",
+        "Roboto-Thin.ttf",
+        "Roboto-ThinItalic.ttf"]
+    
 	static public let family = "Georgia"
 	public struct Face {
 		static public let blackItalic = "BlackItalic"

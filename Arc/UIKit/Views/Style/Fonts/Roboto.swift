@@ -32,6 +32,7 @@ public struct Roboto {
         "Roboto-LightItalic.ttf",
         "Roboto-Medium.ttf",
         "Roboto-MediumItalic.ttf",
+        "Roboto-Regular.ttf",
         "Roboto-Thin.ttf",
         "Roboto-ThinItalic.ttf"]
 	
