@@ -1,13 +1,14 @@
-name: Run tests
+name: Unit Tests
 
 on:
   pull_request:
     branches:
       - main
+      - release/*
   push:
     branches:
       - main
-	  - release/*
+      - release/*
     tags:
       - 'v*'
 
