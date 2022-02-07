@@ -13,7 +13,6 @@
 		177BA7342527CD980018A25F /* GridTestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BA7332527CD980018A25F /* GridTestType.swift */; };
 		17CE9D0824D89E7B002EF878 /* GridTestSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17CE9D0724D89E7B002EF878 /* GridTestSelectionView.xib */; };
 		2D35988D237B6604005EF2CF /* SimplifiedPricesTestTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35988C237B6604005EF2CF /* SimplifiedPricesTestTutorialViewController.swift */; };
-		2D5711F722EB815E00E7F881 /* StudyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5711F622EB815E00E7F881 /* StudyProgress.swift */; };
 		2DB76D7122F3B3D900EE36A0 /* SymbolsTestTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB76D7022F3B3D900EE36A0 /* SymbolsTestTutorialViewController.xib */; };
 		C5143959224EA6FD000BF1CB /* ACSignatureNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5143958224EA6FD000BF1CB /* ACSignatureNavigationController.swift */; };
 		C5192A6F22C519D900223B69 /* UIDSL+ArcCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5192A6E22C519D900223B69 /* UIDSL+ArcCore.swift */; };
@@ -36,16 +35,12 @@
 		C54AE9E121C81B5F00DEC360 /* ArcLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE91A21C81B5C00DEC360 /* ArcLog.swift */; };
 		C54AE9E221C81B5F00DEC360 /* FatalErrorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE91B21C81B5C00DEC360 /* FatalErrorUtil.swift */; };
 		C54AE9E321C81B5F00DEC360 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE91C21C81B5C00DEC360 /* Algorithms.swift */; };
-		C54AE9E421C81B5F00DEC360 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE91F21C81B5C00DEC360 /* StatusCode.swift */; };
-		C54AE9E521C81B5F00DEC360 /* ArcFault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92021C81B5C00DEC360 /* ArcFault.swift */; };
-		C54AE9E921C81B5F00DEC360 /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92421C81B5C00DEC360 /* TestSession.swift */; };
 		C54AE9EE21C81B5F00DEC360 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92A21C81B5C00DEC360 /* ToggleButton.swift */; };
 		C54AE9EF21C81B5F00DEC360 /* ArcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92C21C81B5C00DEC360 /* ArcViewController.swift */; };
 		C54AE9F021C81B5F00DEC360 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92D21C81B5C00DEC360 /* AppNavigationController.swift */; };
 		C54AE9F121C81B5F00DEC360 /* ArcControllerRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE92E21C81B5C00DEC360 /* ArcControllerRegistry.swift */; };
 		C54AE9F221C81B5F00DEC360 /* UINavigationProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE93021C81B5C00DEC360 /* UINavigationProxy.swift */; };
 		C54AE9F321C81B5F00DEC360 /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE93121C81B5C00DEC360 /* ProxyManager.swift */; };
-		C54AE9F721C81B5F00DEC360 /* MHController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE93621C81B5C00DEC360 /* MHController.swift */; };
 		C54AE9F821C81B5F00DEC360 /* SlidePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE93721C81B5C00DEC360 /* SlidePresentAnimationController.swift */; };
 		C54AE9F921C81B5F00DEC360 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54AE93821C81B5C00DEC360 /* AppController.swift */; };
 		C54AE9FA21C81B5F00DEC360 /* CancelButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54AE93A21C81B5C00DEC360 /* CancelButton.xib */; };
@@ -195,7 +190,6 @@
 		C5DA18662305F6E9003C84C2 /* GoalBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DA18652305F6E9003C84C2 /* GoalBackgroundView.swift */; };
 		C5E1530B22C64B630066FD6B /* PrivacyStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1530A22C64B630066FD6B /* PrivacyStack.swift */; };
 		C5E1E34F2253E84900255812 /* ACWakeSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1E34E2253E84900255812 /* ACWakeSurveyViewController.swift */; };
-		C5E1E3962257ECC200255812 /* ACChangeAvailabilityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E1E3942257ECC200255812 /* ACChangeAvailabilityViewController.xib */; };
 		C5E7212822F10D25004B9E26 /* TestProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7212722F10D25004B9E26 /* TestProgressViewController.swift */; };
 		C5E7212A22F10D9C004B9E26 /* TestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7212922F10D9C004B9E26 /* TestProgressView.swift */; };
 		C5EB849623DB8CA30070A240 /* ACPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EB849523DB8CA30070A240 /* ACPDFViewController.swift */; };
@@ -207,7 +201,11 @@
 		CB0C724A27AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C724527AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift */; };
 		CB0C724B27AC71C30038D6D7 /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */; };
 		CB96153827AB15520064F658 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96153727AB15520064F658 /* FontLoader.swift */; };
-		CB984EF7271F22350034C9BB /* HmToSageMigrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */; };
+		CBCD063C27B1E4B100781157 /* StudyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063827B1E4B100781157 /* StudyProgress.swift */; };
+		CBCD063D27B1E4B100781157 /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063927B1E4B100781157 /* TestSession.swift */; };
+		CBCD063E27B1E4B100781157 /* ArcFault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063A27B1E4B100781157 /* ArcFault.swift */; };
+		CBCD063F27B1E4B100781157 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063B27B1E4B100781157 /* StatusCode.swift */; };
+		CBCD064127B1E64300781157 /* ArcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD064027B1E64300781157 /* ArcController.swift */; };
 		CBDC438D272A7049004ACE2D /* Arc4To5MigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */; };
 		CBDC439B272A7E98004ACE2D /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438E272A7E98004ACE2D /* arc.xcdatamodeld */; };
 		CBDC439C272A7E98004ACE2D /* Arc4To5MappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = CBDC4395272A7E98004ACE2D /* Arc4To5MappingModel.xcmappingmodel */; };
@@ -246,7 +244,6 @@
 		CBDC43EF272A8163004ACE2D /* Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43EB272A8162004ACE2D /* Animate.swift */; };
 		CBDC43F2272A8169004ACE2D /* Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F0272A8169004ACE2D /* Roboto.swift */; };
 		CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F1272A8169004ACE2D /* Georgia.swift */; };
-		E898B20823282EA400FBF22D /* AC2FAHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E898B20723282EA400FBF22D /* AC2FAHelpViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,7 +263,6 @@
 		177BA7332527CD980018A25F /* GridTestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTestType.swift; sourceTree = "<group>"; };
 		17CE9D0724D89E7B002EF878 /* GridTestSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridTestSelectionView.xib; sourceTree = "<group>"; };
 		2D35988C237B6604005EF2CF /* SimplifiedPricesTestTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplifiedPricesTestTutorialViewController.swift; sourceTree = "<group>"; };
-		2D5711F622EB815E00E7F881 /* StudyProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyProgress.swift; sourceTree = "<group>"; };
 		2DB76D7022F3B3D900EE36A0 /* SymbolsTestTutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SymbolsTestTutorialViewController.xib; sourceTree = "<group>"; };
 		4C58E91622E934730024F666 /* ScheduleEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEndViewController.swift; sourceTree = "<group>"; };
 		C50FC3BA22330F2C00143EA8 /* ACCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACCalendarView.swift; sourceTree = "<group>"; };
@@ -295,16 +291,12 @@
 		C54AE91A21C81B5C00DEC360 /* ArcLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLog.swift; sourceTree = "<group>"; };
 		C54AE91B21C81B5C00DEC360 /* FatalErrorUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatalErrorUtil.swift; sourceTree = "<group>"; };
 		C54AE91C21C81B5C00DEC360 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
-		C54AE91F21C81B5C00DEC360 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
-		C54AE92021C81B5C00DEC360 /* ArcFault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcFault.swift; sourceTree = "<group>"; };
-		C54AE92421C81B5C00DEC360 /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		C54AE92A21C81B5C00DEC360 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		C54AE92C21C81B5C00DEC360 /* ArcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcViewController.swift; sourceTree = "<group>"; };
 		C54AE92D21C81B5C00DEC360 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		C54AE92E21C81B5C00DEC360 /* ArcControllerRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcControllerRegistry.swift; sourceTree = "<group>"; };
 		C54AE93021C81B5C00DEC360 /* UINavigationProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationProxy.swift; sourceTree = "<group>"; };
 		C54AE93121C81B5C00DEC360 /* ProxyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
-		C54AE93621C81B5C00DEC360 /* MHController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHController.swift; sourceTree = "<group>"; };
 		C54AE93721C81B5C00DEC360 /* SlidePresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidePresentAnimationController.swift; sourceTree = "<group>"; };
 		C54AE93821C81B5C00DEC360 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		C54AE93A21C81B5C00DEC360 /* CancelButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelButton.xib; sourceTree = "<group>"; };
@@ -451,7 +443,6 @@
 		C5DA18652305F6E9003C84C2 /* GoalBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBackgroundView.swift; sourceTree = "<group>"; };
 		C5E1530A22C64B630066FD6B /* PrivacyStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyStack.swift; sourceTree = "<group>"; };
 		C5E1E34E2253E84900255812 /* ACWakeSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACWakeSurveyViewController.swift; sourceTree = "<group>"; };
-		C5E1E3942257ECC200255812 /* ACChangeAvailabilityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACChangeAvailabilityViewController.xib; sourceTree = "<group>"; };
 		C5E7212722F10D25004B9E26 /* TestProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProgressViewController.swift; sourceTree = "<group>"; };
 		C5E7212922F10D9C004B9E26 /* TestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProgressView.swift; sourceTree = "<group>"; };
 		C5EB849523DB8CA30070A240 /* ACPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACPDFViewController.swift; sourceTree = "<group>"; };
@@ -466,7 +457,11 @@
 		CB0C724527AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduleEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB96153727AB15520064F658 /* FontLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
-		CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmToSageMigrationViewController.xib; sourceTree = "<group>"; };
+		CBCD063827B1E4B100781157 /* StudyProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyProgress.swift; path = Arc/App/Utilities/Model/StudyProgress.swift; sourceTree = SOURCE_ROOT; };
+		CBCD063927B1E4B100781157 /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestSession.swift; path = Arc/App/Utilities/Model/TestSession.swift; sourceTree = SOURCE_ROOT; };
+		CBCD063A27B1E4B100781157 /* ArcFault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArcFault.swift; path = Arc/App/Utilities/Model/ArcFault.swift; sourceTree = SOURCE_ROOT; };
+		CBCD063B27B1E4B100781157 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = Arc/App/Utilities/Model/StatusCode.swift; sourceTree = SOURCE_ROOT; };
+		CBCD064027B1E64300781157 /* ArcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcController.swift; sourceTree = "<group>"; };
 		CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc4To5MigrationPolicy.swift; sourceTree = "<group>"; };
 		CBDC438F272A7E98004ACE2D /* arc 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "arc 5.xcdatamodel"; sourceTree = "<group>"; };
 		CBDC4390272A7E98004ACE2D /* mHealth 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mHealth 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -513,7 +508,6 @@
 		CBDC43EB272A8162004ACE2D /* Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animate.swift; path = Arc/UIKit/Views/Style/Animate.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F0272A8169004ACE2D /* Roboto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Roboto.swift; path = Arc/UIKit/Views/Style/Fonts/Roboto.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F1272A8169004ACE2D /* Georgia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Georgia.swift; path = Arc/UIKit/Views/Style/Fonts/Georgia.swift; sourceTree = SOURCE_ROOT; };
-		E898B20723282EA400FBF22D /* AC2FAHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AC2FAHelpViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -678,7 +672,7 @@
 				C54AE91A21C81B5C00DEC360 /* ArcLog.swift */,
 				C54AE91B21C81B5C00DEC360 /* FatalErrorUtil.swift */,
 				C54AE91C21C81B5C00DEC360 /* Algorithms.swift */,
-				C54AE91D21C81B5C00DEC360 /* HMRestAPI */,
+				C54AE91D21C81B5C00DEC360 /* Models */,
 				C54AE92A21C81B5C00DEC360 /* ToggleButton.swift */,
 				C5EB849523DB8CA30070A240 /* ACPDFViewController.swift */,
 				C5EB849823DB8D050070A240 /* ACPDFView.swift */,
@@ -686,23 +680,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		C54AE91D21C81B5C00DEC360 /* HMRestAPI */ = {
+		C54AE91D21C81B5C00DEC360 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C54AE91E21C81B5C00DEC360 /* Models */,
+				CBCD063A27B1E4B100781157 /* ArcFault.swift */,
+				CBCD063B27B1E4B100781157 /* StatusCode.swift */,
+				CBCD063827B1E4B100781157 /* StudyProgress.swift */,
+				CBCD063927B1E4B100781157 /* TestSession.swift */,
 			);
-			path = HMRestAPI;
-			sourceTree = "<group>";
-		};
-		C54AE91E21C81B5C00DEC360 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C54AE91F21C81B5C00DEC360 /* StatusCode.swift */,
-				C54AE92021C81B5C00DEC360 /* ArcFault.swift */,
-				2D5711F622EB815E00E7F881 /* StudyProgress.swift */,
-				C54AE92421C81B5C00DEC360 /* TestSession.swift */,
-			);
-			path = Models;
+			name = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C54AE92B21C81B5C00DEC360 /* ViewControllers */ = {
@@ -725,7 +712,7 @@
 		C54AE93221C81B5C00DEC360 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C54AE93621C81B5C00DEC360 /* MHController.swift */,
+				CBCD064027B1E64300781157 /* ArcController.swift */,
 				C54AE93721C81B5C00DEC360 /* SlidePresentAnimationController.swift */,
 				C54AE93821C81B5C00DEC360 /* AppController.swift */,
 			);
@@ -1169,10 +1156,8 @@
 				CBDC4396272A7E98004ACE2D /* DIAN_Pilot.xcdatamodeld */,
 				C54AE90121C81B5B00DEC360 /* SharedAssets.xcassets */,
 				C54AE9C021C81B5F00DEC360 /* Roboto */,
-				C5E1E3942257ECC200255812 /* ACChangeAvailabilityViewController.xib */,
 				C54AE96F21C81B5C00DEC360 /* ACContactViewController.xib */,
 				C57E9C892236E825009F6228 /* ACPickerView.xib */,
-				E898B20723282EA400FBF22D /* AC2FAHelpViewController.xib */,
 				C54AE93A21C81B5C00DEC360 /* CancelButton.xib */,
 				C54AE9A321C81B5C00DEC360 /* ChoiceView.xib */,
 				C54AE99F21C81B5C00DEC360 /* DurationView.xib */,
@@ -1183,7 +1168,6 @@
 				17CE9D0724D89E7B002EF878 /* GridTestSelectionView.xib */,
 				177BA72E2527BADF0018A25F /* GridTestViewController.xib */,
 				C54AE97121C81B5C00DEC360 /* HomeViewController.xib */,
-				CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */,
 				C54AE99B21C81B5C00DEC360 /* IntroViewController.xib */,
 				C54AE96421C81B5C00DEC360 /* InterstitialView.xib */,
 				C54AE98D21C81B5C00DEC360 /* LoadingScreenViewController.xib */,
@@ -1310,11 +1294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54AEA1321C81B5F00DEC360 /* ExtendedGridTestViewController.xib in Resources */,
-				C5E1E3962257ECC200255812 /* ACChangeAvailabilityViewController.xib in Resources */,
 				C54AEA0F21C81B5F00DEC360 /* PricesTestViewController.xib in Resources */,
 				C54AEA2521C81B5F00DEC360 /* HomeViewController.xib in Resources */,
 				C54AE9CE21C81B5F00DEC360 /* SharedAssets.xcassets in Resources */,
-				CB984EF7271F22350034C9BB /* HmToSageMigrationViewController.xib in Resources */,
 				C54AEA2121C81B5F00DEC360 /* GridImageCell.xib in Resources */,
 				C54AEA2A21C81B5F00DEC360 /* WelcomeViewController.xib in Resources */,
 				C54AEA6721C81B5F00DEC360 /* Roboto-MediumItalic.ttf in Resources */,
@@ -1344,7 +1326,6 @@
 				C54AEA0E21C81B5F00DEC360 /* SymbolsTestViewController.xib in Resources */,
 				C54AEA6921C81B5F00DEC360 /* Roboto-BoldItalic.ttf in Resources */,
 				C54D103D22C28A1D00B43E42 /* TextSegment.xib in Resources */,
-				E898B20823282EA400FBF22D /* AC2FAHelpViewController.xib in Resources */,
 				C54AEA1E21C81B5F00DEC360 /* FCollectionContainerView.xib in Resources */,
 				C54AEA7021C81B5F00DEC360 /* Roboto-Black.ttf in Resources */,
 				C54AEA6821C81B5F00DEC360 /* Roboto-ThinItalic.ttf in Resources */,
@@ -1384,12 +1365,14 @@
 				CBDC43C9272A8145004ACE2D /* UIView + Pulse.swift in Sources */,
 				C54AEA3F21C81B5F00DEC360 /* SurveyNavigationViewController.swift in Sources */,
 				CBDC43EE272A8162004ACE2D /* Buttons.swift in Sources */,
+				CBCD063C27B1E4B100781157 /* StudyProgress.swift in Sources */,
 				C54AEA0B21C81B5F00DEC360 /* PricesQuestionViewController.swift in Sources */,
 				CBDC43E4272A814F004ACE2D /* GridChoiceView.swift in Sources */,
 				C5CCD7AE22DF717D002A788A /* AsyncAwait.swift in Sources */,
 				C594B3DC23E245F100B9743C /* HideGoodPrice.swift in Sources */,
 				C54AEA6321C81B5F00DEC360 /* CoreDataStack.swift in Sources */,
 				C54AEA1B21C81B5F00DEC360 /* TextAlertView.swift in Sources */,
+				CBCD063E27B1E4B100781157 /* ArcFault.swift in Sources */,
 				C54AEA1221C81B5F00DEC360 /* FinishedNavigationController.swift in Sources */,
 				CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */,
 				C54D104B22C28A1D00B43E42 /* ACCalendarView.swift in Sources */,
@@ -1412,6 +1395,7 @@
 				CBDC43B7272A8119004ACE2D /* HMMarkupToken.swift in Sources */,
 				CBDC43DD272A814F004ACE2D /* Common.swift in Sources */,
 				C54AE9E321C81B5F00DEC360 /* Algorithms.swift in Sources */,
+				CBCD063F27B1E4B100781157 /* StatusCode.swift in Sources */,
 				C594B3D623E244D400B9743C /* PriceTestMod.swift in Sources */,
 				C54AEA0D21C81B5F00DEC360 /* InstructionNavigationController.swift in Sources */,
 				CBDC43B6272A8119004ACE2D /* HMMarkupParser.swift in Sources */,
@@ -1426,6 +1410,7 @@
 				C5C7F715228F65C50086315B /* ArcTranslation.swift in Sources */,
 				C54D104A22C28A1D00B43E42 /* DateRangeView.swift in Sources */,
 				C54AE9DB21C81B5F00DEC360 /* UIStackView+Extensions.swift in Sources */,
+				CBCD063D27B1E4B100781157 /* TestSession.swift in Sources */,
 				CB0C724727AC71C30038D6D7 /* ScheduleEntry+Extensions.swift in Sources */,
 				C554EF142405843900223151 /* Event.swift in Sources */,
 				C54AE9E021C81B5F00DEC360 /* Data+Extensions.swift in Sources */,
@@ -1442,7 +1427,6 @@
 				C54AE9F821C81B5F00DEC360 /* SlidePresentAnimationController.swift in Sources */,
 				C54D103822C28A1D00B43E42 /* SegmentedTextView.swift in Sources */,
 				C556BA2D22CA4B3D0057B54B /* ACTemplateView.swift in Sources */,
-				C54AE9E521C81B5F00DEC360 /* ArcFault.swift in Sources */,
 				C5DA18622305C2EC003C84C2 /* GoalView.swift in Sources */,
 				C54AE9D521C81B5F00DEC360 /* Phase.swift in Sources */,
 				C54D103622C28A1D00B43E42 /* DurationView.swift in Sources */,
@@ -1451,7 +1435,6 @@
 				C593227122E890DA00528FF5 /* ACProgressView.swift in Sources */,
 				CBDC43CA272A8145004ACE2D /* UIView+Extensions.swift in Sources */,
 				C55F8CC7230D7B98006D43BD /* TodaysProgress.swift in Sources */,
-				C54AE9F721C81B5F00DEC360 /* MHController.swift in Sources */,
 				CBDC43DF272A814F004ACE2D /* ACButton.swift in Sources */,
 				C57480AC23035B2E00EFC901 /* CircularProgressGroupStackView.swift in Sources */,
 				C54D103E22C28A1D00B43E42 /* SliderView.swift in Sources */,
@@ -1465,6 +1448,7 @@
 				C54AEA4221C81B5F00DEC360 /* SurveyViewController.swift in Sources */,
 				C54AEA1F21C81B5F00DEC360 /* GridTestCells.swift in Sources */,
 				C578771322F8BED10068E46B /* TestCountDownView.swift in Sources */,
+				CBCD064127B1E64300781157 /* ArcController.swift in Sources */,
 				C54D103222C28A1D00B43E42 /* SurveyInputView.swift in Sources */,
 				C54AE9CF21C81B5F00DEC360 /* ACEnvironment.swift in Sources */,
 				C54AE9EE21C81B5F00DEC360 /* ToggleButton.swift in Sources */,
@@ -1493,7 +1477,6 @@
 				CBDC43CD272A8145004ACE2D /* UIDSL.swift in Sources */,
 				C54D104022C28A1D00B43E42 /* TimeView.swift in Sources */,
 				C54AE9DF21C81B5F00DEC360 /* Date+Extensions.swift in Sources */,
-				C54AE9E421C81B5F00DEC360 /* StatusCode.swift in Sources */,
 				CBDC43F2272A8169004ACE2D /* Roboto.swift in Sources */,
 				C593227322E8916300528FF5 /* BlockProgressview.swift in Sources */,
 				CBDC43DB272A814F004ACE2D /* UIDSL+ArcUIKit.swift in Sources */,
@@ -1529,7 +1512,6 @@
 				C5F77F37222F095200BECAE1 /* SignatureViewController.swift in Sources */,
 				CBDC43DC272A814F004ACE2D /* ACLabel.swift in Sources */,
 				CBDC43CC272A8145004ACE2D /* ConstraintDSL.swift in Sources */,
-				C54AE9E921C81B5F00DEC360 /* TestSession.swift in Sources */,
 				C594B3DA23E245BA00B9743C /* Alignment.swift in Sources */,
 				C54AE9F321C81B5F00DEC360 /* ProxyManager.swift in Sources */,
 				177BA7342527CD980018A25F /* GridTestType.swift in Sources */,
@@ -1557,7 +1539,6 @@
 				C54AEA1521C81B5F00DEC360 /* GridTestController.swift in Sources */,
 				CBDC43E1272A814F004ACE2D /* ACView.swift in Sources */,
 				CBDC43E0272A814F004ACE2D /* ACTextView.swift in Sources */,
-				2D5711F722EB815E00E7F881 /* StudyProgress.swift in Sources */,
 				C54AEA3A21C81B5F00DEC360 /* ACSurveyType.swift in Sources */,
 				C5C2B12922D3ECBB002CB4C5 /* InfoContentView.swift in Sources */,
 				C54AEA0121C81B5F00DEC360 /* CancelButton.swift in Sources */,
