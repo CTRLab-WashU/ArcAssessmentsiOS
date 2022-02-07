@@ -2,8 +2,26 @@
 //  SymbolsTestViewController.swift
 // Arc
 //
-//  Created by Philip Hayes on 10/9/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
@@ -15,14 +33,15 @@ public protocol SymbolsTestViewControllerDelegate : class {
 public class SymbolsTestViewController: UIViewController, TestProgressViewControllerDelegate {
 	
 	
-    public var symbols:[Int:UIImage] = [0: #imageLiteral(resourceName: "symbol_0"),
-                                         1: #imageLiteral(resourceName: "symbol_1"),
-                                         2: #imageLiteral(resourceName: "symbol_2"),
-                                         3: #imageLiteral(resourceName: "symbol_3"),
-                                         4: #imageLiteral(resourceName: "symbol_4"),
-                                         5: #imageLiteral(resourceName: "symbol_5"),
-                                         6: #imageLiteral(resourceName: "symbol_6"),
-                                         7: #imageLiteral(resourceName: "symbol_7")]
+    public var symbols:[Int:UIImage] = [
+        0: Arc.shared.image(named: "symbol_0")!,
+        1: Arc.shared.image(named: "symbol_1")!,
+        2: Arc.shared.image(named: "symbol_2")!,
+        3: Arc.shared.image(named: "symbol_3")!,
+        4: Arc.shared.image(named: "symbol_4")!,
+        5: Arc.shared.image(named: "symbol_5")!,
+        6: Arc.shared.image(named: "symbol_6")!,
+        7: Arc.shared.image(named: "symbol_7")!]
     
     var controller = Arc.shared.symbolsTestController
     var responseID = ""
@@ -73,18 +92,11 @@ public class SymbolsTestViewController: UIViewController, TestProgressViewContro
         	ACState.testCount += 1
 		}
 
-		let app = Arc.shared
-		let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
-		
-		if let sessionId = app.currentTestSession, !isPracticeTest{
-			let session = app.studyController.get(session: sessionId, inStudy: studyId)
-			let data = session.surveyFor(surveyType: .symbolsTest)
-			
-			responseID = data!.id! //A crash here means that the session is malformed
+		if !isPracticeTest {
 			test = controller.generateTest(numSections: 12, numSymbols: 8)
-			responseID = controller.createResponse(withTest: test!, id: responseID)
+			responseID = controller.createResponse(withTest: test!)
 		} else {
-			//Will be stored in core data, but not retrieved for server upload.
+			// Will be stored in core data, but not retrieved for server upload.
             test = controller.generateTutorialTest()
         	responseID = controller.createResponse(withTest: test!)
 		}

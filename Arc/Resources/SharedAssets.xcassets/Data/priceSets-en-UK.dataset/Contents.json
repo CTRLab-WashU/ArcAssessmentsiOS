@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "priceSets-en-UK.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

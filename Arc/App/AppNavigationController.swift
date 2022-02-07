@@ -2,8 +2,26 @@
 //  AppManager.swift
 // Arc
 //
-//  Created by Philip Hayes on 10/10/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
@@ -12,15 +30,8 @@ import UIKit
 
 public protocol AppNavigationController {
 	func defaultHelpState() -> UIViewController
-	
-    ///Navigate from welcome to auth
-    func defaultAuth() -> State
     
     func defaultAbout() -> State
-    
-    func defaultContact() -> State
-    
-    func defaultRescheduleAvailability() -> State
     
     func defaultPrivacy()
 
@@ -38,11 +49,6 @@ public protocol AppNavigationController {
 	
 	///If a test session has begun what shall we do next?
 	func nextAvailableSurveyState() -> State?
-	
-	////This will check to see what location the app should take you next
-	///Generally this takes you home if the app is fully configured.
-	///(Signed in, You've signed up for notifications, other config)
-	func nextAvailableState(runPeriodicBackgroundTask:Bool) -> State
 	
 	///Just replace the current root view controller
 	func navigate(vc:UIViewController, direction: UIWindow.TransitionOptions.Direction)
@@ -77,31 +83,14 @@ open class BaseAppNavigationController : AppNavigationController {
 	public func defaultState() -> State {
 		return ACState.home
 	}
-    
-    public func defaultAuth() -> State {
-        return ACState.auth
-    }
 
     public func defaultAbout() -> State {
         return ACState.about
     }
     
-    public func defaultContact() -> State {
-        return ACState.contact
-    }
-    
-    public func defaultRescheduleAvailability() -> State {
-        return ACState.rescheduleAvailability
-    }
-    
     public func defaultPrivacy() {
         print("Must override this")
     }
-
-	public func nextAvailableState(runPeriodicBackgroundTask: Bool) -> State {
-		return ACState.home
-
-	}
 	
 	public func nextAvailableSurveyState() -> State? {
 		return ACState.home

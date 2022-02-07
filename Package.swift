@@ -15,45 +15,18 @@ let package = Package(
             name: "Arc",
             targets: ["Arc"])
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        .package(
-            name: "BridgeApp",
-            url: "https://github.com/Sage-Bionetworks/BridgeApp-Apple-SDK.git",
-            from: "5.1.4"),
-        .package(
-            name: "SageResearch",
-            url: "https://github.com/Sage-Bionetworks/SageResearch.git",
-            from: "4.2.3"),
-        .package(
-            name: "BridgeSDK",
-            url: "https://github.com/Sage-Bionetworks/Bridge-iOS-SDK.git",
-            from: "4.4.84"),
-        .package(
-            name: "JsonModel",
-            url: "https://github.com/Sage-Bionetworks/JsonModel-Swift.git",
-            from: "1.2.3")
-    ],
     targets: [
 
         .target(
             name: "Arc",
-            dependencies: [
-                .product(name: "BridgeApp", package: "BridgeApp"),
-                .product(name: "BridgeAppUI", package: "BridgeApp"),
-                .product(name: "Research", package: "SageResearch"),
-                .product(name: "ResearchUI", package: "SageResearch"),
-                "BridgeSDK",
-                "JsonModel"
-            ],
 	   path: "Arc",
-	   exclude:["Info.plist"],
+	   exclude:["Info.plist", "../SampleApp"],
 	   resources: [
                 .process("Resources"),
             ]),
 	.testTarget(name:"ArcTests",
                 dependencies: ["Arc"],
                 path: "ArcTests",
-                exclude:["Info.plist"])
+                exclude:["Info.plist", "../SampleApp"])
     ]
 )

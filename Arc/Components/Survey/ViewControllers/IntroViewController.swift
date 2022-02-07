@@ -2,8 +2,26 @@
 //  IntroViewController.swift
 // Arc
 //
-//  Created by Philip Hayes on 9/28/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
@@ -49,7 +67,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroContentText(content, template: template)
 			view.backgroundColor = UIColor(named:"Primary Info")
 			view.infoContent.alignment = .leading
-            view.backgroundView.image = UIImage(named: "grids_bg", in: Bundle.module, compatibleWith: nil)
+            view.backgroundView.image = Arc.shared.image(named: "grids_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
 
 		case .symbols:
@@ -59,7 +77,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroContentText(content, template: template)
 			view.backgroundColor = UIColor(named:"Primary Info")
 			view.infoContent.alignment = .leading
-			view.backgroundView.image = UIImage(named: "symbols_bg", in: Bundle.module, compatibleWith: nil)
+			view.backgroundView.image = Arc.shared.image(named: "symbols_bg", in: Bundle.module, compatibleWith: nil)
            	view.setButtonColor(style:.secondary)
 
 		case .prices:
@@ -69,7 +87,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroContentText(content, template: template)
 			view.backgroundColor = UIColor(named:"Primary Info")
 			view.infoContent.alignment = .leading
-			view.backgroundView.image = UIImage(named: "prices_bg", in: Bundle.module, compatibleWith: nil)
+			view.backgroundView.image = Arc.shared.image(named: "prices_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
 		
 		case .dark:
@@ -120,7 +138,7 @@ open class IntroViewController: CustomViewController<InfoView> {
 		if let nav = self.navigationController, nav.viewControllers.count > 1 {
 			let backButton = UIButton(type: .custom)
 			backButton.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
-			backButton.setImage(UIImage(named: "cut-ups/icons/arrow_left_white"), for: .normal)
+			backButton.setImage(Arc.shared.image(named: "cut-ups/icons/arrow_left_white"), for: .normal)
 			backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
 			backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
 			backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
@@ -230,7 +248,7 @@ open class IntroViewController: CustomViewController<InfoView> {
 		}
 		
 		if let nextButtonTitle = nextButtonImage {
-			customView.nextButton?.setImage(UIImage(named: nextButtonTitle), for: .normal)
+			customView.nextButton?.setImage(Arc.shared.image(named: nextButtonTitle), for: .normal)
 		} else {
 			customView.nextButton?.setImage(nil, for: .normal)
 			

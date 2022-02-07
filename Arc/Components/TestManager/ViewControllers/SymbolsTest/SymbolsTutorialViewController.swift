@@ -2,22 +2,40 @@
 //  SymbolsTutorialViewController.swift
 //  Arc
 //
-//  Created by Philip Hayes on 7/22/19.
-//  Copyright © 2019 HealthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
 
 class SymbolsTutorialViewController: ACTutorialViewController, SymbolsTestViewControllerDelegate {
 
-    public var symbols:[Int:UIImage] = [0: UIImage(named: "tutorial_symbol 1", in: Bundle.module, compatibleWith: nil)!,
-                                        1: UIImage(named: "tutorial_symbol 2", in: Bundle.module, compatibleWith: nil)!,
-                                        2: UIImage(named: "tutorial_symbol 3", in: Bundle.module, compatibleWith: nil)!,
-                                        3: UIImage(named: "tutorial_symbol 4", in: Bundle.module, compatibleWith: nil)!,
-                                        4: UIImage(named: "tutorial_symbol 5", in: Bundle.module, compatibleWith: nil)!,
-                                        5: UIImage(named: "tutorial_symbol 6", in: Bundle.module, compatibleWith: nil)!,
-                                        6: UIImage(named: "tutorial_symbol 7", in: Bundle.module, compatibleWith: nil)!,
-                                        7: UIImage(named: "tutorial_symbol 8", in: Bundle.module, compatibleWith: nil)!]
+    public var symbols:[Int:UIImage] = [0: Arc.shared.image(named: "tutorial_symbol 1", in: Bundle.module, compatibleWith: nil)!,
+                                        1: Arc.shared.image(named: "tutorial_symbol 2", in: Bundle.module, compatibleWith: nil)!,
+                                        2: Arc.shared.image(named: "tutorial_symbol 3", in: Bundle.module, compatibleWith: nil)!,
+                                        3: Arc.shared.image(named: "tutorial_symbol 4", in: Bundle.module, compatibleWith: nil)!,
+                                        4: Arc.shared.image(named: "tutorial_symbol 5", in: Bundle.module, compatibleWith: nil)!,
+                                        5: Arc.shared.image(named: "tutorial_symbol 6", in: Bundle.module, compatibleWith: nil)!,
+                                        6: Arc.shared.image(named: "tutorial_symbol 7", in: Bundle.module, compatibleWith: nil)!,
+                                        7: Arc.shared.image(named: "tutorial_symbol 8", in: Bundle.module, compatibleWith: nil)!]
     
     var test:SymbolsTestViewController = .get(nib: "SymbolsTestTutorialViewController", bundle: Bundle.module)
 	var selectionMade:Bool = false

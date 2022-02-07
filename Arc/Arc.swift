@@ -2,8 +2,26 @@
 // ArcManager.swift
 // Arc
 //
-//  Created by Philip Hayes on 9/26/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import Foundation
@@ -22,22 +40,32 @@ public enum ArcBundle {
     public static let module = Bundle.module
 }
 
+public struct ArcAssessmentResult {
+    public var signatures: [ArcAssessmentSignature]? = nil
+    public var fullTestSession: FullTestSession? = nil
+}
+
+public protocol ArcAssessmentDelegate: AnyObject {
+    func assessmentComplete(result: ArcAssessmentResult?)
+}
 
 public enum SurveyAvailabilityStatus: Equatable {
     case available, laterToday, tomorrow, startingTomorrow(String, String), laterThisCycle(String), later(String, String), finished, postBaseline
 }
 open class Arc : ArcApi {
+    
 	
 	var ARC_VERSION_INFO_KEY = "CFBundleShortVersionString"
 	var APP_VERSION_INFO_KEY = "CFBundleShortVersionString"
-    public var APP_PRIVACY_POLICY_URL = ""
-    public var WELCOME_LOGO:UIImage? = nil
-    public var WELCOME_TEXT = ""
+    
+    public weak var delegate: ArcAssessmentDelegate? = nil    
+    
 	public var TEST_TIMEOUT:TimeInterval = 300; // 5 minute timeout if the application is closed
 	public var TEST_START_ALLOWANCE:TimeInterval = -300; // 5 minute window before actual start time
     public var activeTab:Int = 0
 	var STORE_DATA = false
 	var FORGET_ON_RESTART = false
+    
     lazy var arcInfo: NSDictionary? = {
         if let path = Bundle.module.path(forResource: "Info", ofType: "plist") {
             return NSDictionary(contentsOfFile: path)
@@ -45,6 +73,7 @@ open class Arc : ArcApi {
         }
         return nil
     }()
+    
 	lazy var info: NSDictionary? = {
 		if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
 			return NSDictionary(contentsOfFile: path)
@@ -52,9 +81,10 @@ open class Arc : ArcApi {
 		}
 		return nil
 	}()
+    
     lazy public var translation:ArcTranslation? = {
         do {
-            guard let asset = NSDataAsset(name: "translation") else {
+            guard let asset = Arc.shared.dataAsset(named: "translation") else {
                 return nil
             }
             let translation:ArcTranslation = try JSONDecoder().decode(ArcTranslation.self, from: asset.data)
@@ -65,6 +95,7 @@ open class Arc : ArcApi {
         }
         return nil
     }()
+    
     public var translationIndex = 1
 	lazy public var deviceString = {deviceInfo();}()
 	lazy public var deviceId = AppController().deviceId
@@ -72,17 +103,30 @@ open class Arc : ArcApi {
 	lazy public var arcVersion = {arcInfo?[ARC_VERSION_INFO_KEY] as? String ?? "";}()
     //A map of all of the possible states in the application
 	
+    // This controls the bundle that loads UIImages
+    // To use your own custom images, override this to your app's bundle
+    // And include the assets in your app's Assets with the same names as this library
+    public var imageBundle = Bundle.module
+    public func image(named: String) -> UIImage? {
+        return UIImage(named: named, in: imageBundle, compatibleWith: nil)
+    }
+    public func image(named: String, in bundle: Bundle, compatibleWith: UITraitCollection?) -> UIImage? {
+        return UIImage(named: named, in: bundle, compatibleWith: compatibleWith)
+    }
+    
+    public var dataAssetBundle = Bundle.module
+    public func dataAsset(named: String) -> NSDataAsset? {
+        if let data = NSDataAsset(name: named, bundle: dataAssetBundle) {
+            return data
+        }
+        return NSDataAsset(name: named)
+    }
+    
     static public let shared = Arc()
 	
 	public var appController:AppController = AppController()
 	
-	public var authController:AuthController = AuthController()
-	
-	public var sessionController:SessionController = SessionController()
-	
 	public var surveyController:SurveyController = SurveyController()
-        
-	public var scheduleController:ScheduleController = ScheduleController()
     
 	public var gridTestController:GridTestController = GridTestController()
     
@@ -90,15 +134,10 @@ open class Arc : ArcApi {
     
 	public var symbolsTestController:SymbolsTestController = SymbolsTestController()
 	
-	public var studyController:StudyController = StudyController()
-    	
-	public var notificationController:NotificationController = NotificationController()
-	
 	public var appNavigation:AppNavigationController = BaseAppNavigationController()
 	
 	public var controllerRegistry:ArcControllerRegistry = ArcControllerRegistry()
-	
-	public var earningsController:EarningsController = EarningsController()
+    
 	//Back this value up with local storage.
 	//When the app terminates this value is released,
 	//This will cause background processes to crash when fired.
@@ -110,6 +149,9 @@ open class Arc : ArcApi {
 			appController.participantId = newValue
 		}
 	}
+        
+    public var availabilityStartHour: Int = 8 // 8 am
+    public var availabilityEndHour: Int = 17 // 5 pm
     
 	public var currentStudy:Int?
 	public var availableTestSession:Int?
@@ -122,26 +164,17 @@ open class Arc : ArcApi {
 		controllerRegistry.registerControllers()
 	}
     static public func configureWithEnvironment(environment:ArcEnvironment) {
-        self.environment = environment
-
-		Arc.debuggableStates = environment.debuggableStates
-        HMAPI.baseUrl = environment.baseUrl ?? ""
-		CoreDataStack.useMockContainer = environment.mockData
-
-        _ = MHController.dataContext
         
-        _ = HMAPI.shared
-        HMRestAPI.shared.blackHole = environment.blockApiRequests
+        FontLoader.configurePackageUI()
+        
+        self.environment = environment
+        
+        _ = ArcController.dataContext
+        
         Arc.shared.appNavigation = environment.appNavigation
-        Arc.shared.studyController = environment.studyController
-        Arc.shared.authController = environment.authController
         Arc.shared.appController = environment.appController
         
         Arc.shared.surveyController = environment.surveyController
-        Arc.shared.notificationController = environment.notificationController
-        Arc.shared.scheduleController = environment.scheduleController
-        Arc.shared.sessionController = environment.sessionController
-        Arc.shared.earningsController = environment.earningsController
         Arc.shared.gridTestController = environment.gridTestController
         Arc.shared.pricesTestController = environment.pricesTestController
         Arc.shared.symbolsTestController = environment.symbolsTestController
@@ -152,32 +185,48 @@ open class Arc : ArcApi {
         Arc.shared.setLocalization(country: Arc.shared.appController.country ?? locale.regionCode,
                                    language: Arc.shared.appController.language ?? locale.languageCode)
 
-        
-        
-        Arc.shared.WELCOME_LOGO =  UIImage(named: environment.welcomeLogo ?? "")
-        Arc.shared.WELCOME_TEXT = environment.welcomeText ?? ""
-        Arc.shared.APP_PRIVACY_POLICY_URL = environment.privacyPolicyUrl ?? ""
-		
-        
-        if let arcStartDays = environment.arcStartDays {
-            Arc.shared.studyController.ArcStartDays = arcStartDays
-        }
         environment.configure()
-
     }
     
-    public func nextAvailableState(runPeriodicBackgroundTask:Bool = false, direction:UIWindow.TransitionOptions.Direction = .toRight) {
-		let state = appNavigation.nextAvailableState(runPeriodicBackgroundTask: runPeriodicBackgroundTask)
+    private func onTestComplete() {
+        ArcController.dataContext.performAndWait {
+            guard let session = self.appController.getCurrentSessionResult() else {
+                self.delegate?.assessmentComplete(result: nil)
+                return
+            }
+            
+            let signatures = self.appController.getCurrentSessionSignatures().map({ coreDataSignature in
+                return ArcAssessmentSignature(data: coreDataSignature.data, tag: coreDataSignature.tag)
+            })
+            session.finishedSession = true
+            let fullTestSession: FullTestSession = .init(withSession: session)
+            let result = ArcAssessmentResult(signatures: signatures,
+                                             fullTestSession: fullTestSession)
+
+            DispatchQueue.main.async {
+                self.delegate?.assessmentComplete(result: result)
+            }
+        }
+    }
+    
+    public func nextAvailableState(direction:UIWindow.TransitionOptions.Direction = .toRight) {
+		let statePossiblyNil = appNavigation.nextAvailableSurveyState()
+        
+        guard let state = statePossiblyNil else {
+            self.onTestComplete()
+            return
+        }
         
         if !appNavigation.shouldNavigate(to: state) {
             print("App navigation blocked for state \(state)")
             return
         }
         
-		HMLog("Navigating to:  \(state)")        
+		ArcLog("Navigating to:  \(state)")        
 		Arc.currentState = state
         appNavigation.navigate(state: state, direction: direction)
 	}
+    
 	public func nextAvailableSurveyState() {
 		
 		let state = appNavigation.nextAvailableSurveyState() ?? appNavigation.defaultState()
@@ -231,7 +280,6 @@ open class Arc : ArcApi {
         if let log = LogManager.sharedInstance.getLog() {
 
         }
-
     }
     @discardableResult
     public func displayAlert(message:String, options:[MHAlertView.ButtonType], isScrolling:Bool = false) -> MHAlertView {
@@ -297,217 +345,6 @@ open class Arc : ArcApi {
 		return deviceString;
 	}
     
-    public func uploadTestData() {
-		MHController.dataContext.perform {
-			Arc.shared.sessionController.sendFinishedSessions()
-			Arc.shared.sessionController.sendMissedSessions()
-			Arc.shared.sessionController.sendSignatures()
-			Arc.shared.sessionController.clearUploadedSessions()
-			
-			if !Arc.shared.appController.testScheduleUploaded{
-				let studies = Arc.shared.studyController.getAllStudyPeriods().sorted(by: {$0.studyID < $1.studyID})
-				Arc.shared.sessionController.uploadSchedule(studyPeriods: studies)
-			}
-			if !Arc.shared.appController.wakeSleepUploaded {
-				if let study = Arc.shared.studyController.getAllStudyPeriods().sorted(by: {$0.studyID < $1.studyID}).first {
-					Arc.shared.scheduleController.upload(confirmedSchedule: Int(study.studyID));
-				}
-				
-			}
-			
-		}
-		
-	}
-	
-	public func sendHeartBeat() {
-		guard !HMRestAPI.shared.blackHole else {
-			return
-		}
-		HMAPI.deviceHeartbeat.execute(data: HeartbeatRequestData()) { (response, data, _) in
-			HMLog("received response \(data?.toString() ?? "") on \(Date())")
-
-		}
-	}
-  
-	public func periodicBackgroundTask(timeout:TimeInterval = 20, completion: @escaping()->Void)
-	{
-		let now = Date();
-		// check to see if we need to schedule any notifications for upcoming Arcs
-		// If the participant hasn't confirmed their start date, we should send notifications periodically in the weeks leading up
-		// to the Arc.
-        let app = Arc.shared
-        
-        //Check for participant setup
-        if app.participantId == nil {
-            
-            //If none set up go to auth
-            guard let id = app.authController.checkAuth() else {
-                completion();
-                return
-            }
-            
-            //set the id we can skip past this once set
-            app.participantId = Int(id)
-        }
-        MHController.dataContext.performAndWait {
-            if app.appController.timePeriodPassed(key: "heartBeat",
-                                                  date: Date().addingHours(hours: -6)) {
-                Arc.shared.appController.lastFetched["heartBeat"] = Date().timeIntervalSince1970
-                HMAPI.deviceHeartbeat.execute(data: HeartbeatRequestData())
-
-                HMAPI.getContactInfo.execute(data: nil, completion: { (res, obj, err) in
-                    guard err == nil && obj?.errors.isEmpty ?? true else {
-                        return;
-                    }
-                    guard let contact_info = obj?.response?.contact_info else {
-                        return;
-                    }
-                    DispatchQueue.main.async{
-
-                        if let json = try? JSONEncoder().encode(contact_info)
-                        {
-                            CoreDataStack.currentDefaults()?.set(json, forKey: "contact_info");
-                        }
-
-                    }
-                });
-                uploadTestData()
-            }
-		
-        }
-		
-        if let study = studyController.getCurrentStudyPeriod()
-        {
-            let studyId = Int(study.studyID)
-            MHController.dataContext.performAndWait {
-                self.studyController.markMissedSessions(studyId: studyId)
-                Arc.shared.notificationController.save()
-            }
-  
-        }
-        
-		
-		MHController.dataContext.performAndWait {
-			Arc.shared.notificationController.clear(sessionNotifications: 0)
-			Arc.shared.notificationController.schedule(upcomingSessionNotificationsWithLimit: 32)
-            Arc.shared.notificationController.manageDeletePresentedSessionNotifications("TestSession") {}
-            Arc.shared.notificationController.manageDeletePresentedSessionNotifications("MissedTest", expiredAge: 4) {}
-
-			Arc.shared.notificationController.save()
-		}
-
-		
-		
-		if let study = studyController.getUpcomingStudyPeriod()
-		{
-			let studyId = Int(study.studyID)
-            if Arc.environment?.shouldDisplayDateReminderNotifications ?? false {
-                _ = Arc.shared.notificationController.scheduleDateConfirmationsForUpcomingStudy()
-            }
-			if  let startDate = study.userStartDate as Date?
-			{
-				if study.hasConfirmedDate == false
-				{
-
-					if notificationController.has(scheduledDateReminder: studyId) == false
-					{
-//						notificationController.schedule(dateRemdinderNotification: study);
-					}
-
-					if notificationController.has(scheduledConfirmationReminders: studyId) == false
-					{
-//						study.scheduleConfirmationReminders();
-
-					}
-				}
-				else
-				{
-					
-//					study.clearConfirmationReminders();
-//					study.clearDateReminderNotification();
-				}
-
-				// if we're one day away, and we haven't scheduled sessions yet, do so now.
-				if startDate.daysSince(date: now) == 1 &&
-					study.hasScheduledNotifications == false
-				{
-//					study.createTestSessions();
-//					study.scheduleSessionNotifications();
-					//notificationController.schedule(sessionNotifications: studyId)
-					notificationController.schedule(upcomingSessionNotificationsWithLimit: 32)
-				}
-			}
-		}
-		
-		
-		// Now check if we have any past visits  that need to be marked as missed
-		
-		let studies  = studyController.getPastStudyPeriods()
-		
-		for study in studies
-		{
-			MHController.dataContext.performAndWait {
-				self.studyController.markMissedSessions(studyId: Int(study.studyID));
-
-			}
-			if STORE_DATA == false
-			{
-				// delete any past Arcs that have had all of their data uploaded successfully
-				let sessions = studyController.get(allSessionsForStudy: Int(study.studyID));
-				
-				var hasUploadedAll:Bool = true;
-				for session in sessions
-				{
-					if session.uploaded == false
-					{
-						hasUploadedAll = false;
-						break;
-					}
-				}
-				
-				if hasUploadedAll
-				{
-					MHController.dataContext.performAndWait {
-						
-						HMLog("Deleting Visit \(study.studyID)");
-						for session in sessions
-						{
-                            session.clearData()
-						}
-						
-						self.studyController.save();
-					}
-				}
-			}
-		}
-		uploadTestData()
-	
-		
-		completion();
-		
-	}
-	public func startTestIfAvailable() -> Bool {
-		let app = Arc.shared
-		
-		guard let study = app.studyController.getCurrentStudyPeriod() else {
-			return false
-		}
-		//If we have a current session store it here.
-		guard let id = app.studyController.get(availableTestSession: Int(study.studyID))?.sessionID else {
-			app.availableTestSession = nil
-			return false
-		}
-		app.currentStudy = Int(study.studyID)
-		app.currentTestSession = Int(id)
-		app.studyController.mark(started: Int(id), studyId: Int(study.studyID))
-		Arc.shared.appController.lastClosedDate = nil;
-		
-		return true
-		
-			
-		
-	}
-    
    public static func getTopViewController<T:UIViewController>() -> T?{
 	   guard let window = UIApplication.shared.keyWindow else {
 
@@ -526,200 +363,6 @@ open class Arc : ArcApi {
 	   }
 	   return view as? T
    }
-    open func getSurveyStatus() -> SurveyAvailabilityStatus {
-        var upcoming:Session?
-        var session:Int?
-        if let s = currentStudy {
-            //Get upcomming sessions ensuring that only valid test are considered
-            upcoming = studyController.get(upcomingSessions: Int(s))
-				.filter {$0.missedSession == false}
-				.filter {$0.completeTime == nil}
-				.filter {$0.uploaded == false}
-				.first
-            
-            if let sess = availableTestSession {
-                session = sess
-            }
-        }
-		//Our first check looked into the current studyCycle, this check
-		//Is intended to grab the next upcoming session regardless of studyPeriod.
-		//It will be used to determine if and when
-        if upcoming == nil{
-            upcoming = studyController.getUpcomingSessions(withLimit: 1).first
-        }
-        // Do any additional setup after loading the view.
-        if let _ = session {
-            
-            return .available
-        } else {
-            
-            if let upcoming = upcoming {
-                // let d = DateFormatter()
-                let date = upcoming.sessionDate ?? Date()
-                
-                if date.isToday() {
-                    
-                    return .laterToday
-                } else if date.isTomorrow() {
-                    if Arc.shared.studyController.studyState == .baseline {
-                        return .postBaseline
-                    }
-                    
-                    if Arc.shared.studyController.getCurrentStudyPeriod() == nil {
-                        let dateString = date.localizedFormat(template: ACDateStyle.longWeekdayMonthDay.rawValue, options: 0, locale: nil)
-                        let endDateString = date.addingDays(days: 6).localizedFormat(template: ACDateStyle.longWeekdayMonthDay.rawValue, options: 0, locale: nil)
-                        return .startingTomorrow(dateString, endDateString)
-                    }
-                    return .tomorrow
-                }
-//				else if date < upcoming.study?.endDate ?? Date() {
-//					let dateString = date.localizedFormat(template: ACDateStyle.longWeekdayMonthDay.rawValue, options: 0, locale: nil)
-//					return .laterThisCycle(dateString)
-//				}
-				else {
-                    let dateString = date.localizedFormat(template: ACDateStyle.longWeekdayMonthDay.rawValue, options: 0, locale: nil)
-                    let endDateString = date.addingDays(days: 6).localizedFormat(template: ACDateStyle.longWeekdayMonthDay.rawValue, options: 0, locale: nil)
-                    return .later(dateString, endDateString)
-                }
-            } else {
-                
-                return .finished
-            }
-            
-            
-        }
-    }
-	fileprivate var dataPage:Int = 0
-    public func uploadLog(name: String, reason:String) {
-        let exception = NSException(name: NSExceptionName(rawValue: name),reason: reason)
-        if let log = LogManager.sharedInstance.getLog() {
-        }
-    }
-
-    
-	public func debugData() {
-		guard let study = studyController.getCurrentStudyPeriod() else {
-			return
-		}
-		guard let sessions = study.sessions?.array as? [Session] else {return}
-		let data = sessions.map {
-			return FullTestSession(withSession: $0)
-		}
-		if dataPage > data.count {
-			dataPage = 0
-		}
-		if dataPage < 0 {
-			dataPage = data.count - 1
-		}
-		let view = displayAlert(message: data[dataPage].toString(),
-			options:  [
-				.default("Next Page", {
-					[weak self] in
-					self?.dataPage += 1
-					
-					self?.debugData()
-					
-				}),
-				.default("Previous Page", {[weak self] in
-					self?.dataPage -= 1
-
-					self?.debugData()
-					
-				}),
-
-				.default("Notifications", {[weak self] in self?.debugNotifications()}),
-				.default("Schedule", {[weak self] in self?.debugSchedule()}),
-																   .cancel("Close", {})],
-			isScrolling: true)
-		view.messageLabel.textAlignment = .left
-		view.messageLabel.font = UIFont.systemFont(ofSize: 12)
-
-		
-	}
-	public func debugScreens() {
-		guard let url = Arc.screenShotApp(states:Arc.debuggableStates) else {
-			return
-		}
-		dump(url)
-		
-		guard let window = UIApplication.shared.keyWindow else {
-            return
-        }
-		let pdfViewer = ACPDFViewController()
-		pdfViewer.modalPresentationStyle = .pageSheet
-		pdfViewer.setDocument(url: url)
-		window.rootViewController?.present(pdfViewer, animated: true, completion: nil)
-       
-	}
-	public func debugSchedule(states:[State]? = nil) {
-        let dateFrame = studyController.getCurrentStudyPeriod()?.userStartDate ?? Date()
-        let lastFetch = appController.lastBackgroundFetch?.localizedFormat()
-        let list = studyController.getUpcomingSessions(withLimit: 32, startDate: dateFrame as NSDate)
-            .map({
-                " w:\($0.week) d:\($0.day)\n\($0.study?.studyID ?? -1)-\($0.sessionID): \($0.sessionDate?.localizedString() ?? "") \(($0.finishedSession) ?  "√" : "\(($0.missedSession) ? "x" : "\(($0.startTime == nil) ? "-" : "o")")") \($0.uploaded ? "∆" : "") "
-            }).joined(separator: "\n")
-        
-        
-        displayAlert(message:  """
-            Study: \(currentStudy ?? -1)
-            
-            Test: \(availableTestSession ?? -1)
-            
-            Last background Fetch:
-            \(String(describing: (lastFetch != nil) ? lastFetch : "None"))
-            
-            Last flagged missed test count: \(appController.lastFlaggedMissedTestCount)
-            
-            \(list)
-            """, options:  [.default("Upload Log", {[weak self] in self?.uploadLog(name: "Log", reason: "A Log Upload")}),
-                            .default("Notifications", {[weak self] in self?.debugNotifications()}),
-							.default("Data", {[weak self] in self?.debugData()}),
-							.default("Screens", {[weak self] in self?.debugScreens()}),
-                            .cancel("Close", {})],
-                 isScrolling: true)
-    }
-    public func debugNotifications() {
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests { [weak self] (requests) in
-            
-            DispatchQueue.main.async {
-                
-                let requestIds:Array<String> = requests.map { (r) -> String in
-                    return r.identifier
-                }
-                
-                let list:String = self?.notificationController.getNotifications(withIdentifierPrefix: "TestSession")
-                .map({ (entry) -> String in
-                    var str = "\(entry.studyID)-\(entry.sessionID): \(entry.scheduledAt!.localizedString())"
-                    if let n = entry.notificationIdentifier, requestIds.contains(n)
-                    {
-                        str += " (scheduled)\n"
-                    }
-                    else
-                    {
-                        str += " (not scheduled)\n"
-                    }
-                    return str
-                })
-                .joined() ?? ""
-                
-                let preTestNotifications = self?.notificationController.getNotifications(withIdentifierPrefix: "DateReminder").map({"\($0.studyID)-\($0.sessionID): \($0.scheduledAt!.localizedString())\n"}).joined() ?? ""
-            
-                self?.displayAlert(message:  """
-                Study: \(self?.currentStudy ?? -1)
-                
-                Test: \(self?.availableTestSession ?? -1)
-                
-                \(list)
-                Date Reminders:
-                \(preTestNotifications)
-                """, options:  [.default("Schedule", {[weak self] in self?.debugSchedule()}),
-                                .default("Data", {[weak self] in self?.debugData()}),
-                                .cancel("Close", {})],
-                     isScrolling: true)
-            }
-        }
-    }
 	
 	public static func get(flag:ProgressFlag) -> Bool {
 		return Arc.shared.appController.flags[flag.rawValue] ?? false
@@ -739,42 +382,6 @@ open class Arc : ArcApi {
 		for flag in ProgressFlag.prefilledFlagsFor(major: major, minor: minor, patch: patch) {
 			set(flag: flag)
 		}
-	}
-	public static func displayDateShift(state:State) {
-		let longFormat = ACDateStyle.longWeekdayMonthDay.rawValue
-		let upComingStudy = Arc.shared.studyController.getUpcomingStudyPeriod()
-		guard let upcoming = upComingStudy, let userDate = upcoming.userStartDate else {
-			return
-		}
-		let startDate = userDate.localizedFormat(template:longFormat)
-		let endDate = userDate.addingDays(days: 6).localizedFormat(template:longFormat)
-		let message = "*Your next testing cycle will be \(startDate) to \(endDate)*.\n\nPlease confirm these testing dates or adjust your schedule.".localized(ACTranslationKey.overlay_nextcycle)
-			.replacingOccurrences(of: "{DATE1}", with: startDate)
-			.replacingOccurrences(of: "{DATE2}", with: endDate)
-		Arc.shared.displayAlert(message: message,
-			options: [.default("CONFIRM".localized(ACTranslationKey.button_confirm), {}),
-					  .default("ADJUST SCHEDULE".localized(ACTranslationKey.button_adjustschedule), {
-						Arc.shared.appNavigation.navigate(state: state, direction: .toRight)
-						
-					}
-				)
-			]
-		)
-	}
-	public static func screenShotApp(states:[State]) -> URL? {
-		var urls:[URL] = []
-			
-		let results = states
-		.lazy
-			.compactMap(Arc.screenShot)
-			
-		var images:[UIImage] = []
-		for result in results {
-			images.append(contentsOf: result)
-		}
-		
-		
-		return createPDFDataFromImage(images: images)
 	}
 	
 	public static  func screenShot(state:State) -> [UIImage]? {
@@ -866,6 +473,5 @@ open class Arc : ArcApi {
 		let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
 		return paths[0]
 	}
-	
 }
 

@@ -2,8 +2,26 @@
 //  SurveyNavigationViewController.swift
 // Arc
 //
-//  Created by Philip Hayes on 9/28/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
@@ -223,28 +241,7 @@ open class SurveyNavigationViewController: UINavigationController, UINavigationC
 		surveyType = survey.type
         questions = survey.questions
 		currentQuestion = survey.questions.first?.questionId
-        guard let i = app.studyController.getCurrentStudyPeriod()?.studyID else {
-            self.surveyId = createSurvey(surveyId: surveyId)
-
-            return
-        }
-        
-		let studyId = Int(i)
-		guard let sessionId = app.currentTestSession else {
-            
-           self.surveyId = createSurvey(surveyId: surveyId)
-			return
-		}
-        
-		let session = app.studyController.get(session: sessionId, inStudy: studyId)
-
-		if	let surveyType = surveyType,
-			let data = session.surveyFor(surveyType: surveyType){
-			Arc.shared.surveyController.mark(startDate: data.id!)
-
-			self.surveyId = data.id
-			
-		}
+        self.surveyId = createSurvey(surveyId: surveyId)
     }
     private func createSurvey(surveyId:String?) -> String{
         var response:String = ""
@@ -523,7 +520,7 @@ open class SurveyNavigationViewController: UINavigationController, UINavigationC
 		
 	}
 	open func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        HMLog("Changed stuff \(viewController)")
+        ArcLog("Changed stuff \(viewController)")
 		
 		//Pop off questions that got popped off the viewcontroller stack
 		let surveyControllerCount = navigationController.viewControllers.filter { (vc) -> Bool in

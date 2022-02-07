@@ -2,8 +2,26 @@
 //  OnboardingNavigationViewController.swift
 //  Arc
 //
-//  Created by Philip Hayes on 7/12/19.
-//  Copyright © 2019 HealthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import UIKit
@@ -11,9 +29,7 @@ import UIKit
 
 
 open class BasicSurveyViewController: UINavigationController, SurveyInputDelegate {
-	public var app:Arc {
-		return Arc.shared
-	}
+
 	public var helpButton: UIBarButtonItem?
 	public var isShowingHelpButton = false{
 		didSet {
@@ -51,8 +67,8 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 	public var surveyId:String
 	public var shouldNavigateToNextState:Bool = true
     public var currentViewControllerAlwaysHidesBarButtons = false
-    public init(file:String, surveyId:String? = nil, showHelp:Bool? = true) {
-		
+    
+    public init(file:String, surveyId:String? = nil, showHelp:Bool? = true, surveyType: SurveyType = .unknown) {
         shouldShowHelpButton = showHelp ?? true
         
 		let newSurvey = Arc.shared.surveyController.load(survey: file)
@@ -60,38 +76,15 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		questions = survey.questions
 		
 		subQuestions = survey.subQuestions
-//		print(file)
-//		dump(survey)
-		var newId:String?
-		//If we have a current study running
-		if let i = Arc.shared.studyController.getCurrentStudyPeriod()?.studyID  {
-			
-			let studyId = Int(i)
-			//And there is a session running
-			if let sessionId = Arc.shared.currentTestSession  {
-				let session = Arc.shared.studyController.get(session: sessionId, inStudy: studyId)
-				
-				//find a matching surveyResponse for the type of the new survey
-				if	let surveyType = newSurvey.type,
-					let data = session.surveyFor(surveyType: surveyType){
-					Arc.shared.surveyController.mark(startDate: data.id!)
-					//We're going to use this id now.
-					newId = data.id!
-					
-				}
-				
-			}
-			
-			
-		}
-		if newId == nil {
-			newId = surveyId ?? Arc.shared.surveyController.create(type:newSurvey.type);
-
-		}
-		
-		self.surveyId = newId!
-		
-
+        
+        if let surveyIdUnwrapped = surveyId {
+            self.surveyId = surveyIdUnwrapped
+        } else {
+            self.surveyId = file
+        }
+        let surveyId = Arc.shared.surveyController.create(surveyResponse: self.surveyId, type: surveyType)
+        
+        
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -127,7 +120,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
                 if self.viewControllers.count > 1 {
                 let backButton = UIButton(type: .custom)
                 backButton.frame = CGRect(x: 0, y: 0, width: 60, height: 10)
-                backButton.setImage(UIImage(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
+                backButton.setImage(Arc.shared.image(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
                 backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
                 backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
                 backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
@@ -302,7 +295,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		let vc:CustomViewController<InfoView> = getTopViewController()!
         useDarkStatusBar = false
         setNeedsStatusBarAppearanceUpdate()
-        let bg_image = UIImage(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
+        let bg_image = Arc.shared.image(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
         vc.customView.backgroundView.image = bg_image
 		vc.customView.infoContent.alignment = .center
 		vc.customView.backgroundColor = UIColor(named:"Primary")!

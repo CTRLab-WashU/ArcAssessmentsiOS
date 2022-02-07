@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Arc",
+        "repositoryURL": "https://github.com/CTRLab-WashU/ArcAssessmentsiOS.git",
+        "state": {
+          "branch": "DIAN-247",
+          "revision": "a12cd8f39181067867e2cc88f46515bf549824fe",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
