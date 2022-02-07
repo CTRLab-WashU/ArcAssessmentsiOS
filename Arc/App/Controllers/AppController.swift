@@ -286,18 +286,12 @@ open class AppController : MHController {
             return false
         }
         
-        if (tag == 0) {
-            MHController.dataContext.perform {
-                let session = self.getSessionResult(sessionId: sessionId)
-                session?.startSignature = data
-                self.save()
-            }
-        } else if (tag == 1) {
-            MHController.dataContext.perform {
-                let session = self.getSessionResult(sessionId: sessionId)
-                session?.endSignature = data
-                self.save()
-            }
+        MHController.dataContext.performAndWait {
+            let signature: Signature = self.new()
+            signature.data = data
+            signature.tag = tag
+            signature.sessionId = self.currentSessionID
+            self.save()
         }
         
         return true
@@ -326,10 +320,24 @@ open class AppController : MHController {
         return getSessionResult(sessionId: self.currentSessionID)
     }
     
+    public func getCurrentSessionSignatures() -> [Signature] {
+        let predicate = NSPredicate(format: "sessionId == \(self.currentSessionID)")
+        let results:[Signature] = self.fetch(predicate: nil, sort: nil) ?? []
+        return results
+    }
+    
     private func deletePrevSessionResults(sessionId: Int64) {
         MHController.dataContext.performAndWait {
             self.getSessionResults(sessionId: sessionId).forEach { session in
+                session.sessionData?.forEach({ data in
+                    if let jsonData = data as? JSONData {
+                        MHController.dataContext.delete(jsonData)
+                    }
+                })
                 MHController.dataContext.delete(session)
+            }
+            self.getCurrentSessionSignatures().forEach { signature in
+                MHController.dataContext.delete(signature)
             }
             self.save()
         }
@@ -492,7 +500,7 @@ public enum ACLocale : String{
 
 public struct ArcAssessmentSignature {
     // The PNG data of a UIImage
-    public var data: Data
+    public var data: Data?
     // The tag can be used to differentiate between multiple signatures in a session
     public var tag: Int32
 }

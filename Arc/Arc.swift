@@ -171,19 +171,15 @@ open class Arc : ArcApi {
     }
     
     private func onTestComplete() {
-        MHController.dataContext.perform {
+        MHController.dataContext.performAndWait {
             guard let session = self.appController.getCurrentSessionResult() else {
                 self.delegate?.assessmentComplete(result: nil)
                 return
             }
             
-            var signatures = [ArcAssessmentSignature]()
-            if let firstSignature = session.startSignature {
-                signatures.append(ArcAssessmentSignature(data: firstSignature, tag: 0))
-            }
-            if let lastSignature = session.endSignature {
-                signatures.append(ArcAssessmentSignature(data: lastSignature, tag: 0))
-            }
+            let signatures = self.appController.getCurrentSessionSignatures().map({ coreDataSignature in
+                return ArcAssessmentSignature(data: coreDataSignature.data, tag: coreDataSignature.tag)
+            })
             session.finishedSession = true
             let fullTestSession: FullTestSession = .init(withSession: session)
             let result = ArcAssessmentResult(signatures: signatures,
