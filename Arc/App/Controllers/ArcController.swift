@@ -1,9 +1,27 @@
 //
-//  MHController.swift
+// ArcController.swift
 // Arc
 //
-//  Created by Philip Hayes on 9/27/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 /**
  
@@ -22,10 +40,10 @@ public enum ACResult<T> {
     case success(T)
     case error(Error)
 }
-public protocol MHControllerDelegate {
+public protocol ArcControllerDelegate {
     func didCatch(errors : Error)
 }
-open class MHController {
+open class ArcController {
     public enum ControllerError : Error {
         case NotFound
     }
@@ -33,7 +51,7 @@ open class MHController {
 	static public var dataContext:NSManagedObjectContext = {
 			CoreDataStack.shared.persistentContainer.newBackgroundContext()
 	}()
-    public var delegate:MHControllerDelegate?
+    public var delegate:ArcControllerDelegate?
 	
 	open var defaults:UserDefaults! = CoreDataStack.currentDefaults()
 
@@ -41,7 +59,7 @@ open class MHController {
         self.container = container
     }
 	public func new<T:NSManagedObject>() -> T {
-		return T(context: MHController.dataContext)
+		return T(context: ArcController.dataContext)
 	}
     public func save<T:ArcCodable>(id:String, obj:T) -> T {
         //Enforce id's on objects
@@ -50,7 +68,7 @@ open class MHController {
             saved.id = id
             let savedData = try JSONEncoder().encode(saved)
             
-            let json:JSONData = fetch(id:id) ?? JSONData(context: MHController.dataContext)
+            let json:JSONData = fetch(id:id) ?? JSONData(context: ArcController.dataContext)
             json.id = id
             json.type = "\(obj.type!.rawValue)"
             json.data = savedData
@@ -68,7 +86,7 @@ open class MHController {
             saved.id = id
             let savedData = try JSONEncoder().encode(saved)
             
-            let json:JSONData = JSONData(context: MHController.dataContext)
+            let json:JSONData = JSONData(context: ArcController.dataContext)
             json.id = id
             json.type = "\(obj.type!.rawValue)"
             json.data = savedData
@@ -85,9 +103,9 @@ open class MHController {
 			
         var results:[JSONData]? = nil
 		
-		MHController.dataContext.performAndWait {
+		ArcController.dataContext.performAndWait {
 			do {
-				results = try MHController.dataContext.fetch(fetch)
+				results = try ArcController.dataContext.fetch(fetch)
 			}  catch {
 				delegate?.didCatch(errors: error)
 				fatalError("Could not fetch: \(error)")
@@ -119,9 +137,9 @@ open class MHController {
 			if let limit = limit {
 				fetchRequest.fetchLimit = limit
 			}
-			MHController.dataContext.performAndWait {
+			ArcController.dataContext.performAndWait {
 				do {
-					results = try MHController.dataContext.fetch(fetchRequest)
+					results = try ArcController.dataContext.fetch(fetchRequest)
 				}  catch {
 						delegate?.didCatch(errors: error)
 				}
@@ -136,7 +154,7 @@ open class MHController {
     
     public func get<T:ArcCodable>(id:String) throws -> T {
         guard let result = fetch(id: id), let value:T = result.get() else {
-            throw MHController.ControllerError.NotFound
+            throw ArcController.ControllerError.NotFound
         }
         return value
     }
@@ -150,8 +168,8 @@ open class MHController {
         let fetch:NSFetchRequest<JSONData> = JSONData.fetchRequest()
         fetch.predicate = NSPredicate(format: "id == %@", id)
         do {
-        if let result = try MHController.dataContext.fetch(fetch).first {
-            MHController.dataContext.delete(result)
+        if let result = try ArcController.dataContext.fetch(fetch).first {
+            ArcController.dataContext.delete(result)
             success = true
             save()
         }
@@ -163,12 +181,12 @@ open class MHController {
     }
 	
 	public func delete(_ obj:NSManagedObject) {
-		MHController.dataContext.delete(obj)
+		ArcController.dataContext.delete(obj)
 		save()
 	}
 	public func delete(_ objs:[NSManagedObject]) {
 		for obj in objs {
-			MHController.dataContext.delete(obj)
+			ArcController.dataContext.delete(obj)
 		}
 		save()
 	}

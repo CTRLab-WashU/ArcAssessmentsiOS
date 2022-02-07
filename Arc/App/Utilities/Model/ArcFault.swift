@@ -1,7 +1,7 @@
 //
-//  ProxyManager.swift
+//  HMFault.swift
 // Arc
-//
+///
 // Copyright (c) 2022 Washington University in St. Louis
 //
 // Washington University in St. Louis hereby grants to you a non-transferable,
@@ -23,14 +23,36 @@
 // THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
 // OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
-
+/*
+{
+"response": {
+"success": false
+},
+"errors": {
+"participant_id": [
+"Invalid Participant ID or Authorization Code"
+]
+}
+}
+*/
 import Foundation
-open class ProxyManager {
-	static public let shared = ProxyManager()
+
+public struct ArcFault : Codable, Error {
+	var message:String
+}
+
+public struct ArcResponse : Codable {
 	
+	public struct Body : Codable {
+		public var success : Bool?
+		public var md5:String?
+	}
 	
-	
-	public func apply() {
-		UINavigationBarProxy().apply()
+	public var response:Body?
+	public var responseData:HTTPURLResponse?
+	public var errors : [String:[String]]
+
+	private enum CodingKeys : CodingKey {
+		case response, errors
 	}
 }

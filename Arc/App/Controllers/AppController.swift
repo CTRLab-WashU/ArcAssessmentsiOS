@@ -1,15 +1,33 @@
 //
-//  AppController.swift
+// AppController.swift
 // Arc
 //
-//  Created by Philip Hayes on 10/26/18.
-//  Copyright © 2018 healthyMedium. All rights reserved.
+// Copyright (c) 2022 Washington University in St. Louis
+//
+// Washington University in St. Louis hereby grants to you a non-transferable,
+// non-exclusive, royalty-free license to use and copy the computer code
+// provided here (the "Software").  You agree to include this license and the
+// above copyright notice in all copies of the Software.  The Software may not
+// be distributed, shared, or transferred to any third party.  This license does
+// not grant any rights or licenses to any other patents, copyrights, or other
+// forms of intellectual property owned or controlled by
+// Washington University in St. Louis.
+//
+// YOU AGREE THAT THE SOFTWARE PROVIDED HEREUNDER IS EXPERIMENTAL AND IS PROVIDED
+// "AS IS", WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING
+// WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+// PURPOSE, OR NON-INFRINGEMENT OF ANY THIRD-PARTY PATENT, COPYRIGHT, OR ANY OTHER
+// THIRD-PARTY RIGHT.  IN NO EVENT SHALL THE CREATORS OF THE SOFTWARE OR WASHINGTON
+// UNIVERSITY IN ST LOUIS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, OR
+// CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE SOFTWARE,
+// THE USE OF THE SOFTWARE, OR THIS AGREEMENT, WHETHER IN BREACH OF CONTRACT, TORT
+// OR OTHERWISE, EVEN IF SUCH PARTY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 //
 
 import Foundation
 import UIKit
 
-open class AppController : MHController {
+open class AppController : ArcController {
     
     public var currentSessionID: Int64 = 0
     
@@ -286,7 +304,7 @@ open class AppController : MHController {
             return false
         }
         
-        MHController.dataContext.performAndWait {
+        ArcController.dataContext.performAndWait {
             let signature: Signature = self.new()
             signature.data = data
             signature.tag = tag
@@ -305,7 +323,7 @@ open class AppController : MHController {
     }
     
     public func dataCompleted(dataId: String, data: JSONData) {
-        MHController.dataContext.performAndWait {
+        ArcController.dataContext.performAndWait {
             guard let currentSession = self.getSessionResult(sessionId: self.currentSessionID) else {
                 print("Could not find current session, make sure session id is set in AppController")
                 return
@@ -327,17 +345,17 @@ open class AppController : MHController {
     }
     
     private func deletePrevSessionResults(sessionId: Int64) {
-        MHController.dataContext.performAndWait {
+        ArcController.dataContext.performAndWait {
             self.getSessionResults(sessionId: sessionId).forEach { session in
                 session.sessionData?.forEach({ data in
                     if let jsonData = data as? JSONData {
-                        MHController.dataContext.delete(jsonData)
+                        ArcController.dataContext.delete(jsonData)
                     }
                 })
-                MHController.dataContext.delete(session)
+                ArcController.dataContext.delete(session)
             }
             self.getCurrentSessionSignatures().forEach { signature in
-                MHController.dataContext.delete(signature)
+                ArcController.dataContext.delete(signature)
             }
             self.save()
         }
@@ -357,7 +375,7 @@ open class AppController : MHController {
     open func createNewSession(info: ArcAssessmentSupplementalInfo? = nil) {
         let sessionId = info?.sessionID ?? 0
         self.deletePrevSessionResults(sessionId: sessionId)
-        MHController.dataContext.performAndWait {
+        ArcController.dataContext.performAndWait {
             let newSession: Session = self.new()
             newSession.sessionID = sessionId
             newSession.startTime = Date()
