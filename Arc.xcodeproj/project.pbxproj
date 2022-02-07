@@ -185,7 +185,6 @@
 		C5C2B12722D3D66C002CB4C5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2B12622D3D66B002CB4C5 /* InfoView.swift */; };
 		C5C2B12922D3ECBB002CB4C5 /* InfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2B12822D3ECBB002CB4C5 /* InfoContentView.swift */; };
 		C5C2B12B22D3F205002CB4C5 /* TestInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2B12A22D3F205002CB4C5 /* TestInfoView.swift */; };
-		C5C488B025251C58006500F2 /* StatusCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B4BD14251949D90094A338 /* StatusCodeTests.swift */; };
 		C5C7F715228F65C50086315B /* ArcTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7F714228F65C50086315B /* ArcTranslation.swift */; };
 		C5CCD7AE22DF717D002A788A /* AsyncAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCD7AD22DF717D002A788A /* AsyncAwait.swift */; };
 		C5D0F6FA220B477B00F04942 /* MHScrollingAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D0F6F9220B477B00F04942 /* MHScrollingAlertView.xib */; };
@@ -209,7 +208,6 @@
 		CB0C724B27AC71C30038D6D7 /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */; };
 		CB96153827AB15520064F658 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96153727AB15520064F658 /* FontLoader.swift */; };
 		CB984EF7271F22350034C9BB /* HmToSageMigrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */; };
-		CB984EF9271F39A80034C9BB /* PasswordGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */; };
 		CBDC438D272A7049004ACE2D /* Arc4To5MigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */; };
 		CBDC439B272A7E98004ACE2D /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBDC438E272A7E98004ACE2D /* arc.xcdatamodeld */; };
 		CBDC439C272A7E98004ACE2D /* Arc4To5MappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = CBDC4395272A7E98004ACE2D /* Arc4To5MappingModel.xcmappingmodel */; };
@@ -439,7 +437,6 @@
 		C594B3D923E245BA00B9743C /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
 		C594B3DB23E245F100B9743C /* HideGoodPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideGoodPrice.swift; sourceTree = "<group>"; };
 		C5AB56112302030F00129E03 /* WeekStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStepperView.swift; sourceTree = "<group>"; };
-		C5B4BD14251949D90094A338 /* StatusCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeTests.swift; sourceTree = "<group>"; };
 		C5C2B12422D3A2B3002CB4C5 /* PromptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDetailView.swift; sourceTree = "<group>"; };
 		C5C2B12622D3D66B002CB4C5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = Arc/App/Views/InfoView.swift; sourceTree = SOURCE_ROOT; };
 		C5C2B12822D3ECBB002CB4C5 /* InfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContentView.swift; sourceTree = "<group>"; };
@@ -470,7 +467,6 @@
 		CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB96153727AB15520064F658 /* FontLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		CB984EF5271F22350034C9BB /* HmToSageMigrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmToSageMigrationViewController.xib; sourceTree = "<group>"; };
-		CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorTests.swift; sourceTree = "<group>"; };
 		CBDC438C272A7049004ACE2D /* Arc4To5MigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc4To5MigrationPolicy.swift; sourceTree = "<group>"; };
 		CBDC438F272A7E98004ACE2D /* arc 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "arc 5.xcdatamodel"; sourceTree = "<group>"; };
 		CBDC4390272A7E98004ACE2D /* mHealth 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mHealth 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -605,9 +601,7 @@
 		C54AE8F421C81B2F00DEC360 /* ArcTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB984EFA271F3A030034C9BB /* migration */,
 				C54AE8F521C81B2F00DEC360 /* ArcTests.swift */,
-				C5B4BD14251949D90094A338 /* StatusCodeTests.swift */,
 				C54AE8F721C81B2F00DEC360 /* Info.plist */,
 			);
 			path = ArcTests;
@@ -1083,14 +1077,6 @@
 				CB0C724427AC71C30038D6D7 /* WeekDay.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		CB984EFA271F3A030034C9BB /* migration */ = {
-			isa = PBXGroup;
-			children = (
-				CB984EF8271F39A70034C9BB /* PasswordGeneratorTests.swift */,
-			);
-			path = migration;
 			sourceTree = "<group>";
 		};
 		CBDC43AC272A80F9004ACE2D /* MarkUp */ = {
@@ -1584,8 +1570,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB984EF9271F39A80034C9BB /* PasswordGeneratorTests.swift in Sources */,
-				C5C488B025251C58006500F2 /* StatusCodeTests.swift in Sources */,
 				C584F33522C16682009741A7 /* ArcTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
