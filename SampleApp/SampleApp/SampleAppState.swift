@@ -45,9 +45,9 @@ public enum SampleAppState: String, State, CaseIterable {
     
     //Return a view controller w
     public func viewForState() -> UIViewController {
-        
-        let testIdx = (Arc.shared.appNavigation as? SampleAppNavigationController)?.getCognitiveAssessmentIndex(state: self) ?? 0
 
+        let testIdx = ((Arc.shared.appNavigation as? SampleAppNavigationController)?.getCognitiveAssessmentIndex(state: self) ?? 0) + 1
+        ACState.testTaken = testIdx
         let surveyType = self.surveyTypeForState()
         switch self {
             case .signatureStart:
@@ -64,8 +64,8 @@ public enum SampleAppState: String, State, CaseIterable {
                 let vc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
+                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                .replacingOccurrences(of: "1", with: "\(testIdx)")
                 
                 controller.load(instructions: "TestingIntro-Grids")
                 return controller
@@ -73,8 +73,8 @@ public enum SampleAppState: String, State, CaseIterable {
                 let vc:PricesTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
+                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                    .replacingOccurrences(of: "1", with: "\(testIdx)")
                     .replacingOccurrences(of: "{Value2}", with: "3")
                 
                 controller.load(instructions: "TestingIntro-Prices")
@@ -84,8 +84,8 @@ public enum SampleAppState: String, State, CaseIterable {
                 let vc:SymbolsTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx + 1) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(testIdx + 1)")
+                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                    .replacingOccurrences(of: "1", with: "\(testIdx)")
                     .replacingOccurrences(of: "{Value2}", with: "3")
                 
                 controller.load(instructions: "TestingIntro-Symbols")

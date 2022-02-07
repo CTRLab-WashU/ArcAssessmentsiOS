@@ -45,10 +45,12 @@ open class SampleAppNavigationController : AppNavigationController {
     }
     
     public func startTest(stateList: [SampleAppState], info: ArcAssessmentSupplementalInfo? = nil) -> UIViewController? {
-        Arc.shared.appController.startNewTest(info: info)
+        
         ACState.testTaken = 0
         self.states = stateList
         self.stateIdx = 0
+        
+        Arc.shared.appController.startNewTest(info: info)
         
         guard let firstState = stateList.first else {
             return nil
