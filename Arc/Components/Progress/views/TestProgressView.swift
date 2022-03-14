@@ -27,15 +27,15 @@
 import UIKit
 
 public class TestProgressView:UIView {
-	weak private var progressBar:CircularProgressView!
-	weak private var divider:ACHorizontalBar!
-	weak private var titleLabel:ACLabel!
-	weak private var subtitleLabel:ACLabel!
-	weak private var countLabel:ACLabel!
-	weak private var maxLabel:ACLabel!
+	public weak private var progressBar:CircularProgressView!
+	public weak private var divider:ACHorizontalBar!
+	public weak private var titleLabel:ACLabel!
+	public weak private var subtitleLabel:ACLabel!
+	public weak private var countLabel:ACLabel!
+	public weak private var maxLabel:ACLabel!
 	
-	private var defaultAnimation = Animate().duration(0.8).curve(.easeOut)
-	var title:String? {
+	public var defaultAnimation = Animate().duration(0.8).curve(.easeOut)
+	public var title:String? {
 		get {
 			return titleLabel.text
 		}
@@ -43,7 +43,7 @@ public class TestProgressView:UIView {
 			titleLabel.text = newValue
 		}
 	}
-	var subTitle:String? {
+	public var subTitle:String? {
 		get {
 			return subtitleLabel.text
 		}
@@ -51,12 +51,12 @@ public class TestProgressView:UIView {
 			subtitleLabel.text = newValue
 		}
 	}
-	var dividerWidth:Double  = 1.0{
+	public var dividerWidth:Double  = 1.0{
 		didSet {
 			divider.relativeWidth = CGFloat(min(dividerWidth, 1.0))
 		}
 	}
-	var count:Int = 0 {
+	public var count:Int = 0 {
 		didSet {
 			let old = Double(oldValue)/Double(maxCount)
 			let new = Double(count)/Double(maxCount)
@@ -72,8 +72,8 @@ public class TestProgressView:UIView {
 			
 		}
 	}
-	var maxCount:Int = 3
-	init() {
+	public var maxCount:Int = 3
+	public init() {
 		super.init(frame: .zero)
 		translatesAutoresizingMaskIntoConstraints = false
 		backgroundColor = ACColor.primaryInfo
@@ -170,7 +170,7 @@ public class TestProgressView:UIView {
 		
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	public required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

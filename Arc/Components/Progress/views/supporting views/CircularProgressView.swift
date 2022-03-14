@@ -38,13 +38,13 @@ public class CircularProgressView : UIView {
 	let barPath = UIBezierPath()
 	let barEdgePath = UIBezierPath()
 	
-	var startAngle = (3.0 * CGFloat.pi)/2.0
-	var endAngle = 2.0 * CGFloat.pi
-	var config:Drawing.CircularBar = Drawing.CircularBar()
-	var checkConfig:Drawing.CheckMark = Drawing.CheckMark()
-	var ellipseConfig:Drawing.Ellipse = Drawing.Ellipse()
+	public var startAngle = (3.0 * CGFloat.pi)/2.0
+	public var endAngle = 2.0 * CGFloat.pi
+	public var config:Drawing.CircularBar = Drawing.CircularBar()
+	public var checkConfig:Drawing.CheckMark = Drawing.CheckMark()
+	public var ellipseConfig:Drawing.Ellipse = Drawing.Ellipse()
 	
-	var progress:Double = 0.1 {
+	public var progress:Double = 0.1 {
 		didSet {
 			setNeedsDisplay()
 			let curCompleteProgress = completeProgress

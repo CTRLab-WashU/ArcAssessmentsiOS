@@ -27,19 +27,19 @@
 import UIKit
 
 public class TestCountDownView: UIView {
-	weak var countLabel:ACLabel!
+	public weak var countLabel:ACLabel!
 	public override init(frame: CGRect) {
 		super.init(frame: .zero)
 		build()
 		
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		build()
 	}
 	
-	private func build(){
+	public func build(){
 		backgroundColor = .white
 		stack { [weak self] in
 			let stack = $0

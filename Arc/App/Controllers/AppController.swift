@@ -589,7 +589,7 @@ public enum ACLocale : String{
     case es_US
     case zh_CN
     
-    static func from(description:String) -> ACLocale {
+    public static func from(description:String) -> ACLocale {
         switch description {
             
         case "US - English": return .en_US
@@ -631,18 +631,18 @@ public enum ACLocale : String{
         }
         
     }
-    var string: String {
+    public var string: String {
         return self.rawValue
     }
-    var locale:(language:String, region:String) {
+    public var locale:(language:String, region:String) {
         let values = string.components(separatedBy: "_")
         return (values[0], values[1])
     }
-    func getLocale() -> Locale {
+    public func getLocale() -> Locale {
         return Locale(identifier: string)
     }
-    var availablePriceTest:String {
-    let value = "prices/\(self.rawValue)/price_sets"
+    public var availablePriceTest:String {
+        let value = "prices/\(self.rawValue)/price_sets"
        return value
     }
 }

@@ -169,10 +169,10 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func getTopViewController<T:UIView>() -> CustomViewController<T>? {
+    public func getTopViewController<T:UIView>() -> CustomViewController<T>? {
 		return topViewController as? CustomViewController<T>
 	}
-	func getCurrentQuestion() -> String {
+	public func getCurrentQuestion() -> String {
 		
 		return questions[currentIndex].questionId
 	}
@@ -208,7 +208,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		}
 	}
 
-	func getInput() -> SurveyInput? {
+	public func getInput() -> SurveyInput? {
 		if let vc:CustomViewController<InfoView> = getTopViewController() {
 			return vc.customView.inputItem
 		}
@@ -238,14 +238,14 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 	open func customViewController(forQuestion question:Survey.Question) -> UIViewController? {
 		return nil
 	}
-	func addController(_ vc:UIViewController? = nil) {
+    public func addController(_ vc:UIViewController? = nil) {
 		if let vc = vc {
 			pushViewController(vc, animated: true)
 		} else {
 			pushViewController(CustomViewController<InfoView>(), animated: true)
 		}
 	}
-	func display(question:Survey.Question) {
+    public func display(question:Survey.Question) {
 		//Reset this every time we view a new vc
 		currentViewControllerAlwaysHidesBarButtons = false
 		let style = question.style ?? .none
@@ -280,7 +280,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		
 	}
 	
-	func viewControllerStyle(_ question: Survey.Question) {
+    public func viewControllerStyle(_ question: Survey.Question) {
 		if var input = topViewController as? SurveyInput {
 			input.surveyInputDelegate = self
 		}
@@ -290,7 +290,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		
 
 	}
-	func instructionStyle(_ question:Survey.Question, presentableVc:UIViewController? = nil) {
+    public func instructionStyle(_ question:Survey.Question, presentableVc:UIViewController? = nil) {
 		// Do any additional setup after loading the view.
 		let vc:CustomViewController<InfoView> = getTopViewController()!
         useDarkStatusBar = false
@@ -340,7 +340,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		didPresentQuestion(input: vc.customView.inputItem, questionId: question.questionId)
 		currentViewControllerAlwaysHidesBarButtons = true
 	}
-	func questionStyle(_ question:Survey.Question) {
+    public func questionStyle(_ question:Survey.Question) {
 		// Do any additional setup after loading the view.
 		let vc:CustomViewController<InfoView> = getTopViewController()!
         

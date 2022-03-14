@@ -41,17 +41,17 @@ import UIKit
 */
 open class ACTemplateView: UIView, UIScrollViewDelegate {
 	public var root:UIScrollView!
-	var backgroundView:UIImageView!
+    public var backgroundView:UIImageView!
 	public var nextButton:ACButton?
-	var renderer:HMMarkupRenderer!
-	var shouldShowScrollIndicator: Bool = true
-	var spacerView:UIView!
-	var bottomScrollIndicatorView: UIView!
+    public var renderer:HMMarkupRenderer!
+    public var shouldShowScrollIndicator: Bool = true
+    public var spacerView:UIView!
+    public var bottomScrollIndicatorView: UIView!
 	
-	var topScrollIndicatorView : UIView!
+    public var topScrollIndicatorView : UIView!
 	
-	var scrollIndicatorLabel:UILabel!
-	private var contentView:UIView!
+    public var scrollIndicatorLabel:UILabel!
+    public var contentView:UIView!
 	public init() {
 		super.init(frame: .zero)
 		
@@ -73,7 +73,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 	}
 	/// creates the views contents
 	/// Creates an imageview and scrollview in front of it. 
-	func build() {
+    public func build() {
 		if root != nil {
 			root.removeFromSuperview()
 		}
@@ -256,7 +256,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 		
 	}
 	
-	@objc func scrollToTop() {
+	@objc public func scrollToTop() {
 		self.root.delegate = nil
 		
 		var config = Animate.Config()
@@ -288,7 +288,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 		self.bottomScrollIndicatorView.fadeIn(config)
 	}
 	
-	@objc func scrollToBottom() {
+	@objc public func scrollToBottom() {
 		//Disable the scroll delegate to prevent interactive
 		//scrolling effects
 		
@@ -337,11 +337,11 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	@objc func keyboardWillShow(notification: NSNotification) {
+	@objc public func keyboardWillShow(notification: NSNotification) {
 		setBottomScrollInset(value: 40)
 	}
 	
-	@objc func keyboardWillHide(notification: NSNotification){
+	@objc public func keyboardWillHide(notification: NSNotification){
 		setBottomScrollInset(value: 0)
 	}
 	public func setBottomScrollInset(value:CGFloat) {
@@ -369,7 +369,7 @@ open class ACTemplateView: UIView, UIScrollViewDelegate {
 		topScrollIndicatorView.isHidden = true
 	}
 	
-	private func scrollIndicatorState(_ scrollView: UIScrollView) {
+    public func scrollIndicatorState(_ scrollView: UIScrollView) {
 		guard bottomScrollIndicatorView != nil else {
 			return 
 		}

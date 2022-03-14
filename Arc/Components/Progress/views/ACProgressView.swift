@@ -26,39 +26,39 @@
 
 import UIKit
 
-class ACProgressView: ACTemplateView {
+public class ACProgressView: ACTemplateView {
 	private var startDay:Date?
 	
 	//Today section variables
-	var todaySection:UIView!
-	var headerLabel:ACLabel!
-	var progressViews:ACCircularProgressGroupStackView!
-	var progressViewStack:UIStackView!
-	var todaysSessionCompletionLabel:ACLabel!
-	var todaysSessionRemainingLabel:ACLabel!
-    var sessionRemainingView:UIView!
+	public var todaySection:UIView!
+	public var headerLabel:ACLabel!
+	public var progressViews:ACCircularProgressGroupStackView!
+	public var progressViewStack:UIStackView!
+	public var todaysSessionCompletionLabel:ACLabel!
+	public var todaysSessionRemainingLabel:ACLabel!
+    public var sessionRemainingView:UIView!
 	//This week section variables
-	var weekSection:UIView!
-	var weekHeaderLabel:ACLabel!
-	var weekProgressView:ACWeekStepperView!
-	var noticeLabel:ACLabel!
-	var dayOfWeekLabel:ACLabel!
-	var startDateLabel:ACLabel!
-	var endDateLabel:ACLabel!
+	public var weekSection:UIView!
+	public var weekHeaderLabel:ACLabel!
+	public var weekProgressView:ACWeekStepperView!
+	public var noticeLabel:ACLabel!
+	public var dayOfWeekLabel:ACLabel!
+	public var startDateLabel:ACLabel!
+	public var endDateLabel:ACLabel!
 	
 	//This study section variables
-	var studySection:UIView!
-	var studyHeaderLabel:ACLabel!
-	var weekOfStudyLabel:ACLabel!
-	var blockProgressView:BlockProgressview!
-	var joinDateLabel:ACLabel!
-	var finishDateLabel:ACLabel!
-	var timeBetweenTestWeeksLabel:ACLabel!
-	var nextWeekStack:UIStackView!
-	var nextTestingCycle:ACLabel!
-	var viewFaqButton:ACButton!
+	public var studySection:UIView!
+	public var studyHeaderLabel:ACLabel!
+	public var weekOfStudyLabel:ACLabel!
+	public var blockProgressView:BlockProgressview!
+	public var joinDateLabel:ACLabel!
+	public var finishDateLabel:ACLabel!
+	public var timeBetweenTestWeeksLabel:ACLabel!
+	public var nextWeekStack:UIStackView!
+	public var nextTestingCycle:ACLabel!
+	public var viewFaqButton:ACButton!
 
-	override func content(_ view: UIView) {
+    public override func content(_ view: UIView) {
 		if let v = view as? UIStackView {
 			v.layoutMargins = .zero
 		}
