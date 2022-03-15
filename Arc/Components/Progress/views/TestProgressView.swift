@@ -27,12 +27,12 @@
 import UIKit
 
 public class TestProgressView:UIView {
-	public weak private var progressBar:CircularProgressView!
-	public weak private var divider:ACHorizontalBar!
-	public weak private var titleLabel:ACLabel!
-	public weak private var subtitleLabel:ACLabel!
-	public weak private var countLabel:ACLabel!
-	public weak private var maxLabel:ACLabel!
+	public weak var progressBar:CircularProgressView!
+	public weak var divider:ACHorizontalBar!
+	public weak var titleLabel:ACLabel!
+	public weak var subtitleLabel:ACLabel!
+	public weak var countLabel:ACLabel!
+	public weak var maxLabel:ACLabel!
 	
 	public var defaultAnimation = Animate().duration(0.8).curve(.easeOut)
 	public var title:String? {
