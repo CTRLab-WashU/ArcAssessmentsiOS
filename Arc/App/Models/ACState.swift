@@ -27,7 +27,7 @@
 import UIKit
 public enum ACState : String, State, CaseIterable {
 	
-	case about, home, context, gridTest, priceTest, symbolsTest, testIntro, thankYou
+	case about, home, contact, context, gridTest, priceTest, symbolsTest, testIntro, thankYou
 	
 	static var configuration: [ACState] {return [] }
 	
@@ -99,7 +99,7 @@ public enum ACState : String, State, CaseIterable {
                 controller.load(instructions: "TestingIntro-Symbols")
                 
                 newController = controller
-            case .home:
+            case .home, .contact:
                 break
             case .thankYou:
                 let vc:FinishedNavigationController = FinishedNavigationController(file: "finished")
