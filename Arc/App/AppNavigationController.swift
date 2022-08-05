@@ -118,7 +118,7 @@ open class BaseAppNavigationController : AppNavigationController {
 		navigate(vc: viewForState(state: state), direction: direction)
 	}
 	public func navigate(vc: UIViewController, direction: UIWindow.TransitionOptions.Direction, duration: Double) {
-		guard let window = UIApplication.keyWindow else {
+		guard let window = UIApplication.keyWindow() else {
 			assertionFailure("No Keywindow")
 			
 			return

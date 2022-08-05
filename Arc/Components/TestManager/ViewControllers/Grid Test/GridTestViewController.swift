@@ -124,7 +124,7 @@ open class GridTestViewController: ArcViewController, UICollectionViewDelegate, 
 
         // Do any additional setup after loading the view.
         
-        if let h = UIApplication.keyWindow?.rootViewController?.view.frame.height, h > 568 {
+        if let h = UIApplication.keyWindow()?.rootViewController?.view.frame.height, h > 568 {
             LETTER_BUFFER = 60
         }
         
