@@ -286,7 +286,7 @@ open class Arc : ArcApi {
         let view:MHAlertView = (isScrolling) ? .get(nib: "MHScrollingAlertView") : .get()
         view.alpha = 0
         
-        guard let window = UIApplication.shared.keyWindow else {
+        guard let window = UIApplication.keyWindow else {
             return view
         }
         
@@ -346,7 +346,7 @@ open class Arc : ArcApi {
 	}
     
    public static func getTopViewController<T:UIViewController>() -> T?{
-	   guard let window = UIApplication.shared.keyWindow else {
+	   guard let window = UIApplication.keyWindow else {
 
 		   return nil
 	   }
@@ -436,7 +436,7 @@ open class Arc : ArcApi {
 	
 	public static func createPDFDataFromImage(images: [UIImage]) -> URL? {
 		let pdfData = NSMutableData()
-		guard let window = UIApplication.shared.keyWindow else {
+		guard let window = UIApplication.keyWindow else {
 			assertionFailure("No Keywindow")
 			
 			return nil
@@ -475,3 +475,8 @@ open class Arc : ArcApi {
 	}
 }
 
+extension UIApplication {
+    public static func keyWindow() -> UIWindow? {
+        return UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    }
+}
