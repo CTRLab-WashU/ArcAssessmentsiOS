@@ -96,7 +96,7 @@ public class ACCircularProgressGroupStackView : UIStackView {
 		progressViews[index].progress = progress
 	}
 	public func clearProgressViews() {
-		removeSubviews()
+        subviews.filter({ $0 is CircularProgressView }).forEach({ $0.removeFromSuperview() })
 		progressViews = []
 	}
 }
