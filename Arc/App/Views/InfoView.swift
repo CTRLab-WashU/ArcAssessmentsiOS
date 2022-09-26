@@ -60,13 +60,13 @@ public class InfoView: ACTemplateView {
 
 		}
 	}
-	var infoContent:InfoContentView!
-	var miscContainer:UIStackView!
-	var additionalContent:UIStackView!
-	var inputContainer:UIStackView!
-	var errorLabel:UILabel!
-	var topSpacer:UIView!
-	var inputItem:SurveyInput? {
+	public var infoContent:InfoContentView!
+	public var miscContainer:UIStackView!
+	public var additionalContent:UIStackView!
+	public var inputContainer:UIStackView!
+	public var errorLabel:UILabel!
+	public var topSpacer:UIView!
+	public var inputItem:SurveyInput? {
 		didSet {
 			self.inputItem?.surveyInputDelegate = inputDelegate
 		}

@@ -57,7 +57,7 @@ public extension UIViewController {
         
         onSetup?(vc)
         
-        let window = UIApplication.shared.keyWindow?.rootViewController
+        let window = UIApplication.keyWindow()?.rootViewController
         
         window?.present(vc, animated: true, completion: {
             
@@ -73,8 +73,8 @@ public extension UIViewController {
         
         onSetup?(vc)
         
-        UIApplication.shared.keyWindow?.rootViewController = vc
-        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+        UIApplication.keyWindow()?.rootViewController = vc
+        UIApplication.keyWindow()?.makeKeyAndVisible()
         
         onCompletion?(vc)
         return vc

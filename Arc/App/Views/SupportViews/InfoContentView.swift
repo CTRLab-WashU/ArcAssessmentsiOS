@@ -30,11 +30,11 @@ import UIKit
 /// This view has functions that can be called in any order to change the
 /// composition of the view itself. Each method once called will keep its original position.
 public class InfoContentView: UIStackView {
-	weak var headingLabel: UILabel?
-	weak var subheadingLabel: UILabel?
-	weak var contentLabel: HMMarkupLabel?
-	weak var contentTextView: HMMarkupTextView?
-	weak var separator:ACHorizontalBar!
+	public weak var headingLabel: UILabel?
+	public weak var subheadingLabel: UILabel?
+	public weak var contentLabel: HMMarkupLabel?
+	public weak var contentTextView: HMMarkupTextView?
+	public weak var separator:ACHorizontalBar!
 
 	var textColor = UIColor(named: "Secondary Text")
 

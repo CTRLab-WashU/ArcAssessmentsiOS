@@ -71,9 +71,9 @@ public class GoalDayTile: UIView {
 		progressView.progress = progress
 	}
 }
-extension UIView {
+public extension UIView {
 	@discardableResult
-	public func goalDayTile(apply closure: (GoalDayTile) -> Void) -> GoalDayTile {
+    func goalDayTile(apply closure: (GoalDayTile) -> Void) -> GoalDayTile {
 		return custom(GoalDayTile(), apply: closure)
 	}
 }

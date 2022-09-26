@@ -31,7 +31,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 	public weak var surveyInputDelegate: SurveyInputDelegate?
 
     public var orientation: UIStackView.Alignment = .top
-	private var problemsButton:UIButton?
+	public var problemsButton:UIButton?
 	public var hideHelpButton:Bool = false
 	@IBOutlet public weak var inputStack: UIStackView!
 	public var shouldTryNext = true
@@ -205,8 +205,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 			$0.titleLabel?.textAlignment = .left
 			$0.setTitle("".localized(ACTranslationKey.login_problems_linked).replacingOccurrences(of: "*", with: ""), for: .normal)
 			$0.addAction {
-                // TODO: mdephillips 2/3/22 Deprecated code for context, remove when new library is complete
-				//Arc.shared.appNavigation.navigate(state: Arc.shared.appNavigation.defaultContact(), direction: .toRight)
+				Arc.shared.appNavigation.navigate(state: Arc.shared.appNavigation.defaultContact(), direction: .toRight)
 			}
 			Roboto.Style.bodyBold($0.titleLabel!, color: .primary)
 			$0.setTitleColor(.primary, for: .normal)
@@ -216,6 +215,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 		}
 		return true
 	}
+    
 	public func supplementaryViews(for view: UIView) {
 		let nav = Arc.shared.appNavigation
 		

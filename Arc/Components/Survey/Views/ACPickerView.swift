@@ -26,7 +26,7 @@
 
 import UIKit
 
-class ACPickerView: UIView, SurveyInput, UIPickerViewDelegate, UIPickerViewDataSource {
+public class ACPickerView: UIView, SurveyInput, UIPickerViewDelegate, UIPickerViewDataSource {
    
 	public weak var surveyInputDelegate: SurveyInputDelegate?
 
@@ -36,9 +36,9 @@ class ACPickerView: UIView, SurveyInput, UIPickerViewDelegate, UIPickerViewDataS
     
     @IBOutlet weak var picker: UIPickerView!
     
-    var _question:Survey.Question?
-    var _items:[String]?
-    let calendar = Calendar.current
+    public var _question:Survey.Question?
+    public var _items:[String]?
+    public let calendar = Calendar.current
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -77,23 +77,23 @@ class ACPickerView: UIView, SurveyInput, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     
-    @IBAction func valueChanged(_ sender: Any) {
+    @IBAction public func valueChanged(_ sender: Any) {
         self.surveyInputDelegate?.didChangeValue();
         
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return _question?.answers?.count ?? _items?.count ?? 0
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return _question?.answers?[row].value as? String ?? _items?[row] 
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         surveyInputDelegate?.didChangeValue()
     }
 }

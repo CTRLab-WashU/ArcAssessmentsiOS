@@ -39,7 +39,7 @@ public struct ACCalendarStore {
                                           "F".localized(ACTranslationKey.day_abbrev_fri),
                                           "S".localized(ACTranslationKey.day_abbrev_sat)]
     
-    init(range:ClosedRange<Date>) {
+    public init(range:ClosedRange<Date>) {
         self.dateRange = range
     }
 }

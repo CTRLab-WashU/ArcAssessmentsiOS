@@ -33,6 +33,8 @@ public protocol AppNavigationController {
     
     func defaultAbout() -> State
     
+    func defaultContact() -> State
+    
     func defaultPrivacy()
 
 	///This function should ideally send you back home.
@@ -62,6 +64,7 @@ public protocol AppNavigationController {
 
 
 open class BaseAppNavigationController : AppNavigationController {
+    
 	public func screenShotApp() -> [URL] {
 		return []
 	}
@@ -72,6 +75,10 @@ open class BaseAppNavigationController : AppNavigationController {
 	public func defaultHelpState() -> UIViewController {
 		return ACState.home.viewForState()
 	}
+    
+    public func defaultContact() -> State {
+        return ACState.contact
+    }
 	
 	private var _previousState:State?
 	private var state:State = ACState.home
@@ -111,7 +118,7 @@ open class BaseAppNavigationController : AppNavigationController {
 		navigate(vc: viewForState(state: state), direction: direction)
 	}
 	public func navigate(vc: UIViewController, direction: UIWindow.TransitionOptions.Direction, duration: Double) {
-		guard let window = UIApplication.shared.keyWindow else {
+		guard let window = UIApplication.keyWindow() else {
 			assertionFailure("No Keywindow")
 			
 			return

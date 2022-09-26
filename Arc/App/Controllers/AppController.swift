@@ -387,6 +387,137 @@ open class AppController : ArcController {
             self.save()
         }
     }
+    
+    open func get(study studyId:Int) -> StudyPeriod? {
+        
+        let study:[StudyPeriod]? = fetch(predicate: NSPredicate(format: "studyID == %i", studyId), sort: nil)
+        
+        return study?.first
+        
+    }
+    
+    open func get(firstSessionInStudy studyId:Int) -> Session? {
+        guard let study = get(study: studyId) else {
+            return nil
+        }
+        return study.sessions?.firstObject as? Session
+    }
+    
+    
+    open func get(session:Int, inStudy studyId:Int) -> Session {
+        let study = get(study: studyId)
+        return study?.sessions?.first(where: { (test) -> Bool in
+            let s = test as! Session
+            return s.sessionID == Int(session)
+            
+        }) as! Session
+    }
+    open func get(session sessionId:Int) -> Session? {
+        
+        let study:[Session]? = fetch(predicate: NSPredicate(format: "sessionID == %i", sessionId), sort: nil)
+        
+        return study?.first
+        
+    }
+    
+    // search through sessions, find any whose expiration data is in the past, and hasn't ever been started,
+    // and mark it as missed.
+    open func mark(confirmed studyId:Int) -> StudyPeriod? {
+        let study = get(study: studyId)
+        study?.hasConfirmedDate = true
+        save()
+        return study
+    }
+    
+    open func markMissedSessions(studyId:Int)
+    {
+        guard let study = get(study: studyId) else {
+            fatalError("Invalid study ID")
+        }
+        if let tests = study.sessions
+        {
+            for i in 0..<tests.count
+            {
+                let test = tests[i] as! Session;
+                
+                if test.finishedSession == false && test.expirationDate?.compare(Date()) != .orderedDescending
+                {
+                    mark(missed: Int(test.sessionID), studyId: studyId)
+                }
+            }
+        }
+        
+    }
+    
+    open func mark(started sessionId:Int, studyId:Int)
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        session.startTime = Date();
+        save();
+    }
+    
+    open func mark(missed session:Session)
+    {
+        guard let studyId = session.study?.studyID else {
+            assertionFailure("Invalid session submitted, No study Id assigned.")
+            return
+        }
+        let session = get(session: Int(session.sessionID), inStudy: Int(studyId))
+        session.missedSession = true;
+        save()
+    }
+    
+    open func mark(uploaded session:Session)
+    {
+        guard let studyId = session.study?.studyID else {
+            assertionFailure("Invalid session submitted, No study Id assigned.")
+            return
+        }
+        let session = get(session: Int(session.sessionID), inStudy: Int(studyId))
+        session.uploaded = true;
+        save()
+    }
+    
+    open func mark(missed sessionId:Int, studyId:Int)
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        session.missedSession = true;
+        save()
+    }
+    
+    open func get(missed sessionId:Int, studyId:Int) -> Bool
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        return session.missedSession
+    }
+    
+    open func mark(uploaded sessionId:Int, studyId:Int)
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        session.uploaded = true;
+        save()
+    }
+    open func mark(interrupted:Bool,  sessionId:Int, studyId:Int)
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        session.interrupted = interrupted as NSNumber;
+        save();
+    }
+    
+    open func mark(finished sessionId:Int, studyId:Int)
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        session.missedSession = false;
+        session.finishedSession = true;
+        save();
+    }
+    
+    open func get(finished sessionId:Int, studyId:Int) -> Bool
+    {
+        let session = get(session: sessionId, inStudy: studyId)
+        return session.finishedSession
+        
+    }
 }
 
 public extension Encodable {
@@ -458,7 +589,7 @@ public enum ACLocale : String{
     case es_US
     case zh_CN
     
-    static func from(description:String) -> ACLocale {
+    public static func from(description:String) -> ACLocale {
         switch description {
             
         case "US - English": return .en_US
@@ -500,18 +631,18 @@ public enum ACLocale : String{
         }
         
     }
-    var string: String {
+    public var string: String {
         return self.rawValue
     }
-    var locale:(language:String, region:String) {
+    public var locale:(language:String, region:String) {
         let values = string.components(separatedBy: "_")
         return (values[0], values[1])
     }
-    func getLocale() -> Locale {
+    public func getLocale() -> Locale {
         return Locale(identifier: string)
     }
-    var availablePriceTest:String {
-    let value = "prices/\(self.rawValue)/price_sets"
+    public var availablePriceTest:String {
+        let value = "prices/\(self.rawValue)/price_sets"
        return value
     }
 }
