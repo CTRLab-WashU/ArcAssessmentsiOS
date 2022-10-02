@@ -122,6 +122,7 @@ public enum QuestionType : String, Codable {
 			inputView.maxCharacters = 2
 			inputView.minCharacters = 1
 			inputView.keyboardType = .numberPad
+            inputView.textView.reloadInputViews()
 		
 		case .image:
 			let inputView:SignatureView =  .get()
