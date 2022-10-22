@@ -67,7 +67,6 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 	public var surveyId:String
 	public var shouldNavigateToNextState:Bool = true
     public var currentViewControllerAlwaysHidesBarButtons = false
-    public var overrideCurrentViewControllerAlwaysHidesBarButtons = false
     
     public init(file:String, surveyId:String? = nil, showHelp:Bool? = true, surveyType: SurveyType = .unknown) {
         shouldShowHelpButton = showHelp ?? true
@@ -339,7 +338,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		vc.customView.nextButton?.addTarget(self, action: #selector(nextButtonPressed(sender:)), for: .primaryActionTriggered)
         vc.customView.nextButton?.setTitle(question.nextButtonTitle ?? "NEXT".localized(ACTranslationKey.button_next), for: .normal)
 		didPresentQuestion(input: vc.customView.inputItem, questionId: question.questionId)
-		currentViewControllerAlwaysHidesBarButtons = true && !overrideCurrentViewControllerAlwaysHidesBarButtons
+		currentViewControllerAlwaysHidesBarButtons = true
 	}
     public func questionStyle(_ question:Survey.Question) {
 		// Do any additional setup after loading the view.
