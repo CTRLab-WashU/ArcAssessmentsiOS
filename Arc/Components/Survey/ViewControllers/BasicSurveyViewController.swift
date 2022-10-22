@@ -118,17 +118,17 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
             
             var leftButton:UIBarButtonItem? = backButton
             if backButton == nil {
-                if self.viewControllers.count > 1 || overrideCurrentViewControllerAlwaysHidesBarButtons {
-                    let backButton = UIButton(type: .custom)
-                    backButton.frame = CGRect(x: 0, y: 0, width: 60, height: 10)
-                    backButton.setImage(Arc.shared.image(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
-                    backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
-                    backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
-                    backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
-                    backButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
-                    backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
-                    
-                    leftButton = UIBarButtonItem(customView: backButton)
+                if self.viewControllers.count > 1 {
+                let backButton = UIButton(type: .custom)
+                backButton.frame = CGRect(x: 0, y: 0, width: 60, height: 10)
+                backButton.setImage(Arc.shared.image(named: "cut-ups/icons/arrow_left_blue"), for: .normal)
+                backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
+                backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
+                backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
+                backButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+                backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
+                
+                leftButton = UIBarButtonItem(customView: backButton)
                 }
             }
             topViewController?.navigationItem.leftBarButtonItem = leftButton
