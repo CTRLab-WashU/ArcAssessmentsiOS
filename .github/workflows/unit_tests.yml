@@ -16,6 +16,10 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+            submodules: recursive
       - name: Force Xcode 14.0
         run: sudo xcode-select -switch /Applications/Xcode_14.0.app
       - name: Build for iOS
