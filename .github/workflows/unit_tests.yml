@@ -14,12 +14,8 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
-      - name: Git - Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          ref: ${{ github.ref }}
       - name: Force Xcode 14.0
         run: sudo xcode-select -switch /Applications/Xcode_14.0.app
       - name: Build for iOS
