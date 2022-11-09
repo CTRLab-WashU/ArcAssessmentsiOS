@@ -97,7 +97,7 @@ class SimplifiedPricesTestTutorialViewController: PricesTestTutorialViewControll
             weakSelf.tutorialAnimation.pause()
             
             self?.currentHint = self?.view.window?.hint {
-				$0.content = "".localized(ACTranslationKey.popup_tutorial_price_intro)
+				$0.content = "".localized(ACTranslationKey.simplified_popup_tutorial_price_intro)
                 $0.buttonTitle = "NEXT".localized(ACTranslationKey.popup_tutorial_ready)
                 $0.button.addAction {
                     weakSelf.tutorialAnimation.resume()
