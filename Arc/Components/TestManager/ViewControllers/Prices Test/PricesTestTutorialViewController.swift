@@ -413,7 +413,7 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 			weakSelf.currentHint = weakSelf.view.window?.hint {
 				$0.content = """
 			Tap this matching price.
-			""".localized(ACTranslationKey.popup_tutorial_pricetap)
+			""".localized(ACTranslationKey.simplified_popup_tutorial_pricetap)
 				
 				if let view = view {
 					

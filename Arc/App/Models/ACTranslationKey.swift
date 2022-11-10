@@ -433,6 +433,7 @@ public enum ACTranslationKey : String, TranslationKey {
     case popup_tutorial_middle_instructions
     case popup_tutorial_tiletap
     case popup_tutorial_pricetap
+    case simplified_popup_tutorial_pricetap
     case popup_tutorial_greatjob
     case popup_tutorial_nice
     case popup_tutorial_grid_recall
