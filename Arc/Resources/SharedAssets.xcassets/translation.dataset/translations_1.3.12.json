@@ -290,7 +290,7 @@
         "prices_header": "Prices",
         "prices_body": "Please decide if the displayed price is a good bargain for that item. \n\nThe pair will only remain on the screen for a short time, so please make your decision quickly and pay close attention.",
         "prices_body2": "",
-        "simplified_prices_body": "Please memorize the displayed \u003cbr \u003eitems and their prices.\u003cbr \u003e\u003cbr \u003e The pair will only remain on the screen for a short time, so please pay close attention. ",
+        "simplified_prices_body": "Please memorize the displayed \nitems and their prices.\n\n The pair will only remain on the screen for a short time, so please pay close attention. ",
         "prices_isthisgood": "Is this a good price?",
         "simplified_popup_tutorial_price_intro": "*Memorize the displayed \n items and their prices.* \n You will have 3 seconds\nper item.",
         "popup_tutorial_price_memorize": "",
