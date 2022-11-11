@@ -410,6 +410,7 @@ public enum ACTranslationKey : String, TranslationKey {
     case popup_tutorial_welcome
     case popup_tutorial_quit
     case popup_tutorial_price_intro
+    case simplified_popup_tutorial_price_intro
     case popup_tutorial_price_memorize
     case prices_tutorial_item1
     case prices_tutorial_price1
@@ -432,6 +433,7 @@ public enum ACTranslationKey : String, TranslationKey {
     case popup_tutorial_middle_instructions
     case popup_tutorial_tiletap
     case popup_tutorial_pricetap
+    case simplified_popup_tutorial_pricetap
     case popup_tutorial_greatjob
     case popup_tutorial_nice
     case popup_tutorial_grid_recall
