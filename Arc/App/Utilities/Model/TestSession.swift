@@ -166,9 +166,13 @@ public struct FullTestSession : Codable {
 			cognitive.symbol_test = survey
 
 		}
-		if cognitive.context_survey != nil {
+		if cognitive.context_survey != nil ||
+            cognitive.wake_survey != nil ||
+            cognitive.chronotype_survey != nil ||
+            cognitive.price_test != nil ||
+            cognitive.grid_test != nil ||
+            cognitive.symbol_test != nil {
 			tests.append(AnyTest(cognitive))
-
 		}
 		
 		
