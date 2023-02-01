@@ -80,7 +80,8 @@ public class PricesTestViewController: ArcViewController {
 		}
 
 		if autoStart {
-            test = controller.loadTest(index: 0, file: PricesTestViewController.testVersion )
+            let sessionId = Int(Arc.shared.appController.currentSessionID)
+            test = controller.loadTest(index: sessionId, file: PricesTestViewController.testVersion )
             self.isTutorial = false
             responseID = controller.createResponse(withTest: test!)
 			
