@@ -54,13 +54,13 @@ public struct CognitiveTest : ArcCodable {
 	
 	public var id:String?
 	public var type:SurveyType? = .cognitive
-	var context_survey:SurveyResponse?
-	var wake_survey:SurveyResponse?
-	var chronotype_survey:SurveyResponse?
-	var grid_test:GridTestResponse?
-	var price_test:PriceTestResponse?
-	var symbol_test:SymbolsTestResponse?
-	init() {
+	public var context_survey:SurveyResponse?
+	public var wake_survey:SurveyResponse?
+	public var chronotype_survey:SurveyResponse?
+	public var grid_test:GridTestResponse?
+	public var price_test:PriceTestResponse?
+	public var symbol_test:SymbolsTestResponse?
+	public init() {
 		
 	}
 }
