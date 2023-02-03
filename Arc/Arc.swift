@@ -43,6 +43,10 @@ public enum ArcBundle {
 public struct ArcAssessmentResult {
     public var signatures: [ArcAssessmentSignature]? = nil
     public var fullTestSession: FullTestSession? = nil
+    public init(signatures: [ArcAssessmentSignature]?, fullTestSession: FullTestSession?) {
+        self.signatures = signatures
+        self.fullTestSession = fullTestSession
+    }
 }
 
 public protocol ArcAssessmentDelegate: AnyObject {
