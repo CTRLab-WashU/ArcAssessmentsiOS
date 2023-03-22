@@ -30,8 +30,6 @@ import UIKit
 // This class can be used to customize the Arc library
 open class ARCSageAppEnvironment : ArcEnvironment {
     
-    static var instance = ARCSageAppEnvironment()
-    
     public var appNavigation: AppNavigationController = ARCSageNavigationController()
     
     public init() {

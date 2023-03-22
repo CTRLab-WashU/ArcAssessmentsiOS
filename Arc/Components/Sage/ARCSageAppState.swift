@@ -86,8 +86,8 @@ public enum ARCSageAppState : String, State, CaseIterable {
             controller.nextVc = vc
             controller.titleOverride = "Test 1 of 1"
             
-            if ARCSageAppEnvironment.instance.priceTestType == .simplified ||
-                ARCSageAppEnvironment.instance.priceTestType == .simplifiedCentered {
+            if Arc.environment?.priceTestType == .simplified ||
+                Arc.environment?.priceTestType == .simplifiedCentered {
                 controller.load(instructions: "TestingIntro-SimplifiedPrices")
             } else {
                 controller.load(instructions: "TestingIntro-Prices")
