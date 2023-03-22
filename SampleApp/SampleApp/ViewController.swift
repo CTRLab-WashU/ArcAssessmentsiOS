@@ -64,6 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let arcSupplementalInfo = ArcAssessmentSupplementalInfo(
             sessionID: 0, sessionAvailableDate: Date(), weekInStudy: 0, dayInWeek: 0, sessionInDay: 0)
         
+        ACState.totalTestCountInSession = (stateList.count > 1) ? 3 : 1
         if let sampleAppNavController = Arc.shared.appNavigation as? SampleAppNavigationController,
            let vc = sampleAppNavController.startTest(stateList: stateList, info: arcSupplementalInfo) {
             Arc.shared.delegate = self
