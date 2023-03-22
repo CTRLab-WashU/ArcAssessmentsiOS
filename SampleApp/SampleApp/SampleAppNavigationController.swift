@@ -73,6 +73,10 @@ open class SampleAppNavigationController : AppNavigationController {
         return SampleAppState.all
     }
     
+    public func defaultContact() -> State {
+        return SampleAppState.all
+    }
+    
     public func defaultPrivacy() {
         // no-op
     }

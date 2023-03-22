@@ -47,6 +47,7 @@ public class PricesTestViewController: ArcViewController {
     var test:PriceTest?
     var responseID = ""
 	var autoStart = true
+    var hasCompleted = false
     public var isPracticeTest = false
 	weak var delegate:PricesTestDelegate?
     public static var testVersion:String {
@@ -110,7 +111,15 @@ public class PricesTestViewController: ArcViewController {
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            _ = controller.start(test: responseID)
+        
+        // Because of the way this VC shows the PricesQuestion afterwards,
+        // viewDidAppear can be called when dismissing the navigation stack
+        // To avoid auto start kicking off the process again, return here
+        if (self.hasCompleted) {
+            return
+        }
+        
+        _ = controller.start(test: responseID)
 		_  = controller.mark(filled: responseID)
 		if autoStart {
 			priceDisplay.isHidden = false
@@ -252,6 +261,8 @@ public class PricesTestViewController: ArcViewController {
 			displayTransition()
             
 			hideInterface()
+            
+            self.hasCompleted = true
         }
         
     }
