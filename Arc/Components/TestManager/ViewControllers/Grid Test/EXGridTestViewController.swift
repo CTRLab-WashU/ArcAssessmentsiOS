@@ -6,7 +6,6 @@
 //  Copyright © 2019 healthyMedium. All rights reserved.
 //
 
-import Arc
 import UIKit
 
 open class CRGridTestViewController : GridTestViewController {

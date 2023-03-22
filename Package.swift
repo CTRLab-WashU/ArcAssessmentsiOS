@@ -7,7 +7,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         // Add support for all platforms starting from a specific version.
-        .iOS(.v12)
+        .iOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.

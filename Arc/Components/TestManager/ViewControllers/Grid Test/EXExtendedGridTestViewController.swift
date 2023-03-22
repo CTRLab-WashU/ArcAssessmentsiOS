@@ -6,7 +6,6 @@
 //  Copyright © 2020 healthyMedium. All rights reserved.
 //
 
-import Arc
 import UIKit
 
 open class EXExtendedGridTestViewController : ExtendedGridTestViewController {
