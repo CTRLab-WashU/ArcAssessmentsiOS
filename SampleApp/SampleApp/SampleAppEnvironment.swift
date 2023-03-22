@@ -36,4 +36,13 @@ open class SampleAppEnvironment : ArcEnvironment {
         //Use this to set class variables or perform setup before the app runs
         
     }
+    
+    open var priceTestType:PriceTestType {
+        return .normal
+    }
+    
+    open var gridTestType:GridTestType {
+        //return .normal
+        return .extended
+    }
 }
