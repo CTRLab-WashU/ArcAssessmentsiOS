@@ -333,8 +333,8 @@ open class GridTestViewController: ArcViewController, UICollectionViewDelegate, 
         if testNumber >= controller.get(testCount: responseId)
         {
             _ = controller.mark(filled: responseId)
-            let nextMessage = (ACState.testCount == 3) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
-            let vc = TestProgressViewController(title: "Symbols Test Complete!".localized(ACTranslationKey.grids_complete), subTitle: nextMessage, count: ACState.testTaken - 1)
+            let nextMessage = (ACState.testCount == 3 || ACState.totalTestCountInSession == 1) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
+            let vc = TestProgressViewController(title: "Symbols Test Complete!".localized(ACTranslationKey.grids_complete), subTitle: nextMessage, count: ACState.testTaken - 1, maxCount: ACState.totalTestCountInSession)
             vc.delegate = self
             self.addChild(vc)
             self.view.anchor(view: vc.view)
