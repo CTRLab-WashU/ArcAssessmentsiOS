@@ -60,9 +60,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
         // This is supplemental information about this specific session
         // within the context of the study schedule
-        // This is optional, and will be simply copied into the ArcAssessmentResult
+        // The only thing that is relevant, is that the sessionID controls
+        // Which price test the user sees, so you should make it unique
+        // to the session run, by specifying a random number,
+        // or the index of the session within your schedule of coginitive sessions.
         let arcSupplementalInfo = ArcAssessmentSupplementalInfo(
-            sessionID: 0, sessionAvailableDate: Date(), weekInStudy: 0, dayInWeek: 0, sessionInDay: 0)
+            sessionID: Int64(Int.random(in: 0...1000)), sessionAvailableDate: Date(), weekInStudy: 0, dayInWeek: 0, sessionInDay: 0)
         
         ACState.totalTestCountInSession = (stateList.count > 1) ? 3 : 1
         if let sampleAppNavController = Arc.shared.appNavigation as? SampleAppNavigationController,
