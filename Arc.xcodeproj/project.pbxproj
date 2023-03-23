@@ -244,6 +244,12 @@
 		CBDC43EF272A8163004ACE2D /* Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43EB272A8162004ACE2D /* Animate.swift */; };
 		CBDC43F2272A8169004ACE2D /* Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F0272A8169004ACE2D /* Roboto.swift */; };
 		CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F1272A8169004ACE2D /* Georgia.swift */; };
+		CBE2F43A29CD115B00D6C862 /* SampleAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43729CD115B00D6C862 /* SampleAppState.swift */; };
+		CBE2F43B29CD115B00D6C862 /* SampleAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */; };
+		CBE2F43C29CD115B00D6C862 /* SampleAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */; };
+		CBE2F44029CD117F00D6C862 /* ARCCognitiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */; };
+		CBE2F44129CD117F00D6C862 /* ARCCognitiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */; };
+		CBE2F44229CD117F00D6C862 /* ARCCognitiveEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -508,6 +514,12 @@
 		CBDC43EB272A8162004ACE2D /* Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animate.swift; path = Arc/UIKit/Views/Style/Animate.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F0272A8169004ACE2D /* Roboto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Roboto.swift; path = Arc/UIKit/Views/Style/Fonts/Roboto.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F1272A8169004ACE2D /* Georgia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Georgia.swift; path = Arc/UIKit/Views/Style/Fonts/Georgia.swift; sourceTree = SOURCE_ROOT; };
+		CBE2F43729CD115B00D6C862 /* SampleAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppState.swift; sourceTree = "<group>"; };
+		CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppEnvironment.swift; sourceTree = "<group>"; };
+		CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppNavigationController.swift; sourceTree = "<group>"; };
+		CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveState.swift; sourceTree = "<group>"; };
+		CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveNavigationController.swift; sourceTree = "<group>"; };
+		CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -755,6 +767,8 @@
 		C54AE94B21C81B5C00DEC360 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CBE2F44529CD11B300D6C862 /* SampleImpl */,
+				CBE2F44429CD119F00D6C862 /* CognitiveImpl */,
 				CB0C724027AC71A90038D6D7 /* Scheduler */,
 				C54E8E1322E790230080BFC1 /* Progress */,
 				C54AE97F21C81B5C00DEC360 /* LoadingScreenViewController.swift */,
@@ -1148,6 +1162,26 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		CBE2F44429CD119F00D6C862 /* CognitiveImpl */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */,
+				CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */,
+				CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */,
+			);
+			path = CognitiveImpl;
+			sourceTree = "<group>";
+		};
+		CBE2F44529CD11B300D6C862 /* SampleImpl */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */,
+				CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */,
+				CBE2F43729CD115B00D6C862 /* SampleAppState.swift */,
+			);
+			path = SampleImpl;
+			sourceTree = "<group>";
+		};
 		CBE815272727559C00EA9C80 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1361,6 +1395,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE2F44029CD117F00D6C862 /* ARCCognitiveState.swift in Sources */,
+				CBE2F44129CD117F00D6C862 /* ARCCognitiveNavigationController.swift in Sources */,
+				CBE2F44229CD117F00D6C862 /* ARCCognitiveEnvironment.swift in Sources */,
+				CBE2F43A29CD115B00D6C862 /* SampleAppState.swift in Sources */,
+				CBE2F43B29CD115B00D6C862 /* SampleAppEnvironment.swift in Sources */,
+				CBE2F43C29CD115B00D6C862 /* SampleAppNavigationController.swift in Sources */,
 				C54D103422C28A1D00B43E42 /* SignatureView.swift in Sources */,
 				CBDC43C9272A8145004ACE2D /* UIView + Pulse.swift in Sources */,
 				C54AEA3F21C81B5F00DEC360 /* SurveyNavigationViewController.swift in Sources */,
