@@ -26,7 +26,7 @@
 import Foundation
 import UIKit
 
-public protocol ARCCognitiveHomeViewControllerDelegate2: Any {
+public protocol ARCCognitiveHomeViewControllerDelegate: Any {
     func homeViewController() -> UIViewController
 }
 
@@ -35,7 +35,7 @@ open class ARCCognitiveNavigationController : AppNavigationController {
     public var runningTestStates: [ARCCognitiveState] = []
     public var stateIdx = -1
     
-    public var vcDelegate: ARCCognitiveHomeViewControllerDelegate2? = nil
+    public var vcDelegate: ARCCognitiveHomeViewControllerDelegate? = nil
     
     public func startTest(stateList: [ARCCognitiveState], info: ArcAssessmentSupplementalInfo? = nil) -> UIViewController? {
         ACState.totalTestCountInSession = 1
