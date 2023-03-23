@@ -52,12 +52,12 @@ open class PricesQuestionViewController: ArcViewController, TestProgressViewCont
     var questions:Set<Int> = []
     var presentedQuestions:Set<Int> = []
     var isTutorial:Bool = false
+    
     override open func viewDidLoad() {
-        super.viewDidLoad();
-
-        
-        
+        self.cancelButtonModalUseLightTint = false
+        super.viewDidLoad()
     }
+    
     override open func viewWillAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         buildButtonStackView()

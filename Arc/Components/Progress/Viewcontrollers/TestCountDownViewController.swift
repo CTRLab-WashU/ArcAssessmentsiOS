@@ -29,6 +29,11 @@ import UIKit
 public class TestCountDownViewController: CustomViewController<TestCountDownView> {
     public var nextVc:UIViewController?
     public var shouldProceedWhenActive = false
+    public var isPaused = false
+    
+    let countdown3 = " 3 "
+    let countdown2 = " 2 "
+    let countdown1 = " 1 "
     
     init(nextVc:UIViewController) {
         self.nextVc = nextVc
@@ -39,8 +44,9 @@ public class TestCountDownViewController: CustomViewController<TestCountDownView
         fatalError("init(coder:) has not been implemented")
     }
     override public func viewDidLoad() {
+        self.cancelButtonModalUseLightTint = false
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUiBecameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
@@ -59,37 +65,44 @@ public class TestCountDownViewController: CustomViewController<TestCountDownView
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.customView.countLabel.font = UIFont(name: "Georgia-Italic", size: 96)
-        Animate().duration(0).delay(1.0).run { [weak self]
-            t in
-            self?.customView.countLabel.text = " 2 "
-            return true
-        }
-        Animate().duration(0).delay(2.0).run { [weak self]
-            t in
-            self?.customView.countLabel.text = " 1 "
-            return true
-        }
-        Animate().duration(0).delay(3.0).run { [weak self]
-            t in
-            
-            self?.countdownComplete()
-            return true
-        }
+        self.customView.countLabel.text = countdown3
+        self.countDown()
+    }
+    
+    func countDown() {
+        guard !self.isPaused else { return }
+        DispatchQueue.main.asyncAfter(deadline: (.now() + 1.0), execute: {
+            switch self.customView.countLabel.text {
+            case self.countdown3:
+                self.customView.countLabel.text = self.countdown2
+                self.countDown()
+            case self.countdown2:
+                self.customView.countLabel.text = self.countdown1
+                self.countDown()
+            case self.countdown1:
+                self.countdownComplete()
+            default:
+                debugPrint("Invalid countdown state")
+            }
+        })
     }
     
     private func countdownComplete() {
+        if let arcVc = self.nextVc as? ArcViewController {
+            arcVc.cancelButtomModal = self.cancelButtomModal
+        }
         self.app.appNavigation.navigate(vc: self.nextVc!, direction: .toTop)
         self.shouldProceedWhenActive = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    open override func onOverlayResume() {
+        super.onOverlayResume()
+        self.isPaused = false
+        self.countDown()
     }
-    */
-
+    
+    open override func showCancelOverlayView() {
+        super.showCancelOverlayView()
+        self.isPaused = true
+    }
 }

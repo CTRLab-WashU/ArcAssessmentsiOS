@@ -153,8 +153,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			//self.navigationItem.setLeftBarButton(leftButton, animated: true)
 			self.navigationItem.leftBarButtonItem = leftButton
 		}
-		customView.nextButton?.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .primaryActionTriggered)
-    }
+		customView.nextButton?.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .primaryActionTriggered)                
+    }        
 	
 	@objc func backPressed() {
 		self.navigationController?.popViewController(animated: true)
@@ -179,24 +179,33 @@ open class IntroViewController: CustomViewController<InfoView> {
 				self?.view.window?.clearOverlay()
 				self?.view.window?.removeHighlight()
 				self?.set(flag: .tutorial_complete)
-				//TODO: This will soon be depricated
 				if self?.style == .grids {
                     if Arc.environment?.gridTestType == .extended {
-                        self?.present(ExtendedGridTestTutorialViewController(), animated: true) {}
+                        let vc = ExtendedGridTestTutorialViewController()
+                        vc.cancelButtomModal = self?.cancelButtomModal
+                        self?.present(vc, animated: true) {}
                     } else {
-                        self?.present(GridTestTutorialViewController(), animated: true) {}
+                        let vc = GridTestTutorialViewController()
+                        vc.cancelButtomModal = self?.cancelButtomModal
+                        self?.present(vc, animated: true) {}
 					}
 				}
 				if self?.style == .prices {
                     if Arc.environment?.priceTestType == .simplified || Arc.environment?.priceTestType == .simplifiedCentered {
-                        self?.present(SimplifiedPricesTestTutorialViewController(), animated: true) {}
+                        let vc = SimplifiedPricesTestTutorialViewController()
+                        vc.cancelButtomModal = self?.cancelButtomModal
+                        self?.present(vc, animated: true) {}
                     } else {
-                        self?.present(PricesTestTutorialViewController(), animated: true) {}
+                        let vc = PricesTestTutorialViewController()
+                        vc.cancelButtomModal = self?.cancelButtomModal
+                        self?.present(vc, animated: true) {}
                     }
 
 				}
 				if self?.style == .symbols {
-					self?.present(SymbolsTutorialViewController(), animated: true) {
+                    let vc = SymbolsTutorialViewController()
+                    vc.cancelButtomModal = self?.cancelButtomModal
+					self?.present(vc, animated: true) {
 						
 					}
 				}

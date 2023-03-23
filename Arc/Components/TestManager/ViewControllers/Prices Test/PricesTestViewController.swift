@@ -75,6 +75,7 @@ public class PricesTestViewController: ArcViewController {
     
 
     override open func viewDidLoad() {
+        self.cancelButtonModalUseLightTint = false
         super.viewDidLoad()
 		if !autoStart && !isPracticeTest {
         	ACState.testCount += 1
@@ -190,6 +191,7 @@ public class PricesTestViewController: ArcViewController {
 	public func preparedQuestionController() -> PricesQuestionViewController{
 		//Present controller
 		questionDisplay = .get()
+        questionDisplay?.cancelButtomModal = self.cancelButtomModal
 		questionDisplay?.modalPresentationStyle = .fullScreen
 		questionDisplay?.questionAlignment = questionAlignment
 
@@ -205,6 +207,7 @@ public class PricesTestViewController: ArcViewController {
 	public func showQuestionController(alertView:MHAlertView) {
 		//Present controller
 		questionDisplay = .get()
+        questionDisplay?.cancelButtomModal = self.cancelButtomModal
 		questionDisplay?.modalPresentationStyle = .fullScreen
 		questionDisplay?.questionAlignment = questionAlignment
 		questionDisplay?.responseId = responseID

@@ -27,7 +27,7 @@
 import UIKit
 import Arc
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArcAssessmentDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArcAssessmentDelegate, ArcAssessmentNavigationDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellRows.allCases.count
@@ -68,6 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let sampleAppNavController = Arc.shared.appNavigation as? SampleAppNavigationController,
            let vc = sampleAppNavController.startTest(stateList: stateList, info: arcSupplementalInfo) {
             Arc.shared.delegate = self
+            Arc.shared.navigationDelegate = self
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
@@ -87,6 +88,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(jsonString)
             }
         })
+    }
+    
+    func onAssessmentSkipRequested() {
+        self.dismiss(animated: true)
+    }
+    
+    func onAssessmentCancelRequested() {
+        self.dismiss(animated: true)
     }
 }
 

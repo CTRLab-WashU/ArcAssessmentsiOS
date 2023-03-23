@@ -38,6 +38,9 @@ open class InstructionNavigationController: UINavigationController, SurveyInputD
 	public var nextState:State?
 	public var titleOverride:String?
 	var currentIndex:Int = 0
+    
+    public var cancelButtonModal: CancelButtonModal? = nil
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,9 +64,16 @@ open class InstructionNavigationController: UINavigationController, SurveyInputD
 		}
 	}
 	
-	override open func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-	}
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarHidden(true, animated: animated)
+    }
+
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.setNavigationBarHidden(false, animated: animated)
+    }
+    
 	public func didChangeValue() {
 		
 	}
@@ -98,6 +108,7 @@ open class InstructionNavigationController: UINavigationController, SurveyInputD
 		{
 			let instruction = instructions[index]
 			let vc:IntroViewController = IntroViewController()
+            vc.cancelButtomModal = self.cancelButtonModal
 			vc.style = IntroViewControllerStyle(rawValue: instruction.style?.rawValue ?? "standard")!
 			vc.loadViewIfNeeded()
 			vc.nextButtonTitle = instruction.nextButtonTitle
@@ -125,7 +136,11 @@ open class InstructionNavigationController: UINavigationController, SurveyInputD
 				app.appNavigation.navigate(state: nextState, direction: .toRight)
 			} else {
 				if let vc = nextVc {
+                    if let arcVc = vc as? ArcViewController {
+                        arcVc.cancelButtomModal = cancelButtonModal
+                    }
 					let countVc = TestCountDownViewController(nextVc: vc)
+                    countVc.cancelButtomModal = self.cancelButtonModal
 					app.appNavigation.navigate(vc: countVc, direction: .toRight)
 
 				} else {

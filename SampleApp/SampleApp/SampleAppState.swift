@@ -38,6 +38,8 @@ public enum SampleAppState: String, State, CaseIterable {
     
     //Return a view controller w
     public func viewForState() -> UIViewController {
+        
+        let pauseModal = CancelButtonModal.createPauseButtonModal()
 
         let testIdx = ((Arc.shared.appNavigation as? SampleAppNavigationController)?.getCognitiveAssessmentIndex(state: self) ?? 0) + 1
         ACState.testTaken = testIdx
@@ -57,6 +59,7 @@ public enum SampleAppState: String, State, CaseIterable {
                 let vc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
                 var testType = "TestingIntro-Grids"
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
                 if Arc.environment?.gridTestType == .extended {
                     let vc:EXExtendedGridTestViewController
                     vc = .get(nib:"ExtendedGridTestViewController")
@@ -81,6 +84,7 @@ public enum SampleAppState: String, State, CaseIterable {
             case .priceTest:
                 let vc:PricesTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
                 controller.nextVc = vc
             
                 if (ACState.totalTestCountInSession > 1) {
@@ -97,6 +101,7 @@ public enum SampleAppState: String, State, CaseIterable {
                 
                 let vc:SymbolsTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
                 controller.nextVc = vc
             
                 if (ACState.totalTestCountInSession > 1) {

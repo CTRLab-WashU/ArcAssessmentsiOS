@@ -30,7 +30,7 @@ import UIKit
 public protocol SymbolsTestViewControllerDelegate : class {
 	func didSelect(index:Int)
 }
-public class SymbolsTestViewController: UIViewController, TestProgressViewControllerDelegate {
+public class SymbolsTestViewController: ArcViewController, TestProgressViewControllerDelegate {
 	
 	
     public var symbols:[Int:UIImage] = [
@@ -85,6 +85,7 @@ public class SymbolsTestViewController: UIViewController, TestProgressViewContro
 	}
     
     override open func viewDidLoad() {
+        self.cancelButtonModalUseLightTint = false
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //Create the test optionally with a duration
