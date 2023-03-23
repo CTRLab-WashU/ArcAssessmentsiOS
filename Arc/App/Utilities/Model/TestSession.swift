@@ -150,17 +150,17 @@ public struct FullTestSession : Codable {
 			cognitive.wake_survey = survey
 		}
 		
-		if var survey:GridTestResponse = session.getSurveyFor(surveyType: .gridTest)?.get() {
+		if var survey:GridTestResponse = session.getCognitiveSurveyFor(surveyType: .gridTest)?.get() {
 			survey.id = nil
 
 			cognitive.grid_test = survey
 		}
-		if var survey:PriceTestResponse = session.getSurveyFor(surveyType: .priceTest)?.get() {
+		if var survey:PriceTestResponse = session.getCognitiveSurveyFor(surveyType: .priceTest)?.get() {
 			survey.id = nil
 
 			cognitive.price_test = survey
 		}
-		if var survey:SymbolsTestResponse = session.getSurveyFor(surveyType: .symbolsTest)?.get() {
+		if var survey:SymbolsTestResponse = session.getCognitiveSurveyFor(surveyType: .symbolsTest)?.get() {
 			survey.id = nil
 
 			cognitive.symbol_test = survey
