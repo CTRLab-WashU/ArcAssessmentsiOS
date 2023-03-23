@@ -38,6 +38,6 @@ open class UINavigationBarProxy : Proxy {
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().isTranslucent = true
-		UINavigationBar.appearance().tintColor = UIColor(named: "Primary")
+		UINavigationBar.appearance().tintColor = ACColor.primary        
 	}
 }

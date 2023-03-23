@@ -64,10 +64,10 @@ open class PasswordView : UIView, SurveyInput, UITextFieldDelegate {
 	}
 	public func setError(message: String?) {
 		if message != nil {
-			borderView.borderColor = UIColor(named: "Error")!
+            borderView.borderColor = ACColor.error
 			borderView.layoutSubviews()
 		} else {
-			borderView.borderColor = UIColor(named: "Primary")!
+			borderView.borderColor = ACColor.primary
             borderView.layoutSubviews()
 		}
 	}

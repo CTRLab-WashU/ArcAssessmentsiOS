@@ -545,8 +545,8 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
            // c.contentView.layer.backgroundColor = UIColor(red: 191.0/255.0, green: 215.0/255.0, blue: 224.0/255.0, alpha: 1.0).cgColor
             //c.backgroundColor = UIColor(red: 191.0/255.0, green: 215.0/255.0, blue: 224.0/255.0, alpha: 1.0) //UIColor(red: 182.0/255.0, green: 221.0/255.0, blue: 236.0/255.0, alpha: 1.0);
 			//UIColor(red:0, green:0.37, blue:0.52, alpha:0.25)
-			c.contentView.layer.backgroundColor = UIColor(named: "Primary Selected")!.cgColor
-			c.label.textColor = UIColor(named: "Primary")
+            c.contentView.layer.backgroundColor = ACColor.primarySelected.cgColor
+			c.label.textColor = ACColor.primary
 			if c.label.text == "F" {
                 _ = controller.update(fCountSteps: 1, testIndex: testNumber, id: responseId)
             } else if c.label.text == "E"{
@@ -582,7 +582,7 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
         else if let c = collectionView.cellForItem(at: indexPath) as? GridFCell
         {
             c.contentView.layer.backgroundColor = UIColor.clear.cgColor
-            c.label.textColor = UIColor(named: "Primary")
+            c.label.textColor = ACColor.primary
             if c.label.text == "F" {
                 _ = controller.update(fCountSteps: -1, testIndex: testNumber, id: responseId)
             } else if c.label.text == "E"{

@@ -999,7 +999,7 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                 return
             }
 
-            cell.backgroundColor = UIColor(named: "Secondary")
+            cell.backgroundColor = ACColor.secondary
             weakSelf.currentHint?.removeFromSuperview()
             weakSelf.currentHint = nil
             weakSelf.currentHint = weakSelf.view.window?.hint {

@@ -64,7 +64,7 @@ public class PromptDetailView: UIStackView {
 		}
 		separator = acHorizontalBar {
 			$0.relativeWidth = 0.15
-			$0.color = UIColor(named: "HorizontalSeparator")
+			$0.color = ACColor.horizontalSeparator
 			$0.layout {
 				$0.height == 2 ~ 999
 				

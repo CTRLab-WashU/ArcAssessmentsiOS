@@ -86,7 +86,7 @@ public class ACProgressView: ACTemplateView {
 					
 					$0.acHorizontalBar {
 						$0.relativeWidth = 0.15
-						$0.color = UIColor(named: "HorizontalSeparator")
+						$0.color = ACColor.horizontalSeparator
 						$0.layout {
 							$0.height == 2 ~ 999
 							
@@ -142,7 +142,7 @@ public class ACProgressView: ACTemplateView {
 			self.weekSection =  $0.view {
 				
 				//This Week
-				$0.backgroundColor = UIColor(named: "Progress Week")
+                $0.backgroundColor = ACColor.progressWeek
 				$0.stack {
 					
 					$0.attachTo(view: $0.superview)
@@ -161,7 +161,7 @@ public class ACProgressView: ACTemplateView {
 					
 					$0.acHorizontalBar {
 						$0.relativeWidth = 0.15
-						$0.color = UIColor(named: "HorizontalSeparator")
+						$0.color = ACColor.horizontalSeparator
 						$0.layout {
 							$0.height == 2 ~ 999
 							
@@ -242,7 +242,7 @@ public class ACProgressView: ACTemplateView {
 					
 					$0.acHorizontalBar {
 						$0.relativeWidth = 0.15
-						$0.color = UIColor(named: "HorizontalSeparator")
+						$0.color = ACColor.horizontalSeparator
 						$0.layout {
 							$0.height == 2 ~ 999
 							

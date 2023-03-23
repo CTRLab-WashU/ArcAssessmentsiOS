@@ -45,9 +45,9 @@ open class GridImageCell:UICollectionViewCell
             if newValue == true
             {
                 if Arc.environment?.gridTestType == .extended {
-                    self.backgroundColor = UIColor(named: "Secondary")
+                    self.backgroundColor = ACColor.secondary
                     self.layer.borderWidth = 5
-                    self.layer.borderColor = UIColor(named: "Primary")!.cgColor
+                    self.layer.borderColor = ACColor.primary.cgColor
                 } else {
                     self.image.isHidden = true
                     self.backgroundColor = UIColor(red:0, green:0.37, blue:0.52, alpha:1) //UIColor(red: 13.0 / 255.0, green: 143.0 / 255.0, blue: 192.0 / 255.0, alpha: 1.0);
@@ -131,7 +131,7 @@ open class GridFCell:UICollectionViewCell {
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		self.contentView.layer.backgroundColor = UIColor.clear.cgColor
-		self.label.textColor = UIColor(named: "Primary")
+		self.label.textColor = ACColor.primary
 		super.touchesEnded(touches, with: event)
 		
 		

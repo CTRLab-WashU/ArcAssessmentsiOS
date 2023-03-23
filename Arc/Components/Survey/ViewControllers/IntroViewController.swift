@@ -49,7 +49,7 @@ public enum IntroViewControllerStyle : String {
 				$0.centerY == view.centerYAnchor - 40
 			}
             
-            view.infoContent.contentLabel?.textColor = UIColor(named: "Badge Gray")
+            view.infoContent.contentLabel?.textColor = ACColor.badgeGray
             
 			view.nextButton!.layout {
 				$0.bottom == view.safeAreaLayoutGuide.bottomAnchor - 24
@@ -133,7 +133,7 @@ open class IntroViewController: CustomViewController<InfoView> {
     override open func viewDidLoad() {
         super.viewDidLoad()
 		
-		customView.backgroundColor = UIColor(named: "Primary")
+		customView.backgroundColor = ACColor.primary
         // Do any additional setup after loading the view.
 		if let nav = self.navigationController, nav.viewControllers.count > 1 {
 			let backButton = UIButton(type: .custom)
@@ -143,8 +143,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
 			backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
 			//backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
-			backButton.setTitleColor(UIColor(named: "Secondary"), for: .normal)
-			backButton.backgroundColor = UIColor(named:"Secondary Back Button Background")
+            backButton.setTitleColor(ACColor.secondary, for: .normal)
+            backButton.backgroundColor = ACColor.secondaryBackButtonBackground
 			backButton.layer.cornerRadius = 20.0
 			backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
 			//NSLayoutConstraint(item: backButton, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: super.view, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: -75).isActive = true

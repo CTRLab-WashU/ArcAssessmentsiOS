@@ -88,7 +88,7 @@ open class SurveyViewController: UIViewController, SurveyInput, UIScrollViewDele
             backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
             backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
             backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
-            backButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+            backButton.setTitleColor(ACColor.primary, for: .normal)
             backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
 
 //            NSLayoutConstraint(item: backButton, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: super.view, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: -75).isActive = true

@@ -99,7 +99,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 				helpButton.setTitle("HELP".localized(ACTranslationKey.button_help), for: .normal)
 				helpButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
 				helpButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16)
-				helpButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+				helpButton.setTitleColor(ACColor.primary, for: .normal)
 				helpButton.addTarget(self, action: #selector(self.onHelp), for: .touchUpInside)
 				
 				rightButton = UIBarButtonItem(customView: helpButton)
@@ -124,7 +124,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
                 backButton.setTitle("BACK".localized(ACTranslationKey.button_back), for: .normal)
                 backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
                 backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
-                backButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+                backButton.setTitleColor(ACColor.primary, for: .normal)
                 backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
                 
                 leftButton = UIBarButtonItem(customView: backButton)
@@ -299,7 +299,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
         vc.customView.backgroundView.image = bg_image
 		vc.customView.infoContent.alignment = .center
 		vc.customView.backgroundColor = UIColor(named:"Primary")!
-		vc.customView.setTextColor(UIColor(named: "Secondary Text"))
+		vc.customView.setTextColor(ACColor.secondaryText)
 		
 		vc.customView.setButtonColor(style:.secondary)
 		
@@ -355,7 +355,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
         //}
 		vc.customView.infoContent.alignment = .leading
 		
-		vc.customView.setTextColor(UIColor(named: "Primary Text"))
+        vc.customView.setTextColor(ACColor.primaryText)
 		
 		vc.customView.setButtonColor(style:.primary)
 		

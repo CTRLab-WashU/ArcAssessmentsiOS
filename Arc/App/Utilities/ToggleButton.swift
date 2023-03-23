@@ -27,7 +27,7 @@
 import UIKit
 
 open class SurveyButton: UIButton {
-    public var color = UIColor(named: "Primary")!
+    public var color = ACColor.primary
 
     
     override open func awakeFromNib() {
@@ -46,7 +46,7 @@ open class SurveyButton: UIButton {
 }
 open class ToggleButton: UIButton {
     
-    public var color = UIColor(named: "Primary")!
+    public var color = ACColor.primary
     @IBInspectable public var shouldAutoToggle:Bool = true;
     override open func awakeFromNib() {
         super.awakeFromNib();

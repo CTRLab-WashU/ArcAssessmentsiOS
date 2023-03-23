@@ -39,7 +39,7 @@ open class SymbolSelectButton: UIButton {
     }
     
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.superview?.layer.borderColor = UIColor(named: "Primary")!.cgColor
+        self.superview?.layer.borderColor = ACColor.primary.cgColor
         
 //        UIView.animate(withDuration: 0.01, animations: {
 //            self.superview?.frame = CGRect(x: (self.superview?.frame.origin.x)!, y: (self.superview?.frame.origin.y)! + 2, width: (self.superview?.frame.size.width)!, height: (self.superview?.frame.size.height)!)

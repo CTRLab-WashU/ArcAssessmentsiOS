@@ -27,12 +27,12 @@
 import UIKit
 
 open class PrimaryButton : UIButton {
-	@IBInspectable var primaryColor:UIColor = UIColor(named: "Primary")!
-	@IBInspectable var secondaryColor:UIColor = UIColor(named: "Primary Gradient")!
+	@IBInspectable var primaryColor:UIColor = ACColor.primary
+	@IBInspectable var secondaryColor:UIColor = ACColor.primaryGradient
 	var gradient:CAGradientLayer?
     override open func awakeFromNib() {
 		super.awakeFromNib()
-		setup(isSelected: false)
+		setup(isSelected: false)        
 	}
 	
 	override open func prepareForInterfaceBuilder() {
