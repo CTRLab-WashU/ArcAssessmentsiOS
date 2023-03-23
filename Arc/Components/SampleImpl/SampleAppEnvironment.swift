@@ -31,6 +31,10 @@ open class SampleAppEnvironment : ArcEnvironment {
     
     public var appNavigation: AppNavigationController = SampleAppNavigationController()
     
+    public init() {
+        
+    }
+    
     public func configure() {
         //Use this to set class variables or perform setup before the app runs
         
