@@ -182,29 +182,24 @@ open class IntroViewController: CustomViewController<InfoView> {
 				if self?.style == .grids {
                     if Arc.environment?.gridTestType == .extended {
                         let vc = ExtendedGridTestTutorialViewController()
-                        vc.cancelButtomModal = self?.cancelButtomModal
                         self?.present(vc, animated: true) {}
                     } else {
                         let vc = GridTestTutorialViewController()
-                        vc.cancelButtomModal = self?.cancelButtomModal
                         self?.present(vc, animated: true) {}
 					}
 				}
 				if self?.style == .prices {
                     if Arc.environment?.priceTestType == .simplified || Arc.environment?.priceTestType == .simplifiedCentered {
                         let vc = SimplifiedPricesTestTutorialViewController()
-                        vc.cancelButtomModal = self?.cancelButtomModal
                         self?.present(vc, animated: true) {}
                     } else {
                         let vc = PricesTestTutorialViewController()
-                        vc.cancelButtomModal = self?.cancelButtomModal
                         self?.present(vc, animated: true) {}
                     }
 
 				}
 				if self?.style == .symbols {
                     let vc = SymbolsTutorialViewController()
-                    vc.cancelButtomModal = self?.cancelButtomModal
 					self?.present(vc, animated: true) {
 						
 					}
