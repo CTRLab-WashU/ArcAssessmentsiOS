@@ -1,6 +1,5 @@
 //
-//  HASDState.swift
-//  HASD
+//  ARCAppState.swift
 //
 // Copyright (c) 2022 Washington University in St. Louis
 //
@@ -31,20 +30,19 @@
 import Foundation
 import UIKit
 
-public enum ARCSageAppState : String, State, CaseIterable {
+public enum ARCCognitiveState : String, State, CaseIterable {
     
     case home, gridTest, priceTest, symbolsTest, testIntro, signatureStart, signatureEnd
 
-    //Return a view controller w
     public func viewForState() -> UIViewController {
         let testIdx = 1
         ACState.testTaken = testIdx
+        let pauseModal = CancelButtonModal.createPauseButtonModal()
         switch self {
             
         case .signatureStart:
             let vc:ACSignatureNavigationController = .get()
-            vc.tag = 0
-            
+            vc.tag = 0            
             vc.loadSurvey(template: "signature")
             return vc
         case .signatureEnd:
@@ -57,6 +55,7 @@ public enum ARCSageAppState : String, State, CaseIterable {
             return ACState.testIntro.viewForState()
         case .gridTest:
             let controller:InstructionNavigationController = .get()
+            controller.cancelButtonModal = pauseModal
             var testType = "TestingIntro-Grids"
             if Arc.environment?.gridTestType == .extended {
                 let vc:EXExtendedGridTestViewController
@@ -72,6 +71,7 @@ public enum ARCSageAppState : String, State, CaseIterable {
             if (ACState.totalTestCountInSession > 1) {
                 controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
                     .replacingOccurrences(of: "1", with: "\(testIdx)")
+                    .replacingOccurrences(of: "{Value2}", with: "3")
             } else {
                 controller.titleOverride = ""
             }
@@ -83,6 +83,7 @@ public enum ARCSageAppState : String, State, CaseIterable {
             
             let vc:PricesTestViewController = .get()
             let controller:InstructionNavigationController = .get()
+            controller.cancelButtonModal = pauseModal
             controller.nextVc = vc
             controller.titleOverride = "Test 1 of 1"
             
@@ -107,6 +108,7 @@ public enum ARCSageAppState : String, State, CaseIterable {
             
             let vc:SymbolsTestViewController = .get()
             let controller:InstructionNavigationController = .get()
+            controller.cancelButtonModal = pauseModal
             controller.nextVc = vc
             
             if (ACState.totalTestCountInSession > 1) {
@@ -121,7 +123,7 @@ public enum ARCSageAppState : String, State, CaseIterable {
             return controller
             
         case .home:
-            return (Arc.shared.appNavigation as! ARCSageNavigationController).vcDelegate!.homeViewController()
+            return (Arc.shared.appNavigation as! ARCCognitiveNavigationController).vcDelegate!.homeViewController()
         }
     }
 
@@ -142,7 +144,6 @@ public enum ARCSageAppState : String, State, CaseIterable {
         var _bundle:Bundle? = bundle
         if bundle == nil {
             _bundle = Bundle.main
-
         }
         let vc = T(nibName: nib ?? String(describing: self), bundle: _bundle)
         

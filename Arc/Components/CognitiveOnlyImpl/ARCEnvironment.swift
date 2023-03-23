@@ -25,16 +25,32 @@
 //
 
 import Foundation
-import Arc
+import UIKit
 
 // This class can be used to customize the Arc library
-open class SampleAppEnvironment : ArcEnvironment {
+open class ARCCognitiveEnvironment : ArcEnvironment {
     
-    public var appNavigation: AppNavigationController = SampleAppNavigationController()
+    public var appNavigation: AppNavigationController = ARCCognitiveNavigationController()
+    
+    public init() {
+        
+    }
+    
+    open var shouldChooseLocale: Bool {
+        false
+    }
+    
+    open var shouldDisplayDateReminderNotifications: Bool {
+        return true
+    }
+    
+    open var hidesChangeAvailabilityDuringTest: Bool {
+        return true
+    }
     
     public func configure() {
         //Use this to set class variables or perform setup before the app runs
-        
+        SliderView.hideSelection = true
     }
     
     open var priceTestType:PriceTestType {

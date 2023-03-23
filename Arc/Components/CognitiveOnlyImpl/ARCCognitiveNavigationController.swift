@@ -26,26 +26,24 @@
 import Foundation
 import UIKit
 
-public protocol ARCHomeViewControllerDelegate: Any {
+public protocol ARCCognitiveHomeViewControllerDelegate2: Any {
     func homeViewController() -> UIViewController
 }
 
-open class ARCSageNavigationController : AppNavigationController {
+open class ARCCognitiveNavigationController : AppNavigationController {
     
-    public var runningTestStates: [ARCSageAppState] = []
+    public var runningTestStates: [ARCCognitiveState] = []
     public var stateIdx = -1
-    public var skipFirstAnimation = true
     
-    public var vcDelegate: ARCHomeViewControllerDelegate? = nil
+    public var vcDelegate: ARCCognitiveHomeViewControllerDelegate2? = nil
     
-    public func startTest(stateList: [ARCSageAppState], info: ArcAssessmentSupplementalInfo? = nil) {
+    public func startTest(stateList: [ARCCognitiveState], info: ArcAssessmentSupplementalInfo? = nil) -> UIViewController? {
         ACState.totalTestCountInSession = 1
         ACState.testTaken = 0
-        self.skipFirstAnimation = true
         self.runningTestStates = stateList
-        self.stateIdx = -1
+        self.stateIdx = 0
         Arc.shared.appController.startNewTest(info: info)
-        Arc.shared.nextAvailableState()
+        return stateList[self.stateIdx].viewForState()
     }
     
     public func endTest() {
@@ -128,15 +126,12 @@ open class ARCSageNavigationController : AppNavigationController {
             return
         }
                 
-        if !self.skipFirstAnimation {
-            let transition: CATransition = CATransition()
-            transition.duration = 0.5
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.reveal
-            transition.subtype = CATransitionSubtype.fromRight
-            window.layer.add(transition, forKey: nil)
-        }
-        self.skipFirstAnimation = false
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromRight
+        window.layer.add(transition, forKey: nil)
         if let current = window.rootViewController?.presentedViewController {
             current.dismiss(animated: false, completion: {
                 vc.modalPresentationStyle = .fullScreen
@@ -157,11 +152,11 @@ open class ARCSageNavigationController : AppNavigationController {
     }
     
     public func defaultAbout() -> State {
-        return ARCSageAppState.home // not needed in this app
+        return ARCCognitiveState.home // not needed in this app
     }
     
     public func defaultContact() -> State {
-        return ARCSageAppState.home // not needed in this app
+        return ARCCognitiveState.home // not needed in this app
     }
     
     public func defaultPrivacy() {
@@ -169,7 +164,7 @@ open class ARCSageNavigationController : AppNavigationController {
     }
     
     public func defaultState() -> State {
-        return ARCSageAppState.home // not needed in this app
+        return ARCCognitiveState.home // not needed in this app
     }
     
     public func shouldNavigate(to state: State) -> Bool {

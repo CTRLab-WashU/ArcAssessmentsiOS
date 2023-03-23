@@ -25,7 +25,6 @@
 //
 
 import Foundation
-import Arc
 import UIKit
 
 public enum SampleAppState: String, State, CaseIterable {

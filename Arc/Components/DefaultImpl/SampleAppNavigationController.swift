@@ -25,7 +25,6 @@
 //
 
 import Foundation
-import Arc
 import UIKit
 
 open class SampleAppNavigationController : AppNavigationController {
