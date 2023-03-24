@@ -127,8 +127,8 @@ open class ArcViewController: UIViewController {
         self.view.add(cancelButton)
         // Add constraints to position the view in the top right corner
         NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: CGFloat(16)),
-            cancelButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: CGFloat(-4))
+            cancelButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            cancelButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: CGFloat(-8))
         ])
     }
 	
