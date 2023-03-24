@@ -76,7 +76,7 @@ open class SignatureView: BorderedUIView, SurveyInput {
     // An empty implementation adversely affects performance during animation.
     override open func draw(_ rect: CGRect) {
         // Drawing code
-        UIColor(named:"Primary")!.set()
+        ACColor.primary.set()
         path.stroke()
     }
 
@@ -162,10 +162,10 @@ open class SignatureView: BorderedUIView, SurveyInput {
 			$0.secondaryColor = .clear
 			$0.topColor = .clear
 			$0.bottomColor = .clear
-			$0.setTitleColor(UIColor(named:"Primary"), for: .normal)
+			$0.setTitleColor(ACColor.primary, for: .normal)
             
 			$0.setTitle("UNDO".localized(ACTranslationKey.idverify_undo), for: .normal)
-			Roboto.Style.bodyBold($0.titleLabel!, color: UIColor(named:"Primary"))
+			Roboto.Style.bodyBold($0.titleLabel!, color: ACColor.primary)
 			Roboto.PostProcess.link($0)
 			$0.addAction {
 				[weak self] in

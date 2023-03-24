@@ -150,8 +150,8 @@ class SymbolsTutorialViewController: ACTutorialViewController, SymbolsTestViewCo
 			weakSelf.test.view.overlayView(withShapes: [.roundedRect(weakSelf.test.option2, 8.0, CGSize(width: -8, height: -8))])
 			weakSelf.tutorialAnimation.pause()
 			weakSelf.currentHint = weakSelf.view.window?.hint {
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -189,8 +189,8 @@ class SymbolsTutorialViewController: ACTutorialViewController, SymbolsTestViewCo
 			weakSelf.tutorialAnimation.pause()
 
 			weakSelf.currentHint = weakSelf.view.window?.hint {
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -226,8 +226,8 @@ class SymbolsTutorialViewController: ACTutorialViewController, SymbolsTestViewCo
 			weakSelf.tutorialAnimation.pause()
 			
 			weakSelf.currentHint = weakSelf.view.window?.hint {
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,

@@ -67,7 +67,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 
         done.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 18)!,
                                      NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
-                                     NSAttributedString.Key.foregroundColor : UIColor(named:"Primary")!], for: .normal)
+                                     NSAttributedString.Key.foregroundColor : ACColor.primary], for: .normal)
 		
 		var items:[UIBarButtonItem] = []
 		items.append(flexSpace)

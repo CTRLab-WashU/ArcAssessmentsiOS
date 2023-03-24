@@ -347,8 +347,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
 				$0.content = "Tap this letter F.".localized(ACTranslationKey.popup_tutorial_tapf1)
 				$0.targetView = cell
                 $0.configure(with: IndicatorView.Config(
-                    primaryColor: UIColor(named:"HintFill")!,
-                    secondaryColor: UIColor(named:"HintFill")!,
+                    primaryColor: ACColor.hintFill,
+                    secondaryColor: ACColor.hintFill,
                     textColor: .black,
                     cornerRadius: 8.0,
                     arrowEnabled: true,
@@ -528,8 +528,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                 """.localized(ACTranslationKey.popup_tutorial_tapsymbol)
             $0.targetView = gridChoice
             $0.configure(with: IndicatorView.Config(
-                primaryColor: UIColor(named:"HintFill")!,
-                secondaryColor: UIColor(named:"HintFill")!,
+                primaryColor: ACColor.hintFill,
+                secondaryColor: ACColor.hintFill,
                 textColor: .black,
                 cornerRadius: 8.0,
                 arrowEnabled: false,
@@ -648,8 +648,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                        """.localized(ACTranslationKey.popup_tutorial_tapbox4)
                    $0.targetView = cell
                    $0.configure(with: IndicatorView.Config(
-                       primaryColor: UIColor(named:"HintFill")!,
-                       secondaryColor: UIColor(named:"HintFill")!,
+                       primaryColor: ACColor.hintFill,
+                       secondaryColor: ACColor.hintFill,
                        textColor: .black,
                        cornerRadius: 8.0,
                        arrowEnabled: true,
@@ -694,8 +694,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                        """.localized(ACTranslationKey.popup_tutorial_tapsymbol2)
                    $0.targetView = weakSelf.gridChoice
                    $0.configure(with: IndicatorView.Config(
-                       primaryColor: UIColor(named:"HintFill")!,
-                       secondaryColor: UIColor(named:"HintFill")!,
+                       primaryColor: ACColor.hintFill,
+                       secondaryColor: ACColor.hintFill,
                        textColor: .black,
                        cornerRadius: 8.0,
                        arrowEnabled: false,
@@ -742,8 +742,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                        """.localized(ACTranslationKey.grids_tutorial_vb_mech3)
                    $0.targetView = cell
                    $0.configure(with: IndicatorView.Config(
-                       primaryColor: UIColor(named:"HintFill")!,
-                       secondaryColor: UIColor(named:"HintFill")!,
+                       primaryColor: ACColor.hintFill,
+                       secondaryColor: ACColor.hintFill,
                        textColor: .black,
                        cornerRadius: 8.0,
                        arrowEnabled: true,
@@ -794,8 +794,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                        weakSelf.tutorialAnimation.resume()
                    }
                    $0.configure(with: IndicatorView.Config(
-                       primaryColor: UIColor(named:"HintFill")!,
-                       secondaryColor: UIColor(named:"HintFill")!,
+                       primaryColor: ACColor.hintFill,
+                       secondaryColor: ACColor.hintFill,
                        textColor: .black,
                        cornerRadius: 8.0,
                        arrowEnabled: true,
@@ -829,8 +829,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                        """.localized(ACTranslationKey.popup_tutorial_perfect)
                    
                    $0.configure(with: IndicatorView.Config(
-                       primaryColor: UIColor(named:"HintFill")!,
-                       secondaryColor: UIColor(named:"HintFill")!,
+                       primaryColor: ACColor.hintFill,
+                       secondaryColor: ACColor.hintFill,
                        textColor: .black,
                        cornerRadius: 8.0,
                        arrowEnabled: false,
@@ -1008,8 +1008,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
                 """.localized(ACTranslationKey.popup_tutorial_cellbox)
                 $0.targetView = cell
                 $0.configure(with: IndicatorView.Config(
-                    primaryColor: UIColor(named:"HintFill")!,
-                    secondaryColor: UIColor(named:"HintFill")!,
+                    primaryColor: ACColor.hintFill,
+                    secondaryColor: ACColor.hintFill,
                     textColor: .black,
                     cornerRadius: 8.0,
                     arrowEnabled: true,
@@ -1065,8 +1065,8 @@ class ExtendedGridTestTutorialViewController: ACTutorialViewController, Extended
             Great! Now, place the other two items on the grid.
             """.localized(ACTranslationKey.grids_tutorial_vb_place_other)
             $0.configure(with: IndicatorView.Config(
-            primaryColor: UIColor(named:"HintFill")!,
-            secondaryColor: UIColor(named:"HintFill")!,
+            primaryColor: ACColor.hintFill,
+            secondaryColor: ACColor.hintFill,
             textColor: .black,
             cornerRadius: 8.0,
             arrowEnabled: false,

@@ -177,7 +177,7 @@ public struct Roboto {
 			label.textColor = color
 		}
 		
-		public static func bodyBold(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func bodyBold(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.bodyBold
 			label.numberOfLines = 0
 			label.textColor = color
@@ -191,13 +191,13 @@ public struct Roboto {
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func subHeading(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func subHeading(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.subHeading
 			label.numberOfLines = 0
 			
 			label.textColor = color
 		}
-		public static func goalHeading(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func goalHeading(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.goalHeading
 			label.numberOfLines = 0
 			label.textColor = color

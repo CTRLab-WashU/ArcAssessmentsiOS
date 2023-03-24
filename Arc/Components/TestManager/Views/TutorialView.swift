@@ -49,7 +49,7 @@ public class TutorialView: UIStackView {
 	}
 	public func header() {
 		headerView = view { [weak self] in
-			$0.backgroundColor = UIColor(named:"Primary Info")
+			$0.backgroundColor = ACColor.primaryInfo
 			self?.headerStack = $0.stack {
 				$0.axis = .horizontal
 				$0.spacing = 8
@@ -60,7 +60,7 @@ public class TutorialView: UIStackView {
 				self?.closeButton = $0.button {
 					$0.setImage(Arc.shared.image(named:"cut-ups/icons/X-to-close"), for: .normal)
 					$0.imageView?.contentMode = .scaleAspectFit
-					$0.tintColor = UIColor(named:"Highlight")
+                    $0.tintColor = ACColor.highlight
 					$0.layout {
 						$0.height == 30
 					}

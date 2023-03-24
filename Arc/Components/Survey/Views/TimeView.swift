@@ -63,8 +63,8 @@ open class TimeView: UIView, SurveyInput {
             
             self.hint = hint {
                 $0.content = "".localized(ACTranslationKey.popup_scroll)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,

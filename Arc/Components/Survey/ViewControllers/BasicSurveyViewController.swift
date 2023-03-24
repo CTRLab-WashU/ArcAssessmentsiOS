@@ -177,7 +177,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
 		return questions[currentIndex].questionId
 	}
 	
-	public func addSpinner(color:UIColor? = UIColor(white: 1.0, alpha: 0.8), backGroundColor:UIColor? = UIColor(named:"Primary")) {
+	public func addSpinner(color:UIColor? = UIColor(white: 1.0, alpha: 0.8), backGroundColor:UIColor? = ACColor.primary) {
 		OperationQueue.main.addOperation {[weak self] in
 
 			if let vc:CustomViewController<InfoView> = self?.getTopViewController(){
@@ -298,7 +298,7 @@ open class BasicSurveyViewController: UINavigationController, SurveyInputDelegat
         let bg_image = Arc.shared.image(named: "availability_bg", in: Bundle.module, compatibleWith: nil)
         vc.customView.backgroundView.image = bg_image
 		vc.customView.infoContent.alignment = .center
-		vc.customView.backgroundColor = UIColor(named:"Primary")!
+		vc.customView.backgroundColor = ACColor.primary
 		vc.customView.setTextColor(ACColor.secondaryText)
 		
 		vc.customView.setButtonColor(style:.secondary)

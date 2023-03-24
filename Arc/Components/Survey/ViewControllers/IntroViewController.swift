@@ -56,16 +56,16 @@ public enum IntroViewControllerStyle : String {
 			}
 			view.infoContent.headingLabel?.textAlignment = .center
 			view.infoContent.contentLabel?.textAlignment = .center
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .center
             view.setButtonColor(style:.secondary)
-			
+            
 		case .grids:
 			view.setSubHeading(heading)
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
             view.backgroundView.image = Arc.shared.image(named: "grids_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
@@ -75,7 +75,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 			view.backgroundView.image = Arc.shared.image(named: "symbols_bg", in: Bundle.module, compatibleWith: nil)
            	view.setButtonColor(style:.secondary)
@@ -85,7 +85,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 			view.backgroundView.image = Arc.shared.image(named: "prices_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
@@ -95,7 +95,7 @@ public enum IntroViewControllerStyle : String {
 			view.setHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 		}
 	}
@@ -222,8 +222,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			if showTutorialPrompt {
 				currentHint = customView.nextButton!.hint {
 					$0.content = "".localized(ACTranslationKey.popup_tutorial_view)
-                    $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                            secondaryColor: UIColor(named:"HintFill")!,
+                    $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                            secondaryColor: ACColor.hintFill,
                                                             textColor: .black,
                                                             cornerRadius: 8.0,
                                                             arrowEnabled: true,
@@ -288,8 +288,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			view.overlayView(withShapes: [.roundedRect(tutorialButton, 8.0, CGSize(width: -8, height: -8))])
 			currentHint = view.window?.hint {
 				$0.content = "".localized(ACTranslationKey.popup_tutorial_complete)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,

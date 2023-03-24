@@ -60,7 +60,7 @@ public class ACCalendarView:UIView, SurveyInput {
         
             case .header:
                 label.font = label.font.boldFont()
-                label.textColor = UIColor(named:"Primary Text")
+                label.textColor = ACColor.primaryText
                 let _ = label.layer.addBorder(edge: .bottom, color: .lightGray, thickness: 1.0)
                
             case .selected:

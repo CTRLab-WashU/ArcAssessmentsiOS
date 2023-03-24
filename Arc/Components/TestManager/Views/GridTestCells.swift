@@ -118,11 +118,11 @@ open class GridFCell:UICollectionViewCell {
     
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		super.touchesBegan(touches, with: event)
-		self.contentView.layer.backgroundColor = UIColor(named:"Primary")!.cgColor
+		self.contentView.layer.backgroundColor = ACColor.primary.cgColor
         self.label.textColor = UIColor.white
     }
 	open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-		self.contentView.layer.backgroundColor = UIColor(named:"Primary")!.cgColor
+		self.contentView.layer.backgroundColor = ACColor.primary.cgColor
 		self.label.textColor = UIColor.white
 		super.touchesBegan(touches, with: event)
 		
