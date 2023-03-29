@@ -30,7 +30,7 @@ import UIKit
 public protocol SymbolsTestViewControllerDelegate : class {
 	func didSelect(index:Int)
 }
-public class SymbolsTestViewController: UIViewController, TestProgressViewControllerDelegate {
+public class SymbolsTestViewController: ArcViewController, TestProgressViewControllerDelegate {
 	
 	
     public var symbols:[Int:UIImage] = [
@@ -85,6 +85,7 @@ public class SymbolsTestViewController: UIViewController, TestProgressViewContro
 	}
     
     override open func viewDidLoad() {
+        self.cancelButtonModalUseLightTint = false
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //Create the test optionally with a duration
@@ -232,8 +233,8 @@ public class SymbolsTestViewController: UIViewController, TestProgressViewContro
 			if !isPracticeTest {
 				_  = controller.mark(filled: responseID)
 
-let nextMessage = (ACState.testCount == 3) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
-				let vc = TestProgressViewController(title: "Symbols Test Complete!".localized(ACTranslationKey.symbols_complete), subTitle: nextMessage, count: ACState.testTaken - 1)
+                let nextMessage = (ACState.testCount == 3 || ACState.totalTestCountInSession == 1) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
+				let vc = TestProgressViewController(title: "Symbols Test Complete!".localized(ACTranslationKey.symbols_complete), subTitle: nextMessage, count: ACState.testTaken - 1, maxCount: ACState.totalTestCountInSession)
 				vc.delegate = self
 				self.addChild(vc)
 				self.view.anchor(view: vc.view)

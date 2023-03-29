@@ -52,12 +52,12 @@ open class PricesQuestionViewController: ArcViewController, TestProgressViewCont
     var questions:Set<Int> = []
     var presentedQuestions:Set<Int> = []
     var isTutorial:Bool = false
+    
     override open func viewDidLoad() {
-        super.viewDidLoad();
-
-        
-        
+        self.cancelButtonModalUseLightTint = false
+        super.viewDidLoad()
     }
+    
     override open func viewWillAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         buildButtonStackView()
@@ -107,9 +107,9 @@ open class PricesQuestionViewController: ArcViewController, TestProgressViewCont
 
 				_  = controller.mark(filled: responseId)
 
-				let nextMessage = (ACState.testCount == 3) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
+                let nextMessage = (ACState.testCount == 3 || ACState.totalTestCountInSession == 1) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
 				
-				let vc = TestProgressViewController(title: "Prices Test Complete!".localized(ACTranslationKey.prices_complete), subTitle: nextMessage, count: ACState.testTaken - 1)
+                let vc = TestProgressViewController(title: "Prices Test Complete!".localized(ACTranslationKey.prices_complete), subTitle: nextMessage, count: ACState.testTaken - 1, maxCount: ACState.totalTestCountInSession)
 				vc.delegate = self
 				self.addChild(vc)
 				self.view.anchor(view: vc.view)

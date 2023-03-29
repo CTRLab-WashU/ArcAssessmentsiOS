@@ -67,7 +67,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 
         done.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 18)!,
                                      NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
-                                     NSAttributedString.Key.foregroundColor : UIColor(named:"Primary")!], for: .normal)
+                                     NSAttributedString.Key.foregroundColor : ACColor.primary], for: .normal)
 		
 		var items:[UIBarButtonItem] = []
 		items.append(flexSpace)
@@ -169,7 +169,7 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 				}
 				
 				if index <= filledIndex {
-					view.borderColor = UIColor(named: "Primary")!
+					view.borderColor = ACColor.primary
 				} else {
 					view.borderColor = UIColor.lightGray
 					
@@ -228,9 +228,9 @@ public class SegmentedTextView : UIView, SurveyInput, UIKeyInput {
 	
 	
 	public func setError(message: String?) {
-        var borderColor = UIColor(named: "Primary")!
+        var borderColor = ACColor.primary
         if message != nil {
-            borderColor = UIColor(named: "Error")!
+            borderColor = ACColor.error
 			problemsButton?.isHidden = hideHelpButton
 			resignFirstResponder()
 		} else {

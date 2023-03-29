@@ -72,7 +72,11 @@ public class TestProgressView:UIView {
 			
 		}
 	}
-	public var maxCount:Int = 3
+    public var maxCount:Int = 3 {
+        didSet {
+            self.maxLabel.text = "\(maxCount)"
+        }
+    }
 	public init() {
 		super.init(frame: .zero)
 		translatesAutoresizingMaskIntoConstraints = false

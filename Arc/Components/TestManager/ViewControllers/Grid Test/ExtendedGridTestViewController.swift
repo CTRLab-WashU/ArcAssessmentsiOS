@@ -102,23 +102,11 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
 
 	private weak var currentAlert:MHAlertView?
     override open func viewDidLoad() {
+        self.cancelButtonModalUseLightTint = false
         super.viewDidLoad()
 		if shouldAutoProceed && !isPracticeTest {
         	ACState.testCount += 1
 		}
-        
-        // TODO: mdephillips 2/3/22 Deprecated code for context, remove when new library is complete
-//		let app = Arc.shared
-//		let studyId = Int(app.studyController.getCurrentStudyPeriod()?.studyID ?? -1)
-//		if let sessionId = app.currentTestSession, shouldAutoProceed {
-//			let session = app.studyController.get(session: sessionId, inStudy: studyId)
-//			let data = session.surveyFor(surveyType: .gridTest)
-//			responseId = data!.id! //A crash here means that the session is malformed
-//
-//			tests = controller.createTest(numberOfTests: 2)
-//			_ = controller.createResponse(id: responseId, numSections: 2)
-//
-//		} else
         
         if !isPracticeTest {
         	tests = controller.createTest(numberOfTests: 2)
@@ -379,8 +367,8 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
         if testNumber >= controller.get(testCount: responseId)
         {
 			_ = controller.mark(filled: responseId)
-			let nextMessage = (ACState.testCount == 3) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
-			let vc = TestProgressViewController(title: "Grids Test Complete!".localized(ACTranslationKey.grids_complete), subTitle: nextMessage, count: ACState.testTaken - 1)
+			let nextMessage = (ACState.testCount == 3 || ACState.totalTestCountInSession == 1) ? "Well done!".localized(ACTranslationKey.testing_done) : "Loading next test...".localized(ACTranslationKey.testing_loading)
+			let vc = TestProgressViewController(title: "Grids Test Complete!".localized(ACTranslationKey.grids_complete), subTitle: nextMessage, count: ACState.testTaken - 1, maxCount: ACState.totalTestCountInSession)
 			vc.delegate = self
 			self.addChild(vc)
 			self.view.anchor(view: vc.view)
@@ -557,8 +545,8 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
            // c.contentView.layer.backgroundColor = UIColor(red: 191.0/255.0, green: 215.0/255.0, blue: 224.0/255.0, alpha: 1.0).cgColor
             //c.backgroundColor = UIColor(red: 191.0/255.0, green: 215.0/255.0, blue: 224.0/255.0, alpha: 1.0) //UIColor(red: 182.0/255.0, green: 221.0/255.0, blue: 236.0/255.0, alpha: 1.0);
 			//UIColor(red:0, green:0.37, blue:0.52, alpha:0.25)
-			c.contentView.layer.backgroundColor = UIColor(named: "Primary Selected")!.cgColor
-			c.label.textColor = UIColor(named: "Primary")
+            c.contentView.layer.backgroundColor = ACColor.primarySelected.cgColor
+			c.label.textColor = ACColor.primary
 			if c.label.text == "F" {
                 _ = controller.update(fCountSteps: 1, testIndex: testNumber, id: responseId)
             } else if c.label.text == "E"{
@@ -594,7 +582,7 @@ open class ExtendedGridTestViewController: ArcViewController, UICollectionViewDe
         else if let c = collectionView.cellForItem(at: indexPath) as? GridFCell
         {
             c.contentView.layer.backgroundColor = UIColor.clear.cgColor
-            c.label.textColor = UIColor(named: "Primary")
+            c.label.textColor = ACColor.primary
             if c.label.text == "F" {
                 _ = controller.update(fCountSteps: -1, testIndex: testNumber, id: responseId)
             } else if c.label.text == "E"{

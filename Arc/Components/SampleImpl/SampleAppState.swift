@@ -1,8 +1,8 @@
 //
-//  SampleAppState.swift
-//  SampleApp
+// SampleAppState.swift
+// Arc
 //
-// Copyright (c) 2022 Washington University in St. Louis
+// Copyright (c) 2023 Washington University in St. Louis
 //
 // Washington University in St. Louis hereby grants to you a non-transferable,
 // non-exclusive, royalty-free license to use and copy the computer code
@@ -25,7 +25,6 @@
 //
 
 import Foundation
-import Arc
 import UIKit
 
 public enum SampleAppState: String, State, CaseIterable {
@@ -38,6 +37,8 @@ public enum SampleAppState: String, State, CaseIterable {
     
     //Return a view controller w
     public func viewForState() -> UIViewController {
+        
+        let pauseModal = CancelButtonModal.createPauseButtonModal()
 
         let testIdx = ((Arc.shared.appNavigation as? SampleAppNavigationController)?.getCognitiveAssessmentIndex(state: self) ?? 0) + 1
         ACState.testTaken = testIdx
@@ -55,20 +56,43 @@ public enum SampleAppState: String, State, CaseIterable {
                 return vc
             case .gridTest:
                 let vc:ExtendedGridTestViewController = .get(nib:"ExtendedGridTestViewController")
+                var testType = "TestingIntro-Grids"
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
+                if Arc.environment?.gridTestType == .extended {
+                    let vc:EXExtendedGridTestViewController
+                    vc = .get(nib:"ExtendedGridTestViewController")
+                    controller.nextVc = vc
+                    testType = "TestingIntro-Vb-Grids"
+                } else {
+                    let vc:CRGridTestViewController
+                    vc = .get(nib:"GridTestViewController")
+                    controller.nextVc = vc
+                }
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
-                .replacingOccurrences(of: "1", with: "\(testIdx)")
+            
+                if (ACState.totalTestCountInSession > 1) {
+                    controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                        .replacingOccurrences(of: "1", with: "\(testIdx)")
+                } else {
+                    controller.titleOverride = ""
+                }
                 
-                controller.load(instructions: "TestingIntro-Grids")
+                controller.load(instructions: testType)
                 return controller
             case .priceTest:
                 let vc:PricesTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(testIdx)")
-                    .replacingOccurrences(of: "{Value2}", with: "3")
+            
+                if (ACState.totalTestCountInSession > 1) {
+                    controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                        .replacingOccurrences(of: "1", with: "\(testIdx)")
+                        .replacingOccurrences(of: "{Value2}", with: "3")
+                } else {
+                    controller.titleOverride = ""
+                }
                 
                 controller.load(instructions: "TestingIntro-Prices")
                 return controller
@@ -76,10 +100,16 @@ public enum SampleAppState: String, State, CaseIterable {
                 
                 let vc:SymbolsTestViewController = .get()
                 let controller:InstructionNavigationController = .get()
+                controller.cancelButtonModal = pauseModal
                 controller.nextVc = vc
-                controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
-                    .replacingOccurrences(of: "1", with: "\(testIdx)")
-                    .replacingOccurrences(of: "{Value2}", with: "3")
+            
+                if (ACState.totalTestCountInSession > 1) {
+                    controller.titleOverride = "Test \(testIdx) of 3".localized(ACTranslationKey.testing_header_1)
+                        .replacingOccurrences(of: "1", with: "\(testIdx)")
+                        .replacingOccurrences(of: "{Value2}", with: "3")
+                } else {
+                    controller.titleOverride = ""
+                }
                 
                 controller.load(instructions: "TestingIntro-Symbols")
                 return controller

@@ -1,8 +1,8 @@
 //
-//  SampleAppNavigationController.swift
-//  SampleApp
+// SampleAppNavigationController.swift
+// Arc
 //
-// Copyright (c) 2022 Washington University in St. Louis
+// Copyright (c) 2023 Washington University in St. Louis
 //
 // Washington University in St. Louis hereby grants to you a non-transferable,
 // non-exclusive, royalty-free license to use and copy the computer code
@@ -25,7 +25,6 @@
 //
 
 import Foundation
-import Arc
 import UIKit
 
 open class SampleAppNavigationController : AppNavigationController {
@@ -70,6 +69,10 @@ open class SampleAppNavigationController : AppNavigationController {
     }
 
     public func defaultAbout() -> State {
+        return SampleAppState.all
+    }
+    
+    public func defaultContact() -> State {
         return SampleAppState.all
     }
     

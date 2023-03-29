@@ -101,8 +101,8 @@ public class HintView : IndicatorView {
 		container?.isLayoutMarginsRelativeArrangement = true
         container?.spacing = 0
 		container?.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-		configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-											 secondaryColor: UIColor(named:"HintFill")!,
+		configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+											 secondaryColor: ACColor.hintFill,
 											 textColor: .black,
 											 cornerRadius: 8.0,
 											 arrowEnabled: false,
@@ -115,7 +115,7 @@ public class HintView : IndicatorView {
 	public override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		 let context = UIGraphicsGetCurrentContext()
-		context?.setStrokeColor(UIColor(named:"HorizontalSeparator")!.cgColor)
+        context?.setStrokeColor(ACColor.horizontalSeparator.cgColor)
 		path?.lineWidth = 8
 		path?.stroke()
 	}

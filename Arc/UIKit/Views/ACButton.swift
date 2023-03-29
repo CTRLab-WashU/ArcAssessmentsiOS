@@ -41,8 +41,8 @@ import UIKit
         }
     }
 	
-    @IBInspectable public var primaryColor:UIColor = UIColor(named: "Primary") ?? UIColor.white
-    @IBInspectable public var secondaryColor:UIColor = UIColor(named: "Primary Gradient") ?? UIColor.gray
+    @IBInspectable public var primaryColor:UIColor = ACColor.primary
+    @IBInspectable public var secondaryColor:UIColor = ACColor.primaryGradient
 	@IBInspectable public var topColor:UIColor = UIColor(white: 1.0, alpha: 0.25)
 	@IBInspectable public var bottomColor:UIColor = UIColor(white: 0.0, alpha: 0.25)
 	

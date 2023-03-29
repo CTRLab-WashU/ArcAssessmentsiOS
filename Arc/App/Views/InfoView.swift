@@ -72,7 +72,9 @@ public class InfoView: ACTemplateView {
 		}
 	}
 	public func setTextColor(_ color:UIColor?) {
-		infoContent.textColor = color
+        if let colorUnwrapped = color {
+            infoContent.textColor = colorUnwrapped
+        }
 	}
 	public func setButtonColor(primary:UIColor?, secondary:UIColor?, textColor:UIColor) {
 		nextButton?.primaryColor = primary!

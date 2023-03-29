@@ -85,7 +85,7 @@ public class TutorialCompleteView: ACTemplateView {
 		title = view.acLabel {
 			$0.alpha = 0
 			$0.text = "Tutorial Complete".localized(ACTranslationKey.testing_tutorial_complete)
-			Roboto.Style.headingBold($0, color: UIColor(named:"Primary Info"))
+			Roboto.Style.headingBold($0, color: ACColor.primaryInfo)
 			$0.textAlignment = .center
 			$0.layout { [weak self] in
 				
@@ -133,7 +133,7 @@ public class TutorialCompleteView: ACTemplateView {
 			path.addLine(to: Math.lerp(a: start, b: end, t: keyProgress))
 			
 		}
-		context?.setStrokeColor(UIColor(named:"Primary Info")!.cgColor)
+		context?.setStrokeColor(ACColor.primaryInfo.cgColor)
 		path.stroke()
 	}
 }

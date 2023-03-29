@@ -36,15 +36,14 @@ public class InfoContentView: UIStackView {
 	public weak var contentTextView: HMMarkupTextView?
 	public weak var separator:ACHorizontalBar!
 
-	var textColor = UIColor(named: "Secondary Text")
+	var textColor = ACColor.secondaryText
 
 	public init() {
 		super.init(frame: .zero)
 		spacing = 20
 		axis = .vertical
 		alignment = .fill
-		
-		
+		        
 	}
 	/// Using option type functions to lazy-add subviews allows the view to be
 	/// recomposed based on the order that the options are called.
@@ -158,7 +157,7 @@ public class InfoContentView: UIStackView {
                 paragraphStyle.lineSpacing = 32 - 26 - (Roboto.Font.prompt.lineHeight - Roboto.Font.prompt.pointSize)
                 paragraphStyle.alignment = $0.textAlignment
                 attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-                attributedString.addAttributes([.foregroundColor : self.textColor!], range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttributes([.foregroundColor : self.textColor], range: NSMakeRange(0, attributedString.length))
                 $0.attributedText = attributedString
                 
             }

@@ -545,7 +545,7 @@ open class SurveyNavigationViewController: UINavigationController, UINavigationC
                 helpButton.setTitle("HELP".localized(ACTranslationKey.button_help), for: .normal)
                 helpButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
                 helpButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16)
-                helpButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+                helpButton.setTitleColor(ACColor.primary, for: .normal)
                 helpButton.addTarget(self, action: #selector(self.contactStudyCoordinatorPressed), for: .touchUpInside)
                 
                 rightButton = UIBarButtonItem(customView: helpButton)

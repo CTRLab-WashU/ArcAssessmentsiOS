@@ -201,6 +201,8 @@
 		CB0C724A27AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C724527AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift */; };
 		CB0C724B27AC71C30038D6D7 /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */; };
 		CB96153827AB15520064F658 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB96153727AB15520064F658 /* FontLoader.swift */; };
+		CBBF2FB429CD448E0093E31B /* CrGridTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF2FB229CD448E0093E31B /* CrGridTestViewController.swift */; };
+		CBBF2FB529CD448E0093E31B /* EXExtendedGridTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF2FB329CD448E0093E31B /* EXExtendedGridTestViewController.swift */; };
 		CBCD063C27B1E4B100781157 /* StudyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063827B1E4B100781157 /* StudyProgress.swift */; };
 		CBCD063D27B1E4B100781157 /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063927B1E4B100781157 /* TestSession.swift */; };
 		CBCD063E27B1E4B100781157 /* ArcFault.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD063A27B1E4B100781157 /* ArcFault.swift */; };
@@ -244,6 +246,12 @@
 		CBDC43EF272A8163004ACE2D /* Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43EB272A8162004ACE2D /* Animate.swift */; };
 		CBDC43F2272A8169004ACE2D /* Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F0272A8169004ACE2D /* Roboto.swift */; };
 		CBDC43F3272A8169004ACE2D /* Georgia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC43F1272A8169004ACE2D /* Georgia.swift */; };
+		CBE2F43A29CD115B00D6C862 /* SampleAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43729CD115B00D6C862 /* SampleAppState.swift */; };
+		CBE2F43B29CD115B00D6C862 /* SampleAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */; };
+		CBE2F43C29CD115B00D6C862 /* SampleAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */; };
+		CBE2F44029CD117F00D6C862 /* ARCCognitiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */; };
+		CBE2F44129CD117F00D6C862 /* ARCCognitiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */; };
+		CBE2F44229CD117F00D6C862 /* ARCCognitiveEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,6 +465,8 @@
 		CB0C724527AC71C30038D6D7 /* ScheduleEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduleEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CB0C724627AC71C30038D6D7 /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB96153727AB15520064F658 /* FontLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
+		CBBF2FB229CD448E0093E31B /* CrGridTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrGridTestViewController.swift; sourceTree = "<group>"; };
+		CBBF2FB329CD448E0093E31B /* EXExtendedGridTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXExtendedGridTestViewController.swift; sourceTree = "<group>"; };
 		CBCD063827B1E4B100781157 /* StudyProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyProgress.swift; path = Arc/App/Utilities/Model/StudyProgress.swift; sourceTree = SOURCE_ROOT; };
 		CBCD063927B1E4B100781157 /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestSession.swift; path = Arc/App/Utilities/Model/TestSession.swift; sourceTree = SOURCE_ROOT; };
 		CBCD063A27B1E4B100781157 /* ArcFault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArcFault.swift; path = Arc/App/Utilities/Model/ArcFault.swift; sourceTree = SOURCE_ROOT; };
@@ -508,6 +518,12 @@
 		CBDC43EB272A8162004ACE2D /* Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animate.swift; path = Arc/UIKit/Views/Style/Animate.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F0272A8169004ACE2D /* Roboto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Roboto.swift; path = Arc/UIKit/Views/Style/Fonts/Roboto.swift; sourceTree = SOURCE_ROOT; };
 		CBDC43F1272A8169004ACE2D /* Georgia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Georgia.swift; path = Arc/UIKit/Views/Style/Fonts/Georgia.swift; sourceTree = SOURCE_ROOT; };
+		CBE2F43729CD115B00D6C862 /* SampleAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppState.swift; sourceTree = "<group>"; };
+		CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppEnvironment.swift; sourceTree = "<group>"; };
+		CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppNavigationController.swift; sourceTree = "<group>"; };
+		CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveState.swift; sourceTree = "<group>"; };
+		CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveNavigationController.swift; sourceTree = "<group>"; };
+		CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCCognitiveEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -755,6 +771,8 @@
 		C54AE94B21C81B5C00DEC360 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CBE2F44529CD11B300D6C862 /* SampleImpl */,
+				CBE2F44429CD119F00D6C862 /* CognitiveImpl */,
 				CB0C724027AC71A90038D6D7 /* Scheduler */,
 				C54E8E1322E790230080BFC1 /* Progress */,
 				C54AE97F21C81B5C00DEC360 /* LoadingScreenViewController.swift */,
@@ -976,6 +994,8 @@
 		C58129F922E244BF00CD1883 /* Grid Test */ = {
 			isa = PBXGroup;
 			children = (
+				CBBF2FB229CD448E0093E31B /* CrGridTestViewController.swift */,
+				CBBF2FB329CD448E0093E31B /* EXExtendedGridTestViewController.swift */,
 				C58129FA22E249EE00CD1883 /* ExtendedGridTestTutorialViewController.swift */,
 				C54AE95221C81B5C00DEC360 /* ExtendedGridTestViewController.swift */,
 				177BA7292527BA150018A25F /* GridTestTutorialViewController.swift */,
@@ -1146,6 +1166,26 @@
 				CBDC43F0272A8169004ACE2D /* Roboto.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CBE2F44429CD119F00D6C862 /* CognitiveImpl */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2F43F29CD117F00D6C862 /* ARCCognitiveEnvironment.swift */,
+				CBE2F43E29CD117F00D6C862 /* ARCCognitiveNavigationController.swift */,
+				CBE2F43D29CD117F00D6C862 /* ARCCognitiveState.swift */,
+			);
+			path = CognitiveImpl;
+			sourceTree = "<group>";
+		};
+		CBE2F44529CD11B300D6C862 /* SampleImpl */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2F43829CD115B00D6C862 /* SampleAppEnvironment.swift */,
+				CBE2F43929CD115B00D6C862 /* SampleAppNavigationController.swift */,
+				CBE2F43729CD115B00D6C862 /* SampleAppState.swift */,
+			);
+			path = SampleImpl;
 			sourceTree = "<group>";
 		};
 		CBE815272727559C00EA9C80 /* Resources */ = {
@@ -1361,6 +1401,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE2F44029CD117F00D6C862 /* ARCCognitiveState.swift in Sources */,
+				CBE2F44129CD117F00D6C862 /* ARCCognitiveNavigationController.swift in Sources */,
+				CBE2F44229CD117F00D6C862 /* ARCCognitiveEnvironment.swift in Sources */,
+				CBE2F43A29CD115B00D6C862 /* SampleAppState.swift in Sources */,
+				CBE2F43B29CD115B00D6C862 /* SampleAppEnvironment.swift in Sources */,
+				CBE2F43C29CD115B00D6C862 /* SampleAppNavigationController.swift in Sources */,
 				C54D103422C28A1D00B43E42 /* SignatureView.swift in Sources */,
 				CBDC43C9272A8145004ACE2D /* UIView + Pulse.swift in Sources */,
 				C54AEA3F21C81B5F00DEC360 /* SurveyNavigationViewController.swift in Sources */,
@@ -1432,6 +1478,7 @@
 				C54D103622C28A1D00B43E42 /* DurationView.swift in Sources */,
 				C54AEA1821C81B5F00DEC360 /* SymbolSelectButton.swift in Sources */,
 				C54AEA1721C81B5F00DEC360 /* PricesTestController.swift in Sources */,
+				CBBF2FB429CD448E0093E31B /* CrGridTestViewController.swift in Sources */,
 				C593227122E890DA00528FF5 /* ACProgressView.swift in Sources */,
 				CBDC43CA272A8145004ACE2D /* UIView+Extensions.swift in Sources */,
 				C55F8CC7230D7B98006D43BD /* TodaysProgress.swift in Sources */,
@@ -1470,6 +1517,7 @@
 				CBDC43BD272A812D004ACE2D /* Automation.swift in Sources */,
 				C54AE9EF21C81B5F00DEC360 /* ArcViewController.swift in Sources */,
 				C52B75D521C837A200498571 /* Session+Extensions.swift in Sources */,
+				CBBF2FB529CD448E0093E31B /* EXExtendedGridTestViewController.swift in Sources */,
 				CBDC43B5272A8119004ACE2D /* HMMarkupButton.swift in Sources */,
 				C55F8CD1230F1AA4006D43BD /* EarningDetailGroup.swift in Sources */,
 				C54AEA0421C81B5F00DEC360 /* BorderedUIView.swift in Sources */,
@@ -1618,7 +1666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1676,7 +1724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1702,7 +1750,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Arc/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1737,7 +1785,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Arc/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1763,7 +1811,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RQ4636JA2;
 				INFOPLIST_FILE = ArcTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1782,7 +1830,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RQ4636JA2;
 				INFOPLIST_FILE = ArcTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -60,28 +60,28 @@ public class ACCalendarView:UIView, SurveyInput {
         
             case .header:
                 label.font = label.font.boldFont()
-                label.textColor = UIColor(named:"Primary Text")
+                label.textColor = ACColor.primaryText
                 let _ = label.layer.addBorder(edge: .bottom, color: .lightGray, thickness: 1.0)
                
             case .selected:
                 
                 label.font = label.font.boldFont()
-                label.textColor = UIColor(named:"Primary Text")
-                label.backgroundColor = UIColor(named: "Primary Selected")!
+                label.textColor = ACColor.primaryText
+                label.backgroundColor = ACColor.primarySelected
                 
             case .selectedFirst:
                 label.font = label.font.boldFont()
 
-                _ = label.layer.addBorder(edge: .left, color: UIColor(named: "Primary")!, thickness: 1.0)
-                label.textColor = UIColor(named:"Primary Text")
-                label.backgroundColor = UIColor(named: "Primary Selected")!
+                _ = label.layer.addBorder(edge: .left, color: ACColor.primary, thickness: 1.0)
+                label.textColor = ACColor.primaryText
+                label.backgroundColor = ACColor.primarySelected
                 
             case .selectedLast:
                 label.font = label.font.boldFont()
 
-                _ = label.layer.addBorder(edge: .right, color: UIColor(named: "Primary")!, thickness: 1.0)
-                label.textColor = UIColor(named:"Primary Text")
-                label.backgroundColor = UIColor(named: "Primary Selected")!
+                _ = label.layer.addBorder(edge: .right, color: ACColor.primary, thickness: 1.0)
+                label.textColor = ACColor.primaryText
+                label.backgroundColor = ACColor.primarySelected
             default:
                 label.textColor = .lightGray
 

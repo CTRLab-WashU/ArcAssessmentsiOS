@@ -142,7 +142,7 @@ public struct Roboto {
 			label.textColor = #colorLiteral(red: 0.6000000238, green: 0, blue: 0, alpha: 1)
 			
 		}
-		public static func body(_ label:UILabel, color:UIColor? = UIColor(named: "primary Text")) {
+        public static func body(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.backgroundColor = .clear
 
 			label.font = Roboto.Font.body
@@ -156,14 +156,14 @@ public struct Roboto {
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func subBody(_ label:UILabel, color:UIColor? = UIColor(named: "primary Text")) {
+		public static func subBody(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.backgroundColor = .clear
 			
 			label.font = Roboto.Font.subBody
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func disclaimer(_ label:UILabel, color:UIColor? = UIColor(named: "Primary Text")) {
+		public static func disclaimer(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.disclaimer
 			label.numberOfLines = 0
 			label.textColor = color
@@ -177,7 +177,7 @@ public struct Roboto {
 			label.textColor = color
 		}
 		
-		public static func bodyBold(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func bodyBold(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.bodyBold
 			label.numberOfLines = 0
 			label.textColor = color
@@ -191,76 +191,76 @@ public struct Roboto {
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func subHeading(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func subHeading(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.subHeading
 			label.numberOfLines = 0
 			
 			label.textColor = color
 		}
-		public static func goalHeading(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func goalHeading(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.goalHeading
 			label.numberOfLines = 0
 			label.textColor = color
 		}
 		
-		public static func goalRewardBold(_ label:UILabel, color:UIColor? = UIColor(named: "primary Text")) {
+		public static func goalRewardBold(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.goalRewardBold
 			label.numberOfLines = 1
 			label.textColor = color
 			label.textAlignment = .center
 		}
-		public static func goalReward(_ label:UILabel, color:UIColor? = UIColor(named: "Primary Text")) {
+		public static func goalReward(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.goalReward
 			label.numberOfLines = 1
 			label.textColor = color
 			label.textAlignment = .center
 		}
-		public static func subHeadingBold(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func subHeadingBold(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.subHeadingBold
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func heading(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func heading(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.heading
 			label.numberOfLines = 0
 			
 			label.textColor = color
 		}
-		public static func headingMedium(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func headingMedium(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.headingMedium
 			label.numberOfLines = 0
 			
 			label.textColor = color
 		}
-		public static func headingBold(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func headingBold(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.headingBold
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func headingBlack(_ label:UILabel, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func headingBlack(_ label:UILabel, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.headingBlack
 			label.numberOfLines = 0
 			label.textColor = color
 		}
-		public static func body(_ label:UITextView, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func body(_ label:UITextView, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.body
 			label.textColor = color
 		}
-		public static func bodyBold(_ label:UITextView, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func bodyBold(_ label:UITextView, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.bodyBold
 			label.textColor = color
 		}
-		public static func heading(_ label:UITextView, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func heading(_ label:UITextView, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.headingMedium
 			
 			label.textColor = color
 		}
-		public static func headingBold(_ label:UITextView, color:UIColor? = UIColor(named:"Primary Text")) {
+		public static func headingBold(_ label:UITextView, color:UIColor? = ACColor.primaryText) {
 			label.font = Roboto.Font.headingBold
 			label.textColor = color
 		}
         public static func prompt(_ label:UILabel, color:UIColor? =
-            UIColor(named:"Primary Text")) {
+                                  ACColor.primaryText) {
             label.font = Roboto.Font.prompt
             label.numberOfLines = 0
             label.textColor = color
@@ -273,7 +273,7 @@ public struct Roboto {
 	}
 	///Attributes for various uses
 	public struct Attributes {
-		public static let link = [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: UIColor(named: "Primary") ?? .blue, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium) ] as [NSAttributedString.Key : Any]
+		public static let link = [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: ACColor.primary ?? .blue, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium) ] as [NSAttributedString.Key : Any]
 	}
 	
 	

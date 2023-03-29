@@ -1,8 +1,8 @@
 //
-//  SampleAppEnvironment.swift
-//  SampleApp
+// SampleAppEnvironment.swift
+// Arc
 //
-// Copyright (c) 2022 Washington University in St. Louis
+// Copyright (c) 2023 Washington University in St. Louis
 //
 // Washington University in St. Louis hereby grants to you a non-transferable,
 // non-exclusive, royalty-free license to use and copy the computer code
@@ -25,15 +25,25 @@
 //
 
 import Foundation
-import Arc
 
 // This class can be used to customize the Arc library
 open class SampleAppEnvironment : ArcEnvironment {
     
     public var appNavigation: AppNavigationController = SampleAppNavigationController()
     
+    public init() {
+        
+    }
+    
     public func configure() {
         //Use this to set class variables or perform setup before the app runs
-        
+    }
+    
+    open var priceTestType:PriceTestType {
+        return .normal
+    }
+    
+    open var gridTestType:GridTestType {
+        return .extended
     }
 }

@@ -34,6 +34,7 @@ public enum ACState : String, State, CaseIterable {
 	static var surveys:[ACState] { return  [.context] }
 	
 	static var tests:[ACState] {return [.gridTest, .priceTest, .symbolsTest] }
+    static public var totalTestCountInSession = 3
 	static public var testCount = 0
 	static public var testTaken: Int = 0
 	

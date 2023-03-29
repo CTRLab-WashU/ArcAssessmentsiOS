@@ -200,5 +200,13 @@ public extension Session {
 		})
 	}
 
-
+    func getCognitiveSurveyFor(surveyType:SurveyType) -> JSONData? {
+        // Cognitive assessment tutorials come through with
+        // multiple result types, so choose the one with the largest data
+        return (sessionData as! Set<JSONData>).filter {
+            $0.type == surveyType.rawValue
+        }.sorted { data1, data2 in
+            (data1.data?.count ?? 0) > (data2.data?.count ?? 0)
+        }.first
+    }
 }

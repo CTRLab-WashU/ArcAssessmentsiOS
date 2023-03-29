@@ -26,99 +26,100 @@
 
 import UIKit
 public extension UIColor {
-	static let pricesTestBackground:UIColor = UIColor(named:"PriceTestBackground")!
+    
+    static let pricesTestBackground:UIColor = UIColor(named:"PriceTestBackground", in: Bundle.module, compatibleWith: nil)!
 	//Goals
-	static let goalHeader:UIColor = UIColor(named:"Goal Header")!
-	static let calendarItemBackground:UIColor = UIColor(named: "Calendar Item Background")!
+	static let goalHeader:UIColor = UIColor(named:"Goal Header", in: Bundle.module, compatibleWith: nil)!
+	static let calendarItemBackground:UIColor = UIColor(named: "Calendar Item Background", in: Bundle.module, compatibleWith: nil)!
 	//Badge
-	static let badgeText:UIColor = UIColor(named:"Badge Text")!
-	static let badgeBackground:UIColor = UIColor(named:"Badge Background")!
-	static let badgeGradientStart:UIColor =  UIColor(named:"Badge Gradient Start")!
-	static let badgeGradientEnd:UIColor = UIColor(named:"Badge Gradient End")!
-	static let badgeGray:UIColor = UIColor(named:"Badge Gray")!
+	static let badgeText:UIColor = UIColor(named:"Badge Text", in: Bundle.module, compatibleWith: nil)!
+	static let badgeBackground:UIColor = UIColor(named:"Badge Background", in: Bundle.module, compatibleWith: nil)!
+	static let badgeGradientStart:UIColor =  UIColor(named:"Badge Gradient Start", in: Bundle.module, compatibleWith: nil)!
+	static let badgeGradientEnd:UIColor = UIColor(named:"Badge Gradient End", in: Bundle.module, compatibleWith: nil)!
+	static let badgeGray:UIColor = UIColor(named:"Badge Gray", in: Bundle.module, compatibleWith: nil)!
 
 	
 	
 	//Primary colors
-	static let primary:UIColor = UIColor(named:"Primary")!
-    static let primaryDate:UIColor = UIColor(named:"Primary Date")!
-	static let primaryGradient:UIColor = UIColor(named:"Primary Gradient")!
-	static let primaryInfo:UIColor = UIColor(named:"Primary Info")!
-	static let primaryLinebreak:UIColor = UIColor(named:"Primary Linebreak")!
-	static let primarySectionBackground:UIColor = UIColor(named:"Primary Section Background")!
-	static let primarySelected:UIColor = UIColor(named:"Primary Selected")!
-	static let primaryText:UIColor = UIColor(named:"Primary Text")!
+	static let primary:UIColor = UIColor(named:"Primary", in: Bundle.module, compatibleWith: nil)!
+    static let primaryDate:UIColor = UIColor(named:"Primary Date", in: Bundle.module, compatibleWith: nil)!
+	static let primaryGradient:UIColor = UIColor(named:"Primary Gradient", in: Bundle.module, compatibleWith: nil)!
+	static let primaryInfo:UIColor = UIColor(named:"Primary Info", in: Bundle.module, compatibleWith: nil)!
+	static let primaryLinebreak:UIColor = UIColor(named:"Primary Linebreak", in: Bundle.module, compatibleWith: nil)!
+	static let primarySectionBackground:UIColor = UIColor(named:"Primary Section Background", in: Bundle.module, compatibleWith: nil)!
+	static let primarySelected:UIColor = UIColor(named:"Primary Selected", in: Bundle.module, compatibleWith: nil)!
+	static let primaryText:UIColor = UIColor(named:"Primary Text", in: Bundle.module, compatibleWith: nil)!
 	
-	static let secondary:UIColor = UIColor(named:"Secondary")!
-	static let secondaryBackButtonBackground:UIColor = UIColor(named:"Secondary Back Button Background")!
-	static let secondaryBackground:UIColor = UIColor(named:"Secondary Background")!
-    static let secondaryDate:UIColor = UIColor(named:"Secondary Date")!
-	static let secondaryGradient:UIColor = UIColor(named:"Secondary Gradient")!
-	static let secondaryText:UIColor = UIColor(named:"Secondary Text")!
+	static let secondary:UIColor = UIColor(named:"Secondary", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryBackButtonBackground:UIColor = UIColor(named:"Secondary Back Button Background", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryBackground:UIColor = UIColor(named:"Secondary Background", in: Bundle.module, compatibleWith: nil)!
+    static let secondaryDate:UIColor = UIColor(named:"Secondary Date", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryGradient:UIColor = UIColor(named:"Secondary Gradient", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryText:UIColor = UIColor(named:"Secondary Text", in: Bundle.module, compatibleWith: nil)!
 	
-	static let error:UIColor = UIColor(named:"Error")!
-	static let highlight:UIColor = UIColor(named:"Highlight")!
-	static let hintFill:UIColor = UIColor(named:"HintFill")!
-	static let horizontalSeparator:UIColor = UIColor(named:"HorizontalSeparator")!
-	static let modalFade:UIColor = UIColor(named:"Modal Fade")!
-	static let primaryBackground:UIColor = UIColor(named:"Primary Background")!
+	static let error:UIColor = UIColor(named:"Error", in: Bundle.module, compatibleWith: nil)!
+	static let highlight:UIColor = UIColor(named:"Highlight", in: Bundle.module, compatibleWith: nil)!
+	static let hintFill:UIColor = UIColor(named:"HintFill", in: Bundle.module, compatibleWith: nil)!
+	static let horizontalSeparator:UIColor = UIColor(named:"HorizontalSeparator", in: Bundle.module, compatibleWith: nil)!
+	static let modalFade:UIColor = UIColor(named:"Modal Fade", in: Bundle.module, compatibleWith: nil)!
+	static let primaryBackground:UIColor = UIColor(named:"Primary Background", in: Bundle.module, compatibleWith: nil)!
 	
-	static let progressWeek:UIColor = UIColor(named:"ProgressWeek")!
-	static let resourcesSeparator:UIColor = UIColor(named:"Resources Separator")!
+	static let progressWeek:UIColor = UIColor(named:"ProgressWeek", in: Bundle.module, compatibleWith: nil)!
+	static let resourcesSeparator:UIColor = UIColor(named:"Resources Separator", in: Bundle.module, compatibleWith: nil)!
 	
-	static let tutorialHighLight:UIColor = UIColor(named:"TutorialHighlight")!
-	static let primaryInnerTop:UIColor = UIColor(named:"PrimaryInnerTop")!
-	static let primaryInnerBottom:UIColor = UIColor(named:"PrimaryInnerBottom")!
-	static let secondaryInnerTop:UIColor = UIColor(named:"SecondaryInnerTop")!
-	static let secondaryInnerBottom:UIColor = UIColor(named:"SecondaryInnerBottom")!
+	static let tutorialHighLight:UIColor = UIColor(named:"TutorialHighlight", in: Bundle.module, compatibleWith: nil)!
+	static let primaryInnerTop:UIColor = UIColor(named:"PrimaryInnerTop", in: Bundle.module, compatibleWith: nil)!
+	static let primaryInnerBottom:UIColor = UIColor(named:"PrimaryInnerBottom", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryInnerTop:UIColor = UIColor(named:"SecondaryInnerTop", in: Bundle.module, compatibleWith: nil)!
+	static let secondaryInnerBottom:UIColor = UIColor(named:"SecondaryInnerBottom", in: Bundle.module, compatibleWith: nil)!
 	
 }
 
 public struct ACColor {
 	
 	//Goals
-	static public let goalHeader:UIColor = UIColor(named:"Goal Header")!
-	static public let calendarItemBackground:UIColor = UIColor(named: "Calendar Item Background")!
+	static public var goalHeader:UIColor = UIColor(named:"Goal Header", in: Bundle.module, compatibleWith: nil)!
+	static public var calendarItemBackground:UIColor = UIColor(named: "Calendar Item Background", in: Bundle.module, compatibleWith: nil)!
 	//Badges
-	static public let badgeText:UIColor = UIColor(named:"Badge Text")!
-	static public let badgeBackground:UIColor = UIColor(named:"Badge Background")!
-	static public let badgeGradientStart:UIColor =  UIColor(named:"Badge Gradient Start")!
-	static public let badgeGradientEnd:UIColor = UIColor(named:"Badge Gradient End")!
-	static public let badgeGray:UIColor = UIColor(named:"Badge Gray")!
+	static public var badgeText:UIColor = UIColor(named:"Badge Text", in: Bundle.module, compatibleWith: nil)!
+	static public var badgeBackground:UIColor = UIColor(named:"Badge Background", in: Bundle.module, compatibleWith: nil)!
+	static public var badgeGradientStart:UIColor =  UIColor(named:"Badge Gradient Start", in: Bundle.module, compatibleWith: nil)!
+	static public var badgeGradientEnd:UIColor = UIColor(named:"Badge Gradient End", in: Bundle.module, compatibleWith: nil)!
+	static public var badgeGray:UIColor = UIColor(named:"Badge Gray", in: Bundle.module, compatibleWith: nil)!
 
 	
 	
 	//Primary App colors
-	static public let primary:UIColor = UIColor(named:"Primary")!
-    static public let primaryDate:UIColor = UIColor(named:"Primary Date")!
-	static public let primaryGradient:UIColor = UIColor(named:"Primary Gradient")!
-	static public let primaryInfo:UIColor = UIColor(named:"Primary Info")!
-	static public let primaryLinebreak:UIColor = UIColor(named:"Primary Linebreak")!
-	static public let primarySectionBackground:UIColor = UIColor(named:"Primary Section Background")!
-	static public let primarySelected:UIColor = UIColor(named:"Primary Selected")!
-	static public let primaryText:UIColor = UIColor(named:"Primary Text")!
+	static public var primary:UIColor = UIColor(named:"Primary", in: Bundle.module, compatibleWith: nil)!
+    static public var primaryDate:UIColor = UIColor(named:"Primary Date", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryGradient:UIColor = UIColor(named:"Primary Gradient", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryInfo:UIColor = UIColor(named:"Primary Info", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryLinebreak:UIColor = UIColor(named:"Primary Linebreak", in: Bundle.module, compatibleWith: nil)!
+	static public var primarySectionBackground:UIColor = UIColor(named:"Primary Section Background", in: Bundle.module, compatibleWith: nil)!
+	static public var primarySelected:UIColor = UIColor(named:"Primary Selected", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryText:UIColor = UIColor(named:"Primary Text", in: Bundle.module, compatibleWith: nil)!
 	
-	static public let secondary:UIColor = UIColor(named:"Secondary")!
-	static public let secondaryBackButtonBackground:UIColor = UIColor(named:"Secondary Back Button Background")!
-	static public let secondaryBackground:UIColor = UIColor(named:"Secondary Background")!
-    static public let secondaryDate:UIColor = UIColor(named:"Secondary Date")!
-	static public let secondaryGradient:UIColor = UIColor(named:"Secondary Gradient")!
-	static public let secondaryText:UIColor = UIColor(named:"Secondary Text")!
+	static public var secondary:UIColor = UIColor(named:"Secondary", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryBackButtonBackground:UIColor = UIColor(named:"Secondary Back Button Background", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryBackground:UIColor = UIColor(named:"Secondary Background", in: Bundle.module, compatibleWith: nil)!
+    static public var secondaryDate:UIColor = UIColor(named:"Secondary Date", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryGradient:UIColor = UIColor(named:"Secondary Gradient", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryText:UIColor = UIColor(named:"Secondary Text", in: Bundle.module, compatibleWith: nil)!
 	
-	static public let error:UIColor = UIColor(named:"Error")!
-	static public let highlight:UIColor = UIColor(named:"Highlight")!
-	static public let hintFill:UIColor = UIColor(named:"HintFill")!
-	static public let horizontalSeparator:UIColor = UIColor(named:"HorizontalSeparator")!
-	static public let modalFade:UIColor = UIColor(named:"Modal Fade")!
-	static public let primaryBackground:UIColor = UIColor(named:"Primary Background")!
+	static public var error:UIColor = UIColor(named:"Error", in: Bundle.module, compatibleWith: nil)!
+	static public var highlight:UIColor = UIColor(named:"Highlight", in: Bundle.module, compatibleWith: nil)!
+	static public var hintFill:UIColor = UIColor(named:"HintFill", in: Bundle.module, compatibleWith: nil)!
+	static public var horizontalSeparator:UIColor = UIColor(named:"HorizontalSeparator", in: Bundle.module, compatibleWith: nil)!
+	static public var modalFade:UIColor = UIColor(named:"Modal Fade", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryBackground:UIColor = UIColor(named:"Primary Background", in: Bundle.module, compatibleWith: nil)!
 	
-	static public let progressWeek:UIColor = UIColor(named:"ProgressWeek")!
-	static public let resourcesSeparator:UIColor = UIColor(named:"Resources Separator")!
+	static public var progressWeek:UIColor = UIColor(named:"ProgressWeek", in: Bundle.module, compatibleWith: nil)!
+	static public var resourcesSeparator:UIColor = UIColor(named:"Resources Separator", in: Bundle.module, compatibleWith: nil)!
 	
-	static public let tutorialHighLight:UIColor = UIColor(named:"TutorialHighlight")!
-	static public let primaryInnerTop:UIColor = UIColor(named:"PrimaryInnerTop")!
-	static public let primaryInnerBottom:UIColor = UIColor(named:"PrimaryInnerBottom")!
-	static public let secondaryInnerTop:UIColor = UIColor(named:"SecondaryInnerTop")!
-	static public let secondaryInnerBottom:UIColor = UIColor(named:"SecondaryInnerBottom")!
+	static public var tutorialHighLight:UIColor = UIColor(named:"TutorialHighlight", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryInnerTop:UIColor = UIColor(named:"PrimaryInnerTop", in: Bundle.module, compatibleWith: nil)!
+	static public var primaryInnerBottom:UIColor = UIColor(named:"PrimaryInnerBottom", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryInnerTop:UIColor = UIColor(named:"SecondaryInnerTop", in: Bundle.module, compatibleWith: nil)!
+	static public var secondaryInnerBottom:UIColor = UIColor(named:"SecondaryInnerBottom", in: Bundle.module, compatibleWith: nil)!
 	
 }

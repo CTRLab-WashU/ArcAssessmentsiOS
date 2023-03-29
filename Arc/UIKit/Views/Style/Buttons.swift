@@ -36,7 +36,7 @@ public extension UIBarButtonItem {
 			backButton.setTitle(title, for: .normal)
 			backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
 			backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -12)
-			backButton.setTitleColor(UIColor(named: "Primary"), for: .normal)
+			backButton.setTitleColor(ACColor.primary, for: .normal)
 			backButton.addTarget(target, action: selector, for: .touchUpInside)
 			
 			return UIBarButtonItem(customView: backButton)

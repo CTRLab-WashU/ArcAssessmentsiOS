@@ -44,7 +44,7 @@ open class MultilineTextView : UIView, SurveyInput, UITextViewDelegate {
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
-        textView.layer.borderColor = UIColor(named: "Primary")!.cgColor
+        textView.layer.borderColor = ACColor.primary.cgColor
         textView.layer.borderWidth = 2.0
         textView.layer.cornerRadius = 8.0
 		textView.inputAccessoryView = getInputAccessoryView(selector: #selector(endEditing(_:)))
@@ -78,10 +78,10 @@ open class MultilineTextView : UIView, SurveyInput, UITextViewDelegate {
 	
 	public func setError(message: String?) {
 		if message != nil {
-			textView.layer.borderColor = UIColor(named: "Error")!.cgColor
+            textView.layer.borderColor = ACColor.error.cgColor
 
 		} else {
-			textView.layer.borderColor = UIColor(named: "Primary")!.cgColor
+			textView.layer.borderColor = ACColor.primary.cgColor
 
 		}
 	}

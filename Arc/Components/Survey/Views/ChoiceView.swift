@@ -129,8 +129,8 @@ import UIKit
     
     func updateColors() {
         self.button.isSelected = _isSelected
-        self.wrappedView.backgroundColor = (_isSelected) ? UIColor(named: "Primary Section Background") : nil
-        self.wrappedView.borderColor = ((_isSelected) ? UIColor(named: "Primary") : UIColor(named: "Primary Selected")) ?? .clear
+        self.wrappedView.backgroundColor = (_isSelected) ? ACColor.primarySectionBackground : nil
+        self.wrappedView.borderColor = (_isSelected) ? ACColor.primary : ACColor.primarySelected
         self.wrappedView.borderThickness = (_isSelected) ? 2.0 : 1.0
         if (_isSelected) {
             label.font = UIFont(name: "Roboto-Black", size: 18)

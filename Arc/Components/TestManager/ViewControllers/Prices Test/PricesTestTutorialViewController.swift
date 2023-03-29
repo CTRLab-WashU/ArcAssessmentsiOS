@@ -136,8 +136,8 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 			weakSelf.pricesTest.priceDisplay.isUserInteractionEnabled = true
 			weakSelf.currentHint = self?.view.window?.hint {
 				$0.content = "The Prices test has two parts. *First, evaluate the price.*".localized(ACTranslationKey.popup_tutorial_price_intro)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -165,8 +165,8 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 			weakSelf.tutorialAnimation.pause()
 			self?.currentHint = self?.view.window?.hint {
 				$0.content = "*What do you think?*\n Choose the answer that makes sense to you.".localized(ACTranslationKey.popup_tutorial_choose1)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -228,8 +228,8 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 			weakSelf.tutorialAnimation.pause()
 			self?.currentHint = self?.view.window?.hint {
 				$0.content = "*What do you think?*\n Choose the answer that makes sense to you.".localized(ACTranslationKey.popup_tutorial_recall)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -301,8 +301,8 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 
 			self?.currentHint = self?.view.window?.hint {
 				$0.content = "*What do you think?*\nTry your best to recall the price from part one.".localized(ACTranslationKey.popup_tutorial_choose2)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
@@ -364,8 +364,8 @@ class PricesTestTutorialViewController: ACTutorialViewController, PricesTestDele
 			
 			self?.currentHint = self?.view.window?.hint {
 				$0.content = "*What do you think?*\nTry your best to recall the price from part one.".localized(ACTranslationKey.popup_tutorial_choose2)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,

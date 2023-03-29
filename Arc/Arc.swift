@@ -53,6 +53,11 @@ public protocol ArcAssessmentDelegate: AnyObject {
     func assessmentComplete(result: ArcAssessmentResult?)
 }
 
+public protocol ArcAssessmentNavigationDelegate: AnyObject {
+    func onAssessmentSkipRequested()
+    func onAssessmentCancelRequested()
+}
+
 public enum SurveyAvailabilityStatus: Equatable {
     case available, laterToday, tomorrow, startingTomorrow(String, String), laterThisCycle(String), later(String, String), finished, postBaseline
 }
@@ -62,7 +67,8 @@ open class Arc : ArcApi {
 	var ARC_VERSION_INFO_KEY = "CFBundleShortVersionString"
 	var APP_VERSION_INFO_KEY = "CFBundleShortVersionString"
     
-    public weak var delegate: ArcAssessmentDelegate? = nil    
+    public weak var delegate: ArcAssessmentDelegate? = nil
+    public weak var navigationDelegate: ArcAssessmentNavigationDelegate? = nil
     
 	public var TEST_TIMEOUT:TimeInterval = 300; // 5 minute timeout if the application is closed
 	public var TEST_START_ALLOWANCE:TimeInterval = -300; // 5 minute window before actual start time

@@ -49,23 +49,23 @@ public enum IntroViewControllerStyle : String {
 				$0.centerY == view.centerYAnchor - 40
 			}
             
-            view.infoContent.contentLabel?.textColor = UIColor(named: "Badge Gray")
+            view.infoContent.contentLabel?.textColor = ACColor.badgeGray
             
 			view.nextButton!.layout {
 				$0.bottom == view.safeAreaLayoutGuide.bottomAnchor - 24
 			}
 			view.infoContent.headingLabel?.textAlignment = .center
 			view.infoContent.contentLabel?.textAlignment = .center
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .center
             view.setButtonColor(style:.secondary)
-			
+            
 		case .grids:
 			view.setSubHeading(heading)
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
             view.backgroundView.image = Arc.shared.image(named: "grids_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
@@ -75,7 +75,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 			view.backgroundView.image = Arc.shared.image(named: "symbols_bg", in: Bundle.module, compatibleWith: nil)
            	view.setButtonColor(style:.secondary)
@@ -85,7 +85,7 @@ public enum IntroViewControllerStyle : String {
 			view.setIntroHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setIntroContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 			view.backgroundView.image = Arc.shared.image(named: "prices_bg", in: Bundle.module, compatibleWith: nil)
             view.setButtonColor(style:.secondary)
@@ -95,7 +95,7 @@ public enum IntroViewControllerStyle : String {
 			view.setHeading(subheading)
 			view.setSeparatorWidth(0.0)
 			view.setContentText(content, template: template)
-			view.backgroundColor = UIColor(named:"Primary Info")
+			view.backgroundColor = ACColor.primaryInfo
 			view.infoContent.alignment = .leading
 		}
 	}
@@ -133,7 +133,7 @@ open class IntroViewController: CustomViewController<InfoView> {
     override open func viewDidLoad() {
         super.viewDidLoad()
 		
-		customView.backgroundColor = UIColor(named: "Primary")
+		customView.backgroundColor = ACColor.primary
         // Do any additional setup after loading the view.
 		if let nav = self.navigationController, nav.viewControllers.count > 1 {
 			let backButton = UIButton(type: .custom)
@@ -143,8 +143,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			backButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
 			backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
 			//backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
-			backButton.setTitleColor(UIColor(named: "Secondary"), for: .normal)
-			backButton.backgroundColor = UIColor(named:"Secondary Back Button Background")
+            backButton.setTitleColor(ACColor.secondary, for: .normal)
+            backButton.backgroundColor = ACColor.secondaryBackButtonBackground
 			backButton.layer.cornerRadius = 20.0
 			backButton.addTarget(self, action: #selector(self.backPressed), for: .touchUpInside)
 			//NSLayoutConstraint(item: backButton, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: super.view, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: -75).isActive = true
@@ -153,8 +153,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			//self.navigationItem.setLeftBarButton(leftButton, animated: true)
 			self.navigationItem.leftBarButtonItem = leftButton
 		}
-		customView.nextButton?.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .primaryActionTriggered)
-    }
+		customView.nextButton?.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .primaryActionTriggered)                
+    }        
 	
 	@objc func backPressed() {
 		self.navigationController?.popViewController(animated: true)
@@ -179,24 +179,28 @@ open class IntroViewController: CustomViewController<InfoView> {
 				self?.view.window?.clearOverlay()
 				self?.view.window?.removeHighlight()
 				self?.set(flag: .tutorial_complete)
-				//TODO: This will soon be depricated
 				if self?.style == .grids {
                     if Arc.environment?.gridTestType == .extended {
-                        self?.present(ExtendedGridTestTutorialViewController(), animated: true) {}
+                        let vc = ExtendedGridTestTutorialViewController()
+                        self?.present(vc, animated: true) {}
                     } else {
-                        self?.present(GridTestTutorialViewController(), animated: true) {}
+                        let vc = GridTestTutorialViewController()
+                        self?.present(vc, animated: true) {}
 					}
 				}
 				if self?.style == .prices {
                     if Arc.environment?.priceTestType == .simplified || Arc.environment?.priceTestType == .simplifiedCentered {
-                        self?.present(SimplifiedPricesTestTutorialViewController(), animated: true) {}
+                        let vc = SimplifiedPricesTestTutorialViewController()
+                        self?.present(vc, animated: true) {}
                     } else {
-                        self?.present(PricesTestTutorialViewController(), animated: true) {}
+                        let vc = PricesTestTutorialViewController()
+                        self?.present(vc, animated: true) {}
                     }
 
 				}
 				if self?.style == .symbols {
-					self?.present(SymbolsTutorialViewController(), animated: true) {
+                    let vc = SymbolsTutorialViewController()
+					self?.present(vc, animated: true) {
 						
 					}
 				}
@@ -218,8 +222,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			if showTutorialPrompt {
 				currentHint = customView.nextButton!.hint {
 					$0.content = "".localized(ACTranslationKey.popup_tutorial_view)
-                    $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                            secondaryColor: UIColor(named:"HintFill")!,
+                    $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                            secondaryColor: ACColor.hintFill,
                                                             textColor: .black,
                                                             cornerRadius: 8.0,
                                                             arrowEnabled: true,
@@ -284,8 +288,8 @@ open class IntroViewController: CustomViewController<InfoView> {
 			view.overlayView(withShapes: [.roundedRect(tutorialButton, 8.0, CGSize(width: -8, height: -8))])
 			currentHint = view.window?.hint {
 				$0.content = "".localized(ACTranslationKey.popup_tutorial_complete)
-                $0.configure(with: IndicatorView.Config(primaryColor: UIColor(named:"HintFill")!,
-                                                        secondaryColor: UIColor(named:"HintFill")!,
+                $0.configure(with: IndicatorView.Config(primaryColor: ACColor.hintFill,
+                                                        secondaryColor: ACColor.hintFill,
                                                         textColor: .black,
                                                         cornerRadius: 8.0,
                                                         arrowEnabled: true,
