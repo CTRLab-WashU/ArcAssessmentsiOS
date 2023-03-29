@@ -1,8 +1,8 @@
 //
-//  SampleAppEnvironment.swift
-//  SampleApp
+// SampleAppEnvironment.swift
+// Arc
 //
-// Copyright (c) 2022 Washington University in St. Louis
+// Copyright (c) 2023 Washington University in St. Louis
 //
 // Washington University in St. Louis hereby grants to you a non-transferable,
 // non-exclusive, royalty-free license to use and copy the computer code
@@ -37,7 +37,6 @@ open class SampleAppEnvironment : ArcEnvironment {
     
     public func configure() {
         //Use this to set class variables or perform setup before the app runs
-        
     }
     
     open var priceTestType:PriceTestType {
@@ -45,7 +44,6 @@ open class SampleAppEnvironment : ArcEnvironment {
     }
     
     open var gridTestType:GridTestType {
-        //return .normal
         return .extended
     }
 }
