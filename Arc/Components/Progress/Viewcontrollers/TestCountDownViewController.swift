@@ -31,9 +31,7 @@ public class TestCountDownViewController: CustomViewController<TestCountDownView
     public var shouldProceedWhenActive = false
     public var isPaused = false
     
-    let countdown3 = " 3 "
-    let countdown2 = " 2 "
-    let countdown1 = " 1 "
+    var countdown: Int = 3
     
     init(nextVc:UIViewController) {
         self.nextVc = nextVc
@@ -65,26 +63,25 @@ public class TestCountDownViewController: CustomViewController<TestCountDownView
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.customView.countLabel.font = UIFont(name: "Georgia-Italic", size: 96)
-        self.customView.countLabel.text = countdown3
+        self.refreshCountdownText()
         self.countDown()
     }
     
     func countDown() {
         guard !self.isPaused else { return }
         DispatchQueue.main.asyncAfter(deadline: (.now() + 1.0), execute: {
-            switch self.customView.countLabel.text {
-            case self.countdown3:
-                self.customView.countLabel.text = self.countdown2
-                self.countDown()
-            case self.countdown2:
-                self.customView.countLabel.text = self.countdown1
-                self.countDown()
-            case self.countdown1:
+            self.countdown -= 1
+            if self.countdown == 0 {
                 self.countdownComplete()
-            default:
-                debugPrint("Invalid countdown state")
+            } else {
+                self.refreshCountdownText()
+                self.countDown()
             }
         })
+    }
+    
+    private func refreshCountdownText() {
+        self.customView.countLabel.text = " \(countdown) "
     }
     
     private func countdownComplete() {
