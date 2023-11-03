@@ -32,27 +32,17 @@ import UIKit
 
 public enum ARCCognitiveState : String, State, CaseIterable {
     
-    case home, gridTest, priceTest, symbolsTest, testIntro, signatureStart, signatureEnd
+    case home, testIntro, gridTest, priceTest, symbolsTest
 
     public func viewForState() -> UIViewController {
         let testIdx = 1
         ACState.testTaken = testIdx
         let pauseModal = CancelButtonModal.createPauseButtonModal()
         switch self {
-            
-        case .signatureStart:
-            let vc:ACSignatureNavigationController = .get()
-            vc.tag = 0            
-            vc.loadSurvey(template: "signature")
-            return vc
-        case .signatureEnd:
-            let vc:ACSignatureNavigationController = .get()
-            vc.tag = 1
-            vc.loadSurvey(template: "signature")
-            return vc
-        case .testIntro:
+
+        case .testIntro, .home:
             ACState.testCount = 1
-            return ACState.testIntro.viewForState()
+            return ACState.testIntro.viewForState()  
         case .gridTest:
             let controller:InstructionNavigationController = .get()
             controller.cancelButtonModal = pauseModal
@@ -122,8 +112,6 @@ public enum ARCCognitiveState : String, State, CaseIterable {
             controller.load(instructions: "TestingIntro-Symbols")
             return controller
             
-        case .home:
-            return (Arc.shared.appNavigation as! ARCCognitiveNavigationController).vcDelegate!.homeViewController()
         }
     }
 

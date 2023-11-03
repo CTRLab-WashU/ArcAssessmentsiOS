@@ -26,31 +26,50 @@
 import Foundation
 import UIKit
 
-public protocol ARCCognitiveHomeViewControllerDelegate: Any {
-    func homeViewController() -> UIViewController
+public final class ARCAssessmentPageViewController : UIPageViewController {
+    let state: ARCCognitiveState
+    
+    public init(state: ARCCognitiveState) {
+        self.state = state
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("Not supported")
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let vc = state.viewForState()
+        self.setViewControllers([vc], direction: .forward, animated: false)
+    }
 }
 
-open class ARCCognitiveNavigationController : AppNavigationController {
+public final class ARCCognitiveNavigationController : AppNavigationController {
     
     public var runningTestStates: [ARCCognitiveState] = []
     public var stateIdx = -1
     
-    public var vcDelegate: ARCCognitiveHomeViewControllerDelegate? = nil
+    weak var currentPageViewController: ARCAssessmentPageViewController!
     
-    public func startTest(stateList: [ARCCognitiveState], info: ArcAssessmentSupplementalInfo? = nil) -> UIViewController? {
+    public func startTest(stateList: [ARCCognitiveState], info: ArcAssessmentSupplementalInfo? = nil) -> ARCAssessmentPageViewController {
         ACState.totalTestCountInSession = 1
         ACState.testTaken = 0
         self.runningTestStates = stateList
         self.stateIdx = 0
         Arc.shared.appController.startNewTest(info: info)
-        return stateList[self.stateIdx].viewForState()
+        let pageVC = ARCAssessmentPageViewController(state: stateList.first!)
+        self.currentPageViewController = pageVC
+        return pageVC
     }
     
     public func endTest() {
         self.runningTestStates = []
         self.stateIdx = -1
-        self.currentWindow()?.rootViewController?.dismiss(animated: true)
     }
+
+    // MARK: AppNavigationController implementation
     
     public func previousState() -> State? {
         let prevIdx = self.stateIdx - 1
@@ -60,10 +79,6 @@ open class ARCCognitiveNavigationController : AppNavigationController {
         self.stateIdx = prevIdx
         return self.runningTestStates[self.stateIdx]
     }
-
-    public func nextAvailableState(runPeriodicBackgroundTask: Bool) -> State {
-        return nextAvailableSurveyState()!
-    }
     
     public func nextAvailableSurveyState() -> State? {
         // Allow flexibility of setting states in custom order for tests
@@ -72,7 +87,7 @@ open class ARCCognitiveNavigationController : AppNavigationController {
             if (nextIdx >= self.runningTestStates.count) {
                 return nil
             }
-            self.stateIdx = nextIdx                
+            self.stateIdx = nextIdx
             return self.runningTestStates[self.stateIdx]
         }
 
@@ -87,60 +102,8 @@ open class ARCCognitiveNavigationController : AppNavigationController {
         navigate(vc: viewForState(state: state), direction: direction)
     }
     
-    public func currentWindow() -> UIWindow? {
-        guard let window = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .compactMap({$0 as? UIWindowScene})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first else {
-            
-            debugPrint("Could not find forground key window to show screen")
-            return nil
-        }
-        return window
-    }
-    
-    public func currentViewController() -> UIViewController? {
-        guard let window = self.currentWindow() else {
-            return nil
-        }
-        
-        var currentVc = window.rootViewController
-        if window.rootViewController?.presentedViewController != nil {
-            currentVc = window.rootViewController?.presentedViewController
-        }
-        if currentVc == nil {
-            window.makeKeyAndVisible()
-            return nil
-        }
-        
-        return currentVc
-    }
-    
     public func navigate(vc: UIViewController, direction: UIWindow.TransitionOptions.Direction, duration: Double) {
-        guard let window = self.currentWindow() else {
-            return
-        }
-        guard let _ = self.currentViewController() else {
-            window.makeKeyAndVisible()
-            return
-        }
-                
-        let transition: CATransition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.reveal
-        transition.subtype = CATransitionSubtype.fromRight
-        window.layer.add(transition, forKey: nil)
-        if let current = window.rootViewController?.presentedViewController {
-            current.dismiss(animated: false, completion: {
-                vc.modalPresentationStyle = .fullScreen
-                window.rootViewController?.present(vc, animated: false, completion: nil)
-            })
-        } else {
-            vc.modalPresentationStyle = .fullScreen
-            window.rootViewController?.present(vc, animated: false, completion: nil)
-        }
+        currentPageViewController?.setViewControllers([vc], direction: direction == .toLeft ? .reverse : .forward, animated: true)
     }
     
     public func navigate(vc: UIViewController, direction: UIWindow.TransitionOptions.Direction) {
