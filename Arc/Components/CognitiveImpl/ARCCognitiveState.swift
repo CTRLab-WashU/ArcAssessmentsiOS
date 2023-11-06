@@ -42,7 +42,7 @@ public enum ARCCognitiveState : String, State, CaseIterable {
 
         case .testIntro, .home:
             ACState.testCount = 1
-            return ACState.testIntro.viewForState()  
+            return ACState.testIntro.viewForState()
         case .gridTest:
             let controller:InstructionNavigationController = .get()
             controller.cancelButtonModal = pauseModal
